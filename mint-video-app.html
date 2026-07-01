@@ -10,24 +10,19 @@
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   body{
     font-family:'Figtree',-apple-system,Helvetica Neue,sans-serif;
-    font-weight:500;
-    background:#fff;color:#111;
-    -webkit-font-smoothing:antialiased;
-    height:100%;overflow:hidden
+    font-weight:500;background:#fff;color:#111;
+    -webkit-font-smoothing:antialiased;height:100%;overflow:hidden
   }
-
   .device{
     width:393px;height:852px;margin:40px auto;
-    background:#fff;border-radius:48px;
-    border:1px solid #e8e8ed;
+    background:#fff;border-radius:48px;border:1px solid #e8e8ed;
     position:relative;overflow:hidden;
     box-shadow:0 40px 80px rgba(0,0,0,.12);
     display:flex;flex-direction:column
   }
   .notch{
     position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:126px;height:30px;background:#111;
-    border-radius:0 0 18px 18px;z-index:200
+    width:126px;height:30px;background:#111;border-radius:0 0 18px 18px;z-index:200
   }
   .notch::after{
     content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
@@ -35,11 +30,8 @@
   }
   .status-bar{
     display:flex;justify-content:space-between;padding:14px 28px 6px;
-    font-size:12px;font-weight:600;height:44px;z-index:199;position:relative;
-    color:#111
+    font-size:12px;font-weight:600;height:44px;z-index:199;position:relative;color:#111
   }
-  .status-icons{display:flex;gap:4px;align-items:center;font-size:10px;color:#888}
-
   .screens{flex:1;position:relative;overflow:hidden}
   .screen{
     position:absolute;inset:0;overflow-y:auto;
@@ -52,282 +44,210 @@
   .screen.exit-left{opacity:0;transform:translateX(-48px) scale(.98)}
   .screen::-webkit-scrollbar{display:none}
 
-  /* ═══ ONBOARDING ═══ */
-  .onboarding{
-    padding:0;height:100%;display:flex;flex-direction:column;
-    background:#fff
-  }
-  .onboarding .carousel{
-    flex:1;position:relative;overflow:hidden;
-    padding:60px 32px 0
-  }
-  .onboarding .slide{
-    position:absolute;inset:60px 32px 0;
-    display:flex;flex-direction:column;align-items:center;
-    justify-content:center;text-align:center;
-    opacity:0;transform:translateX(40px);
-    transition:opacity .5s,transform .5s cubic-bezier(.22,1,.36,1);
-    pointer-events:none
-  }
-  .onboarding .slide.active{opacity:1;transform:translateX(0);pointer-events:all}
-  .onboarding .slide .emoji{font-size:72px;margin-bottom:24px}
-  .onboarding .slide h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:12px;color:#111}
-  .onboarding .slide p{font-size:16px;line-height:1.5;color:#666;max-width:300px;font-weight:400}
-
-  .onboarding .slide .feature-list{
-    text-align:left;margin-top:20px;width:100%;max-width:280px
-  }
-  .onboarding .slide .feature-list .item{
-    display:flex;align-items:center;gap:12px;
-    padding:10px 0;border-bottom:1px solid #f0f0f0;
-    font-size:15px;color:#333;font-weight:500
-  }
-  .onboarding .slide .feature-list .item:last-child{border:none}
-  .onboarding .slide .feature-list .item .ck{
-    width:22px;height:22px;border-radius:50%;
-    background:#111;color:#fff;font-size:11px;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0
-  }
-
-  .onboarding .dots{
-    display:flex;justify-content:center;gap:6px;
-    padding:24px 0 16px
-  }
-  .onboarding .dots span{
-    width:6px;height:6px;border-radius:3px;
-    background:#ddd;transition:all .3s;cursor:pointer
-  }
-  .onboarding .dots span.active{width:24px;background:#111}
-
-  .onboarding .btn-area{padding:0 24px 40px}
-  .onboarding .btn-primary{
-    width:100%;padding:16px;border-radius:14px;
-    background:#111;color:#fff;border:none;
-    font-size:17px;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:transform .15s
-  }
-  .onboarding .btn-primary:active{transform:scale(.97)}
-  .onboarding .btn-skip{
-    display:block;margin:12px auto 0;
-    background:none;border:none;color:#999;
-    font-size:14px;font-family:inherit;font-weight:500;
-    cursor:pointer;text-decoration:underline
-  }
-
-  /* ═══ PAYWALL ═══ */
-  .paywall{
-    padding:0;height:100%;display:flex;flex-direction:column;
-    background:#fff
-  }
-  .paywall .top{
-    padding:48px 24px 0;text-align:center;flex-shrink:0
-  }
-  .paywall .top .icon{font-size:48px;margin-bottom:8px}
-  .paywall .top h1{font-size:26px;font-weight:700;color:#111;margin-bottom:6px}
-  .paywall .top p{font-size:15px;color:#666;font-weight:400;line-height:1.4}
-  .paywall .top .trial-badge{
-    display:inline-block;margin-top:12px;
-    padding:4px 14px;border-radius:20px;
-    background:#e8f5e9;color:#2e7d32;font-size:13px;font-weight:600
-  }
-
-  .paywall .plan-cards{
-    flex:1;padding:20px 24px 0;overflow-y:auto;
-    display:flex;flex-direction:column;gap:10px
-  }
-  .paywall .plan-cards::-webkit-scrollbar{display:none}
-
-  .paywall .plan-card{
-    border:1.5px solid #e8e8ed;border-radius:14px;
-    padding:16px;cursor:pointer;transition:all .2s;
-    position:relative
-  }
-  .paywall .plan-card:active{transform:scale(.98)}
-  .paywall .plan-card.popular{
-    border-color:#111;background:#fafafa
-  }
-  .paywall .plan-card.popular .pop-badge{
-    position:absolute;top:-8px;left:50%;transform:translateX(-50%);
-    padding:2px 14px;border-radius:12px;
-    background:#111;color:#fff;font-size:10px;font-weight:700;
-    letter-spacing:.5px;text-transform:uppercase
-  }
-  .paywall .plan-card .row{
-    display:flex;justify-content:space-between;align-items:center
-  }
-  .paywall .plan-card .name{font-size:16px;font-weight:600;color:#111}
-  .paywall .plan-card .price{font-size:22px;font-weight:700;color:#111}
-  .paywall .plan-card .price sub{
-    font-size:12px;font-weight:500;color:#888
-  }
-  .paywall .plan-card .per{
-    font-size:12px;color:#888;margin-top:2px;font-weight:400
-  }
-  .paywall .plan-card .saved{
-    font-size:11px;color:#2e7d32;font-weight:600;margin-top:4px
-  }
-  .paywall .plan-card .radio{
-    width:20px;height:20px;border-radius:50%;
-    border:2px solid #ddd;flex-shrink:0;
-    transition:all .2s;position:relative
-  }
-  .paywall .plan-card.sel .radio{border-color:#111}
-  .paywall .plan-card.sel .radio::after{
-    content:'';position:absolute;inset:3px;border-radius:50%;
-    background:#111
-  }
-
-  .paywall .trial-row{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 24px;border-top:1px solid #f0f0f0
-  }
-  .paywall .trial-row .lbl{font-size:14px;font-weight:600;color:#111}
-  .paywall .trial-row .sub{font-size:11px;color:#888;font-weight:400;margin-top:1px}
-  .paywall .toggle{
-    width:44px;height:26px;border-radius:13px;
-    background:#ddd;cursor:pointer;position:relative;
-    transition:background .2s;flex-shrink:0
-  }
-  .paywall .toggle.on{background:#2e7d32}
-  .paywall .toggle .knob{
-    width:22px;height:22px;border-radius:50%;
-    background:#fff;position:absolute;top:2px;left:2px;
-    box-shadow:0 1px 3px rgba(0,0,0,.15);
-    transition:transform .2s
-  }
-  .paywall .toggle.on .knob{transform:translateX(18px)}
-
-  .paywall .features{
-    padding:8px 24px 0;
-    display:flex;flex-direction:column;gap:6px;flex-shrink:0
-  }
-  .paywall .features .f{
-    display:flex;align-items:center;gap:8px;
-    font-size:13px;color:#555;font-weight:400
-  }
-  .paywall .features .f .ck{color:#2e7d32;font-size:14px}
-
-  .paywall .btn-area{
-    padding:12px 24px 36px;flex-shrink:0
-  }
-  .paywall .btn-primary{
-    width:100%;padding:16px;border-radius:14px;
-    background:#111;color:#fff;border:none;
-    font-size:17px;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:transform .15s
-  }
-  .paywall .btn-primary:active{transform:scale(.97)}
-  .paywall .fine{
-    text-align:center;font-size:11px;color:#999;margin-top:10px;font-weight:400;
-    line-height:1.4;padding:0 20px
-  }
-  .paywall .restore{
-    text-align:center;margin-top:6px
-  }
-  .paywall .restore button{
-    background:none;border:none;color:#888;font-size:12px;
-    font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline
-  }
-
-  /* ═══ PHOTO PICKER ═══ */
-  .gallery{
-    padding:0;height:100%;display:flex;flex-direction:column;
-    background:#fff
-  }
-  .gallery .top-bar{
+  .top-bar{
     display:flex;justify-content:space-between;align-items:center;
     padding:0 20px;height:52px;flex-shrink:0
   }
-  .gallery .top-bar h2{font-size:20px;font-weight:700;color:#111}
-  .gallery .top-bar .cancel{font-size:16px;color:#111;cursor:pointer;font-weight:500}
-  .gallery .top-bar .next2{
-    font-size:16px;font-weight:600;color:#111;
-    opacity:.3;pointer-events:none;transition:opacity .2s;cursor:pointer
-  }
-  .gallery .top-bar .next2.ready{opacity:1;pointer-events:all}
+  .top-bar h2{font-size:20px;font-weight:700;color:#111}
+  .top-bar .left{font-size:16px;color:#111;cursor:pointer;font-weight:500}
+  .top-bar .right{font-size:20px;cursor:pointer;opacity:.4;transition:opacity .15s}
+  .top-bar .right:hover{opacity:1}
 
-  .gallery .albums{
+  .btn-primary{
+    width:100%;padding:16px;border-radius:14px;
+    background:#111;color:#fff;border:none;
+    font-size:17px;font-weight:600;font-family:inherit;
+    cursor:pointer;transition:transform .15s
+  }
+  .btn-primary:active{transform:scale(.97)}
+
+  .albums{
     display:flex;gap:8px;padding:8px 20px 12px;flex-shrink:0;
     overflow-x:auto;border-bottom:1px solid #f0f0f0
   }
-  .gallery .albums::-webkit-scrollbar{display:none}
-  .gallery .albums .a{
+  .albums::-webkit-scrollbar{display:none}
+  .albums .a{
     padding:5px 14px;border-radius:8px;
     font-size:13px;font-weight:500;color:#888;
     background:#f5f5f5;cursor:pointer;white-space:nowrap;transition:all .15s
   }
-  .gallery .albums .a.sel{background:#111;color:#fff}
+  .albums .a.sel{background:#111;color:#fff}
 
   .photo-grid{
     display:grid;grid-template-columns:repeat(3,1fr);
     gap:2px;padding:2px;flex:1;align-content:start;overflow-y:auto
   }
   .photo-grid::-webkit-scrollbar{display:none}
-
   .photo-cell{
     aspect-ratio:1;background:#f5f5f5;
     position:relative;cursor:pointer;overflow:hidden;
     display:flex;align-items:center;justify-content:center;
-    font-size:32px;transition:opacity .15s
+    font-size:32px
   }
   .photo-cell:active{opacity:.7}
-  .photo-cell .sel-ring{
-    position:absolute;inset:0;z-index:2;
-    border:3px solid transparent;transition:border-color .2s;pointer-events:none
-  }
-  .photo-cell.sel .sel-ring{border-color:#111}
-  .photo-cell .play-badge{
-    position:absolute;top:6px;right:6px;z-index:3;
-    width:22px;height:22px;border-radius:50%;
-    background:#111;color:#fff;font-size:10px;
-    display:none;align-items:center;justify-content:center;
-    box-shadow:0 2px 6px rgba(0,0,0,.2)
-  }
-  .photo-cell.sel .play-badge{display:flex}
   .photo-cell .dur{
     position:absolute;bottom:4px;left:4px;z-index:2;
     font-size:10px;color:#fff;font-weight:600;
     background:rgba(0,0,0,.5);padding:1px 5px;border-radius:3px
   }
   .photo-cell .type{
-    position:absolute;bottom:4px;right:4px;z-index:2;
-    font-size:11px;opacity:.5
+    position:absolute;bottom:4px;right:4px;z-index:2;font-size:11px;opacity:.5
   }
+
+  /* ═══ ONBOARDING ═══ */
+  .onboarding{height:100%;display:flex;flex-direction:column;background:#fff}
+  .onboarding .carousel{flex:1;position:relative;overflow:hidden;padding:60px 32px 0}
+  .onboarding .slide{
+    position:absolute;inset:60px 32px 0;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;
+    opacity:0;transform:translateX(40px);
+    transition:opacity .5s,transform .5s cubic-bezier(.22,1,.36,1);pointer-events:none
+  }
+  .onboarding .slide.active{opacity:1;transform:translateX(0);pointer-events:all}
+  .onboarding .slide .e{font-size:72px;margin-bottom:24px}
+  .onboarding .slide h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:12px;color:#111}
+  .onboarding .slide p{font-size:16px;line-height:1.5;color:#666;max-width:300px;font-weight:400}
+  .onboarding .slide .fl{text-align:left;margin-top:20px;width:100%;max-width:280px}
+  .onboarding .slide .fl .fi{
+    display:flex;align-items:center;gap:12px;padding:10px 0;
+    border-bottom:1px solid #f0f0f0;font-size:15px;color:#333;font-weight:500
+  }
+  .onboarding .slide .fl .fi:last-child{border:none}
+  .onboarding .slide .fl .fi .ck{
+    width:22px;height:22px;border-radius:50%;background:#111;color:#fff;
+    font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0
+  }
+  .onboarding .dots{display:flex;justify-content:center;gap:6px;padding:24px 0 16px}
+  .onboarding .dots span{width:6px;height:6px;border-radius:3px;background:#ddd;transition:all .3s;cursor:pointer}
+  .onboarding .dots span.active{width:24px;background:#111}
+  .onboarding .ba{padding:0 24px 40px}
+  .onboarding .skp{display:block;margin:12px auto 0;background:none;border:none;color:#999;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline}
+
+  /* ═══ PAYWALL ═══ */
+  .paywall{height:100%;display:flex;flex-direction:column;background:#fff}
+  .paywall .top{padding:48px 24px 0;text-align:center;flex-shrink:0}
+  .paywall .top .icon{font-size:48px;margin-bottom:8px}
+  .paywall .top h1{font-size:26px;font-weight:700;color:#111;margin-bottom:6px}
+  .paywall .top p{font-size:15px;color:#666;font-weight:400;line-height:1.4}
+  .paywall .top .tbadge{display:inline-block;margin-top:12px;padding:4px 14px;border-radius:20px;background:#e8f5e9;color:#2e7d32;font-size:13px;font-weight:600}
+  .paywall .cards{flex:1;padding:20px 24px 0;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+  .paywall .cards::-webkit-scrollbar{display:none}
+  .paywall .pc{border:1.5px solid #e8e8ed;border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative}
+  .paywall .pc.pop{border-color:#111;background:#fafafa}
+  .paywall .pc.pop .pbadge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);padding:2px 14px;border-radius:12px;background:#111;color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .paywall .pc .r{display:flex;justify-content:space-between;align-items:center}
+  .paywall .pc .nm{font-size:16px;font-weight:600;color:#111}
+  .paywall .pc .pr{font-size:22px;font-weight:700;color:#111}
+  .paywall .pc .pr sub{font-size:12px;font-weight:500;color:#888}
+  .paywall .pc .per{font-size:12px;color:#888;margin-top:2px;font-weight:400}
+  .paywall .pc .sv{font-size:11px;color:#2e7d32;font-weight:600;margin-top:4px}
+  .paywall .pc .ra{width:20px;height:20px;border-radius:50%;border:2px solid #ddd;flex-shrink:0;transition:all .2s;position:relative}
+  .paywall .pc.sel .ra{border-color:#111}
+  .paywall .pc.sel .ra::after{content:'';position:absolute;inset:3px;border-radius:50%;background:#111}
+  .paywall .tr{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-top:1px solid #f0f0f0}
+  .paywall .tr .l{font-size:14px;font-weight:600;color:#111}
+  .paywall .tr .s{font-size:11px;color:#888;font-weight:400;margin-top:1px}
+  .paywall .tog{width:44px;height:26px;border-radius:13px;background:#ddd;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+  .paywall .tog.on{background:#2e7d32}
+  .paywall .tog .kn{width:22px;height:22px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;box-shadow:0 1px 3px rgba(0,0,0,.15);transition:transform .2s}
+  .paywall .tog.on .kn{transform:translateX(18px)}
+  .paywall .feats{padding:8px 24px 0;display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+  .paywall .feats .f{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;font-weight:400}
+  .paywall .feats .f .ck{color:#2e7d32;font-size:14px}
+  .paywall .ba{padding:12px 24px 36px;flex-shrink:0}
+  .paywall .fine{text-align:center;font-size:11px;color:#999;margin-top:10px;font-weight:400;line-height:1.4;padding:0 20px}
+  .paywall .restore{text-align:center;margin-top:6px}
+  .paywall .restore button{background:none;border:none;color:#888;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline}
+
+  /* ═══ HOME (gallery of edits) ═══ */
+  .home{height:100%;display:flex;flex-direction:column;background:#fff}
+  .home .hero{
+    padding:0 20px 16px;flex-shrink:0
+  }
+  .home .hero .greeting{font-size:22px;font-weight:700;color:#111;margin-bottom:2px}
+  .home .hero .sub{font-size:14px;color:#888;font-weight:400}
+  .home .hero .stats{
+    display:flex;gap:16px;margin-top:14px
+  }
+  .home .hero .stats .s{
+    flex:1;background:#f8f8f8;border:1px solid #e8e8ed;
+    border-radius:10px;padding:10px 12px;text-align:center
+  }
+  .home .hero .stats .s .num{font-size:20px;font-weight:700;color:#111}
+  .home .hero .stats .s .lbl{font-size:11px;color:#888;margin-top:1px;font-weight:400}
+
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:8px;padding:0 20px 20px;flex:1;overflow-y:auto;align-content:start
+  }
+  .gallery-grid::-webkit-scrollbar{display:none}
+
+  .gallery-card{
+    background:#f8f8f8;border:1px solid #e8e8ed;
+    border-radius:12px;overflow:hidden;cursor:pointer;
+    transition:transform .15s
+  }
+  .gallery-card:active{transform:scale(.97)}
+
+  .gallery-card .thumb{
+    aspect-ratio:9/16;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    font-size:36px;overflow:hidden
+  }
+  .gallery-card .thumb .play-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);
+    display:flex;align-items:flex-end;padding:8px
+  }
+  .gallery-card .thumb .play-overlay .dur{
+    font-size:10px;color:#fff;font-weight:600;
+    background:rgba(0,0,0,.5);padding:1px 6px;border-radius:3px
+  }
+  .gallery-card .info{padding:8px 10px 10px}
+  .gallery-card .info .tt{font-size:13px;font-weight:500;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .gallery-card .info .dt{font-size:10px;color:#888;margin-top:1px;font-weight:400}
+
+  .home .fab{
+    position:absolute;bottom:24px;right:20px;z-index:20;
+    width:56px;height:56px;border-radius:50%;
+    background:#111;color:#fff;border:none;
+    font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,.2);
+    transition:transform .15s
+  }
+  .home .fab:active{transform:scale(.92)}
+
+  /* ═══ PHOTO PICKER (camera roll) ═══ */
+  .camera-roll{height:100%;display:flex;flex-direction:column;background:#fff}
 
   /* ═══ PROMPT ═══ */
-  .prompt{
-    padding:0;height:100%;display:flex;flex-direction:column;
-    background:#fff
+  .prompt{height:100%;display:flex;flex-direction:column;background:#fff}
+  .prompt .video-preview{
+    margin:0 20px;flex-shrink:0;height:200px;
+    background:#f5f5f5;border-radius:12px;overflow:hidden;
+    position:relative;border:1px solid #e8e8ed
   }
-  .prompt .top-bar{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:0 20px;height:52px;flex-shrink:0
+  .prompt .video-preview canvas{width:100%;height:100%;display:block}
+  .prompt .video-preview .overlay{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none
   }
-  .prompt .top-bar .back{font-size:16px;color:#111;cursor:pointer;font-weight:500}
-  .prompt .top-bar h2{font-size:20px;font-weight:700;color:#111}
-
-  .prompt .selected-clip{
-    margin:0 20px 16px;flex-shrink:0;
-    display:flex;align-items:center;gap:12px;
-    background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:12px;padding:10px 12px
+  .prompt .video-preview .overlay .play-icon{
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(0,0,0,.4);color:#fff;display:flex;align-items:center;
+    justify-content:center;font-size:18px;backdrop-filter:blur(4px)
   }
-  .prompt .selected-clip .thumb{
-    width:48px;height:48px;border-radius:6px;
-    background:#eee;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    font-size:20px;overflow:hidden
+  .prompt .clip-info{
+    display:flex;align-items:center;gap:10px;
+    margin:10px 20px 0;flex-shrink:0
   }
-  .prompt .selected-clip .info{flex:1;min-width:0}
-  .prompt .selected-clip .info .nm{font-size:14px;font-weight:500;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .prompt .selected-clip .info .sz{font-size:11px;color:#888;margin-top:1px;font-weight:400}
-  .prompt .selected-clip .chg{font-size:13px;color:#111;cursor:pointer;font-weight:600}
-
+  .prompt .clip-info .nm{font-size:13px;font-weight:500;color:#111}
+  .prompt .clip-info .sz{font-size:10px;color:#888;font-weight:400}
+  .prompt .clip-info .chg{font-size:12px;color:#111;font-weight:600;cursor:pointer;margin-left:auto}
   .prompt .area-wrap{
-    flex:1;margin:0 20px;
+    flex:1;margin:10px 20px 0;
     background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:12px;padding:16px;
-    display:flex;flex-direction:column
+    border-radius:12px;padding:14px;display:flex;flex-direction:column
   }
   .prompt .area-wrap textarea{
     flex:1;resize:none;background:transparent;border:none;outline:none;
@@ -337,12 +257,11 @@
   .prompt .area-wrap textarea::placeholder{color:#aaa}
   .prompt .area-wrap .cc{
     text-align:right;font-size:10px;color:#bbb;
-    padding-top:10px;border-top:1px solid #e8e8ed;margin-top:8px;font-weight:400
+    padding-top:8px;border-top:1px solid #e8e8ed;margin-top:8px;font-weight:400
   }
-
   .prompt .hints{
     display:flex;gap:6px;flex-wrap:wrap;
-    margin:12px 20px 0;flex-shrink:0
+    margin:10px 20px 0;flex-shrink:0
   }
   .prompt .hints .h{
     padding:6px 12px;border-radius:8px;
@@ -351,12 +270,9 @@
     color:#555;cursor:pointer;transition:all .15s
   }
   .prompt .hints .h:active{background:#eee}
-  .prompt .hints .h .ic{margin-right:3px;font-size:12px}
-
   .prompt .bottom-bar{
     padding:8px 20px 24px;flex-shrink:0;
-    border-top:1px solid #f0f0f0;
-    display:flex;align-items:center;gap:10px
+    border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px
   }
   .prompt .bottom-bar input{
     flex:1;background:#f5f5f5;border:1px solid #e8e8ed;
@@ -372,122 +288,159 @@
   }
   .prompt .bottom-bar .send:active{transform:scale(.9)}
 
-  @media(max-width:440px){
-    .device{width:100vw;height:100%;margin:0;border-radius:0;border:none;box-shadow:none;min-height:100vh}
+  /* ═══ PROCESSING ═══ */
+  .processing{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:40px}
+  .processing .spinner{width:64px;height:64px;border-radius:50%;border:4px solid #eee;border-top-color:#111;animation:spin .8s linear infinite;margin-bottom:24px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .processing h1{font-size:22px;font-weight:700;color:#111;margin-bottom:8px}
+  .processing p{font-size:15px;color:#666;font-weight:400;text-align:center;line-height:1.5}
+  .processing .track{width:200px;height:4px;background:#eee;border-radius:2px;margin-top:24px;overflow:hidden}
+  .processing .track .bar{height:100%;width:0%;background:#111;border-radius:2px;transition:width .3s}
+  .processing .stage{font-size:12px;color:#888;margin-top:12px;font-weight:400}
+
+  /* ═══ SUCCESS ═══ */
+  .success{height:100%;display:flex;flex-direction:column;background:#fff;padding:40px 24px;align-items:center;justify-content:center;text-align:center}
+  .success .icon{width:80px;height:80px;border-radius:50%;background:#e8f5e9;display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:20px}
+  .success h1{font-size:24px;font-weight:700;color:#111;margin-bottom:6px}
+  .success .sub{font-size:15px;color:#666;font-weight:400;margin-bottom:24px}
+  .success .saved-badge{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;background:#f8f8f8;border:1px solid #e8e8ed;font-size:14px;font-weight:500;color:#111;margin-bottom:24px}
+  .success .saved-badge .ck{color:#2e7d32;font-size:16px}
+  .success .share-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;justify-content:center}
+  .success .share-btn{width:48px;height:48px;border-radius:50%;background:#f5f5f5;border:1px solid #e8e8ed;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all .15s}
+  .success .share-btn:active{transform:scale(.92);background:#eee}
+  .success .actions{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px}
+  .success .actions .btn-ghost{width:100%;padding:14px;border-radius:14px;background:transparent;border:1.5px solid #e8e8ed;color:#111;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s}
+  .success .actions .btn-ghost:active{background:#f5f5f5}
+
+  /* ═══ SETTINGS ═══ */
+  .settings{height:100%;display:flex;flex-direction:column;background:#fff}
+  .settings .body{padding:8px 20px 20px;flex:1;overflow-y:auto}
+  .settings .body::-webkit-scrollbar{display:none}
+  .settings .sec{margin-bottom:24px}
+  .settings .sec .title{font-size:11px;font-weight:600;color:#888;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;padding:0 4px}
+  .settings .sec .row{display:flex;align-items:center;justify-content:space-between;padding:14px 12px;border-bottom:1px solid #f0f0f0;cursor:pointer}
+  .settings .sec .row:last-child{border:none}
+  .settings .sec .row:active{background:#fafafa}
+  .settings .sec .row .l{display:flex;align-items:center;gap:10px}
+  .settings .sec .row .l .ic{font-size:18px;width:24px;text-align:center}
+  .settings .sec .row .l .t{font-size:15px;font-weight:500;color:#111}
+  .settings .sec .row .l .sub{font-size:11px;color:#888;font-weight:400}
+  .settings .sec .row .v{font-size:13px;color:#888;font-weight:400;display:flex;align-items:center;gap:4px}
+  .settings .sec .row .v .chev{font-size:12px;color:#ccc}
+  .settings .plan-card-static{border:1px solid #e8e8ed;border-radius:12px;padding:16px;margin-bottom:12px;background:#fafafa}
+  .settings .plan-card-static .tp{display:flex;justify-content:space-between;align-items:flex-start}
+  .settings .plan-card-static .tp .plan-nm{font-size:16px;font-weight:600;color:#111}
+  .settings .plan-card-static .tp .plan-badge{font-size:10px;font-weight:700;padding:2px 10px;border-radius:8px;background:#111;color:#fff;text-transform:uppercase;letter-spacing:.3px}
+  .settings .plan-card-static .detail{font-size:13px;color:#888;margin-top:4px;font-weight:400}
+  .settings .plan-card-static .usage{margin-top:14px}
+  .settings .plan-card-static .usage .r2{display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:4px}
+  .settings .plan-card-static .usage .r2 .num{font-weight:600;color:#111}
+  .settings .plan-card-static .usage .track{height:4px;background:#eee;border-radius:2px;overflow:hidden}
+  .settings .plan-card-static .usage .track .fill{height:100%;width:35%;background:#111;border-radius:2px}
+  .settings .plan-card-static .manage{display:block;margin-top:14px;background:none;border:none;color:#111;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;text-decoration:underline;padding:0}
+  .settings .version{text-align:center;font-size:11px;color:#bbb;font-weight:400;padding:16px 0 40px}
+
+  .toast{
+    position:absolute;bottom:100px;left:20px;right:20px;z-index:300;
+    padding:14px 18px;border-radius:12px;background:#111;color:#fff;
+    font-size:14px;font-weight:500;text-align:center;
+    opacity:0;transform:translateY(20px);
+    transition:opacity .3s,transform .3s;pointer-events:none
   }
+  .toast.show{opacity:1;transform:translateY(0);pointer-events:all}
+
+  @media(max-width:440px){.device{width:100vw;height:100%;margin:0;border-radius:0;border:none;box-shadow:none;min-height:100vh}}
 </style>
 </head>
 <body>
 
 <div class="device">
   <div class="notch"></div>
-  <div class="status-bar">
-    <span class="time">9:41</span>
-    <span class="status-icons">●●●● ▮▮</span>
-  </div>
+  <div class="status-bar"><span class="time">9:41</span><span class="status-icons" style="color:#888">●●●● ▮▮</span></div>
 
   <div class="screens" id="appScreens">
 
-    <!-- ═══ SCREEN 0: ONBOARDING ═══ -->
+    <!-- 0: ONBOARDING -->
     <div class="screen active" data-screen="0">
       <div class="onboarding">
         <div class="carousel" id="ocarousel">
           <div class="slide active">
-            <div class="emoji">🎬</div>
+            <div class="e">🎬</div>
             <h1>Turn selfies into<br>music videos</h1>
             <p>AI transforms your clips into cinematic music videos with a single prompt.</p>
-            <div class="feature-list">
-              <div class="item"><span class="ck">✓</span> Pick any video from your camera roll</div>
-              <div class="item"><span class="ck">✓</span> Describe the vibe — AI does the rest</div>
-              <div class="item"><span class="ck">✓</span> Export in seconds, not hours</div>
+            <div class="fl">
+              <div class="fi"><span class="ck">✓</span> Pick any video from your camera roll</div>
+              <div class="fi"><span class="ck">✓</span> Describe the vibe — AI does the rest</div>
+              <div class="fi"><span class="ck">✓</span> Export in seconds, not hours</div>
             </div>
           </div>
           <div class="slide">
-            <div class="emoji">✨</div>
+            <div class="e">✨</div>
             <h1>AI-powered<br>video magic</h1>
-            <p>Motion tracking, style transfer, beat-sync — all from a single line of text.</p>
-            <div class="feature-list">
-              <div class="item"><span class="ck">✓</span> Cinematic, cyberpunk, anime &amp; more</div>
-              <div class="item"><span class="ck">✓</span> Keyframe fly effects with 3D depth</div>
-              <div class="item"><span class="ck">✓</span> 4K export ready for any platform</div>
+            <p>Motion tracking, style transfer — all from a single line of text.</p>
+            <div class="fl">
+              <div class="fi"><span class="ck">✓</span> Cinematic, cyberpunk, anime &amp; more</div>
+              <div class="fi"><span class="ck">✓</span> Keyframe fly effects with 3D depth</div>
+              <div class="fi"><span class="ck">✓</span> 4K export ready for any platform</div>
             </div>
           </div>
           <div class="slide">
-            <div class="emoji">🚀</div>
+            <div class="e">🚀</div>
             <h1>Ready to<br>create?</h1>
             <p>No editing skills needed. Just shoot, prompt, and watch it transform.</p>
-            <div class="feature-list">
-              <div class="item"><span class="ck">✓</span> 7-day free trial — cancel anytime</div>
-              <div class="item"><span class="ck">✓</span> Unlimited renders on Pro</div>
-              <div class="item"><span class="ck">✓</span> No watermark</div>
+            <div class="fl">
+              <div class="fi"><span class="ck">✓</span> 7-day free trial — cancel anytime</div>
+              <div class="fi"><span class="ck">✓</span> Unlimited renders on Pro</div>
+              <div class="fi"><span class="ck">✓</span> No watermark</div>
             </div>
           </div>
         </div>
-
-        <div class="dots" id="odots">
-          <span class="active"></span><span></span><span></span>
-        </div>
-
-        <div class="btn-area">
+        <div class="dots" id="odots"><span class="active"></span><span></span><span></span></div>
+        <div class="ba">
           <button class="btn-primary" id="oNextBtn">Continue</button>
-          <button class="btn-skip" onclick="goScreen(1)">Skip</button>
+          <button class="skp" onclick="goScreen(1)">Skip</button>
         </div>
       </div>
     </div>
 
-    <!-- ═══ SCREEN 1: PAYWALL ═══ -->
+    <!-- 1: PAYWALL -->
     <div class="screen" data-screen="1">
       <div class="paywall">
         <div class="top">
           <div class="icon">✨</div>
           <h1>Unlock Mint Pro</h1>
           <p>Try free for 7 days, then from just $4.99/mo. Cancel anytime.</p>
-          <div class="trial-badge">🎁 7 days free</div>
+          <div class="tbadge">🎁 7 days free</div>
         </div>
-
-        <div class="plan-cards" id="planCards">
-          <div class="plan-card popular sel" data-plan="annual">
-            <div class="pop-badge">★ BEST VALUE</div>
-            <div class="row">
-              <div><div class="name">Annual</div><div class="per">$4.99 / month</div><div class="saved">Save 50% vs monthly</div></div>
-              <div><div class="price">$59.99<sub>/yr</sub></div></div>
+        <div class="cards" id="planCards">
+          <div class="pc pop sel" data-plan="annual">
+            <div class="pbadge">★ BEST VALUE</div>
+            <div class="r">
+              <div><div class="nm">Annual</div><div class="per">$4.99 / month</div><div class="sv">Save 50% vs monthly</div></div>
+              <div><div class="pr">$59.99<sub>/yr</sub></div></div>
             </div>
-            <div class="row" style="margin-top:10px"><div></div><div class="radio"></div></div>
+            <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
           </div>
-
-          <div class="plan-card" data-plan="monthly">
-            <div class="row">
-              <div><div class="name">Monthly</div><div class="per">$9.99 / month</div></div>
-              <div><div class="price">$9.99<sub>/mo</sub></div></div>
-            </div>
-            <div class="row" style="margin-top:10px"><div></div><div class="radio"></div></div>
+          <div class="pc" data-plan="monthly">
+            <div class="r"><div><div class="nm">Monthly</div><div class="per">$9.99 / month</div></div><div><div class="pr">$9.99<sub>/mo</sub></div></div></div>
+            <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
           </div>
-
-          <div class="plan-card" data-plan="lifetime">
-            <div class="row">
-              <div><div class="name">Lifetime</div><div class="per">One-time payment</div><div class="saved">Never pay again</div></div>
-              <div><div class="price">$99.99</div></div>
-            </div>
-            <div class="row" style="margin-top:10px"><div></div><div class="radio"></div></div>
+          <div class="pc" data-plan="lifetime">
+            <div class="r"><div><div class="nm">Lifetime</div><div class="per">One-time payment</div><div class="sv">Never pay again</div></div><div><div class="pr">$99.99</div></div></div>
+            <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
           </div>
         </div>
-
-        <div class="trial-row">
-          <div>
-            <div class="lbl">Free trial</div>
-            <div class="sub">Cancel anytime before it renews</div>
-          </div>
-          <div class="toggle on" id="trialToggle"><div class="knob"></div></div>
+        <div class="tr">
+          <div><div class="l">Free trial</div><div class="s">Cancel anytime before it renews</div></div>
+          <div class="tog on" id="trialToggle"><div class="kn"></div></div>
         </div>
-
-        <div class="features">
+        <div class="feats">
           <div class="f"><span class="ck">✓</span> Unlimited AI video renders</div>
           <div class="f"><span class="ck">✓</span> All effects &amp; style transfers</div>
           <div class="f"><span class="ck">✓</span> 4K export · No watermark</div>
           <div class="f"><span class="ck">✓</span> Priority processing</div>
         </div>
-
-        <div class="btn-area">
+        <div class="ba">
           <button class="btn-primary" id="payBtn">Start 7-day free trial</button>
           <div class="fine">Renews at $59.99/year. Cancel anytime in settings.</div>
           <div class="restore"><button onclick="goScreen(2)">Maybe later</button></div>
@@ -495,180 +448,305 @@
       </div>
     </div>
 
-    <!-- ═══ SCREEN 2: PHOTO PICKER ═══ -->
+    <!-- 2: HOME (gallery of past edits) -->
     <div class="screen" data-screen="2">
-      <div class="gallery">
+      <div class="home">
         <div class="top-bar">
-          <span class="cancel">Cancel</span>
-          <h2>Photos</h2>
-          <span class="next2" id="nextBtn">Next</span>
+          <h2>Mint</h2>
+          <span class="right" onclick="goScreen(7)">⚙︎</span>
         </div>
 
+        <div class="hero">
+          <div class="greeting">Your videos</div>
+          <div class="sub">You've created 23 music videos so far</div>
+          <div class="stats">
+            <div class="s"><div class="num">23</div><div class="lbl">Videos</div></div>
+            <div class="s"><div class="num">12</div><div class="lbl">This month</div></div>
+            <div class="s"><div class="num">4.8K</div><div class="lbl">Total views</div></div>
+          </div>
+        </div>
+
+        <div class="albums" style="border:none;padding:0 20px 12px">
+          <span class="a sel">All</span>
+          <span class="a">Cinematic</span>
+          <span class="a">Cyberpunk</span>
+          <span class="a">Anime</span>
+          <span class="a">Slow-mo</span>
+        </div>
+
+        <div class="gallery-grid" id="editGrid">
+          <!-- generated by js -->
+        </div>
+
+        <button class="fab" onclick="goScreen(3)">+</button>
+      </div>
+    </div>
+
+    <!-- 3: PHOTO PICKER (camera roll) -->
+    <div class="screen" data-screen="3">
+      <div class="camera-roll">
+        <div class="top-bar">
+          <span class="left" onclick="prevScreen()">← Back</span>
+          <h2>Photos</h2>
+          <span style="width:40px"></span>
+        </div>
         <div class="albums">
           <span class="a sel">Recents</span>
           <span class="a">Videos</span>
           <span class="a">Favorites</span>
           <span class="a">Selfies</span>
-          <span class="a">Screenshots</span>
         </div>
-
         <div class="photo-grid" id="photoGrid"></div>
       </div>
     </div>
 
-    <!-- ═══ SCREEN 3: PROMPT ═══ -->
-    <div class="screen" data-screen="3">
+    <!-- 4: PROMPT -->
+    <div class="screen" data-screen="4">
       <div class="prompt">
         <div class="top-bar">
-          <span class="back" onclick="prevScreen()">← Back</span>
+          <span class="left" onclick="prevScreen()">← Back</span>
           <h2>Create</h2>
-          <span style="width:48px"></span>
+          <span style="width:40px"></span>
         </div>
-
-        <div class="selected-clip" id="selClip">
-          <div class="thumb" id="selThumb">🎬</div>
-          <div class="info">
-            <div class="nm" id="selName">video_001.mov</div>
-            <div class="sz" id="selSize">24 MB · 8s</div>
-          </div>
+        <div class="video-preview" id="vidPreview">
+          <canvas id="vidCanvas"></canvas>
+          <div class="overlay"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="clip-info">
+          <div><span class="nm" id="selName">video_001.mov</span> · <span class="sz" id="selSize">24 MB</span></div>
           <span class="chg" onclick="prevScreen()">Change</span>
         </div>
-
         <div class="area-wrap">
-          <textarea id="promptText" placeholder='Describe what you want — e.g. "Turn this into a cinematic music video with neon lights and a Tokyo chase scene"' maxlength="500"></textarea>
+          <textarea id="promptText" placeholder='Describe what you want — e.g. "Turn this into a cinematic music video with neon lights"' maxlength="500"></textarea>
           <div class="cc">0 <span>/ 500</span></div>
         </div>
-
         <div class="hints">
-          <span class="h"><span class="ic">🎬</span> Cinematic</span>
-          <span class="h"><span class="ic">🌆</span> Cyberpunk</span>
-          <span class="h"><span class="ic">🎨</span> Anime style</span>
-          <span class="h"><span class="ic">🎞️</span> Slow motion</span>
+          <span class="h"><span>🎬</span> Cinematic</span>
+          <span class="h"><span>🌆</span> Cyberpunk</span>
+          <span class="h"><span>🎨</span> Anime style</span>
+          <span class="h"><span>🎞️</span> Slow motion</span>
         </div>
-
         <div class="bottom-bar">
           <input id="bottomInput" placeholder="Type a prompt..." maxlength="500">
-          <button class="send" onclick="createVideo()">→</button>
+          <button class="send" onclick="startProcessing()">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: PROCESSING -->
+    <div class="screen" data-screen="5">
+      <div class="processing">
+        <div class="spinner"></div>
+        <h1>Creating your video</h1>
+        <p>Applying AI effects, syncing beats,<br>and rendering in 4K...</p>
+        <div class="track"><div class="bar" id="progBar"></div></div>
+        <div class="stage" id="progStage">Analyzing video...</div>
+      </div>
+    </div>
+
+    <!-- 6: SUCCESS -->
+    <div class="screen" data-screen="6">
+      <div class="success">
+        <div class="icon">✅</div>
+        <h1>Saved to Photos</h1>
+        <p class="sub">Your music video is ready and waiting in your camera roll.</p>
+        <div class="saved-badge"><span class="ck">✓</span> Saved to Recents · 1080p · 0:12</div>
+        <div class="share-row">
+          <div class="share-btn" onclick="toast('Copied link!')">🔗</div>
+          <div class="share-btn" onclick="toast('Shared to Instagram!')">📷</div>
+          <div class="share-btn" onclick="toast('Shared to TikTok!')">🎵</div>
+          <div class="share-btn" onclick="toast('Downloading...')">⬇️</div>
+          <div class="share-btn" onclick="toast('Shared!')">💬</div>
+        </div>
+        <div class="actions">
+          <button class="btn-primary" onclick="goScreen(3)">Edit another video</button>
+          <button class="btn-ghost" onclick="goScreen(2)">Go to home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: SETTINGS -->
+    <div class="screen" data-screen="7">
+      <div class="settings">
+        <div class="top-bar">
+          <span class="left" onclick="prevScreen()">← Back</span>
+          <h2>Settings</h2>
+          <span style="width:40px"></span>
+        </div>
+        <div class="body">
+          <div class="sec">
+            <div class="title">Subscription</div>
+            <div class="plan-card-static">
+              <div class="tp">
+                <div><div class="plan-nm">Mint Pro Annual</div><div class="detail">Renews April 15, 2027 · $59.99/yr</div></div>
+                <span class="plan-badge">Active</span>
+              </div>
+              <div class="usage">
+                <div class="r2"><span>Videos edited this month</span><span class="num">7 / 50</span></div>
+                <div class="track"><div class="fill"></div></div>
+              </div>
+              <button class="manage" onclick="toast('Opening App Store...')">Manage subscription →</button>
+            </div>
+          </div>
+          <div class="sec">
+            <div class="title">Account</div>
+            <div class="row"><div class="l"><span class="ic">👤</span><div><div class="t">Apple ID</div><div class="sub">buyan@icloud.com</div></div></div><div class="v">• • • <span class="chev">›</span></div></div>
+            <div class="row"><div class="l"><span class="ic">📊</span><div><div class="t">Videos created</div><div class="sub">Total: 23 videos</div></div></div><div class="v">23 <span class="chev">›</span></div></div>
+          </div>
+          <div class="sec">
+            <div class="title">Preferences</div>
+            <div class="row"><div class="l"><span class="ic">🌙</span><div class="t">Dark mode</div></div><div class="v"><span style="color:#ccc">Follow system</span> <span class="chev">›</span></div></div>
+            <div class="row"><div class="l"><span class="ic">🎬</span><div class="t">Default export quality</div></div><div class="v">1080p <span class="chev">›</span></div></div>
+            <div class="row"><div class="l"><span class="ic">🔇</span><div class="t">Sound effects</div></div><div class="v"><span style="color:#bbb">On</span> <span class="chev">›</span></div></div>
+          </div>
+          <div class="sec">
+            <div class="title">Support</div>
+            <div class="row"><div class="l"><span class="ic">❓</span><div class="t">FAQ</div></div><div class="v"><span class="chev">›</span></div></div>
+            <div class="row"><div class="l"><span class="ic">💬</span><div class="t">Contact us</div></div><div class="v"><span class="chev">›</span></div></div>
+            <div class="row"><div class="l"><span class="ic">⭐</span><div class="t">Rate the app</div></div><div class="v"><span class="chev">›</span></div></div>
+          </div>
+          <div class="version">Mint v1.0.2 · Build 42</div>
         </div>
       </div>
     </div>
 
   </div>
+
+  <div class="toast" id="toast"></div>
 </div>
 
 <script>
-  // ── Screen navigation
   let cur=0;
   const scr=document.querySelectorAll('.screen');
-  goScreen=(i)=>{if(i<0||i>=scr.length)return;scr.forEach((s,idx)=>{s.classList.remove('active','exit-left');if(idx<i)s.classList.add('exit-left')});scr[i].classList.add('active');cur=i};
+  goScreen=(i)=>{
+    if(i<0||i>=scr.length)return;
+    scr.forEach((s,idx)=>{s.classList.remove('active','exit-left');if(idx<i)s.classList.add('exit-left')});
+    scr[i].classList.add('active');cur=i;
+    if(i===4)startVidPreview();else stopVidPreview();
+  };
   nextScreen=()=>goScreen(cur+1);
   prevScreen=()=>goScreen(cur-1);
 
   // ── Onboarding ──
   let oIdx=0;
-  const oSlides=document.querySelectorAll('#ocarousel .slide');
-  const oDots=document.querySelectorAll('#odots span');
-  const oBtn=document.getElementById('oNextBtn');
-
+  const oSl=document.querySelectorAll('#ocarousel .slide'),oDo=document.querySelectorAll('#odots span'),oBtn=document.getElementById('oNextBtn');
   function goSlide(i){
-    if(i<0||i>=oSlides.length)return;
-    oSlides.forEach((s,idx)=>{s.classList.toggle('active',idx===i)});
-    oDots.forEach((d,idx)=>d.classList.toggle('active',idx===i));
-    oIdx=i;
-    if(i===oSlides.length-1){
-      oBtn.textContent='Get started';
-      oBtn.onclick=()=>goScreen(1);
-    }else{
-      oBtn.textContent='Continue';
-      oBtn.onclick=()=>goSlide(oIdx+1);
-    }
+    if(i<0||i>=oSl.length)return;
+    oSl.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+    oDo.forEach((d,idx)=>d.classList.toggle('active',idx===i));oIdx=i;
+    if(i===oSl.length-1){oBtn.textContent='Get started';oBtn.onclick=()=>goScreen(1)}
+    else{oBtn.textContent='Continue';oBtn.onclick=()=>goSlide(oIdx+1)}
   }
   oBtn.onclick=()=>goSlide(1);
-  oDots.forEach(d=>d.addEventListener('click',()=>goSlide(Array.from(oDots).indexOf(d))));
+  oDo.forEach(d=>d.addEventListener('click',()=>goSlide(Array.from(oDo).indexOf(d))));
 
   // ── Paywall ──
-  const planCards=document.querySelectorAll('#planCards .plan-card');
-  planCards.forEach(c=>{
-    c.addEventListener('click',()=>{
-      planCards.forEach(p=>p.classList.remove('sel'));
-      c.classList.add('sel');
-    });
-  });
+  document.querySelectorAll('#planCards .pc').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('#planCards .pc').forEach(p=>p.classList.remove('sel'));this.classList.add('sel')})});
+  document.getElementById('trialToggle').addEventListener('click',function(){this.classList.toggle('on')});
+  document.getElementById('payBtn').addEventListener('click',()=>goScreen(2));
 
-  // Trial toggle
-  const trialToggle=document.getElementById('trialToggle');
-  trialToggle.addEventListener('click',()=>trialToggle.classList.toggle('on'));
-
-  // Pay button
-  document.getElementById('payBtn').addEventListener('click',()=>{
-    const sel=document.querySelector('#planCards .plan-card.sel');
-    const plan=sel?sel.dataset.plan:'annual';
-    const trial=trialToggle.classList.contains('on');
-    goScreen(2);
-  });
-
-  // ── Photo grid ──
-  const emojis=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴','🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆'];
-  const durations=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20','0:11','0:07','0:14','0:05','0:28','—','0:12','0:15','0:09','0:06'];
-  const types=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📸','📹','📹','📸'];
-
-  const grid=document.getElementById('photoGrid');
-  let selectedIdx=-1;
-  const thumbs=['🎬','📹','🎥','🎞️','🌆','🌊','🚗','🌟','🎉','🚀'];
-
-  for(let i=0;i<40;i++){
-    const cell=document.createElement('div');
-    cell.className='photo-cell';
-    cell.dataset.idx=i;
+  // ─── HOME: Gallery of edits ───
+  const edits=[
+    {emoji:'🌆',color:'#f0edff',title:'Neon Tokyo Nights',date:'Today',dur:'0:12',cat:'Cyberpunk'},
+    {emoji:'🏖️',color:'#fff8e8',title:'Beach Memories',date:'Yesterday',dur:'0:08',cat:'Cinematic'},
+    {emoji:'🚗',color:'#e8f8f0',title:'Night Drive',date:'2 days ago',dur:'0:15',cat:'Slow-mo'},
+    {emoji:'🌟',color:'#f0f0ff',title:'Stargazing',date:'3 days ago',dur:'0:10',cat:'Cinematic'},
+    {emoji:'🎸',color:'#fff0f0',title:'Guitar Solo',date:'5 days ago',dur:'0:18',cat:'Anime'},
+    {emoji:'🌃',color:'#e8f0ff',title:'City Lights',date:'1 week ago',dur:'0:14',cat:'Cyberpunk'},
+    {emoji:'🏔️',color:'#f0ffe8',title:'Mountain View',date:'1 week ago',dur:'0:22',cat:'Cinematic'},
+    {emoji:'🎉',color:'#fff8f0',title:'Birthday Bash',date:'2 weeks ago',dur:'0:09',cat:'Slow-mo'},
+    {emoji:'🌊',color:'#e8f8ff',title:'Ocean Waves',date:'2 weeks ago',dur:'0:16',cat:'Cinematic'},
+    {emoji:'🎪',color:'#f5f0ff',title:'Carnival',date:'3 weeks ago',dur:'0:11',cat:'Anime'},
+  ];
+  const grid2=document.getElementById('editGrid');
+  edits.forEach((e,i)=>{
+    const c=document.createElement('div');c.className='gallery-card';
     const hue=Math.floor(Math.random()*360);
-    cell.style.background=`hsl(${hue},18%,92%)`;
-    const dur=durations[i%durations.length];
-    cell.innerHTML=`
-      <div class="sel-ring"></div>
-      <div class="play-badge">✓</div>
-      ${dur!=='—'?`<div class="dur">${dur}</div>`:''}
-      <div class="type">${types[i%types.length]}</div>
-      ${emojis[i%emojis.length]}
+    c.innerHTML=`
+      <div class="thumb" style="background:hsl(${hue},18%,92%)">
+        <span style="font-size:40px">${e.emoji}</span>
+        <div class="play-overlay"><span class="dur">${e.dur}</span></div>
+      </div>
+      <div class="info"><div class="tt">${e.title}</div><div class="dt">${e.date}</div></div>
     `;
-    cell.addEventListener('click',function(){
-      const idx=+this.dataset.idx;
-      grid.querySelectorAll('.photo-cell').forEach(c=>c.classList.remove('sel'));
-      this.classList.add('sel');
-      selectedIdx=idx;
-      document.getElementById('nextBtn').classList.add('ready');
+    c.addEventListener('click',()=>toast(`Playing "${e.title}"`));
+    grid2.appendChild(c);
+  });
+
+  // ── Photo grid (camera roll) ──
+  const emojis=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴','🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆'];
+  const durs=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20','0:11','0:07','0:14','0:05','0:28','—','0:12','0:15','0:09','0:06'];
+  const types=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📸','📹','📹','📸'];
+  const grid=document.getElementById('photoGrid');
+  let selIdx=-1;
+  for(let i=0;i<40;i++){
+    const c=document.createElement('div');c.className='photo-cell';c.dataset.idx=i;
+    const hue=Math.floor(Math.random()*360);c.style.background=`hsl(${hue},18%,92%)`;
+    const dur=durs[i%durs.length];
+    c.innerHTML=`${dur!=='—'?`<div class="dur">${dur}</div>`:''}<div class="type">${types[i%types.length]}</div>${emojis[i%emojis.length]}`;
+    c.addEventListener('click',function(){
+      const idx=+this.dataset.idx;selIdx=idx;
       document.getElementById('selName').textContent=`video_${String(idx+1).padStart(3,'0')}.mov`;
-      const sz=Math.floor(Math.random()*30+5);
-      const dur2=durations[idx%durations.length];
-      document.getElementById('selSize').textContent=`${sz} MB · ${dur2!=='—'?dur2:'0:08'}`;
-      document.getElementById('selThumb').textContent=thumbs[idx%thumbs.length];
+      document.getElementById('selSize').textContent=`${Math.floor(Math.random()*30+5)} MB`;
+      goScreen(4);
     });
-    grid.appendChild(cell);
+    grid.appendChild(c);
   }
 
-  document.getElementById('nextBtn').addEventListener('click',()=>{if(selectedIdx>=0)nextScreen()});
+  // ── Video preview canvas ──
+  let vidAnim=null;
+  function startVidPreview(){
+    const c=document.getElementById('vidCanvas'),p=c.parentElement;
+    c.width=p.offsetWidth||350;c.height=p.offsetHeight||200;
+    const cx=c.getContext('2d'),w=c.width,h=c.height;
+    const colors=['#6c5ce7','#00d2a0','#fd79a8','#fdcb6e','#74b9ff','#a29bfe'];
+    let t=0;
+    function draw(){
+      t+=.02;cx.clearRect(0,0,w,h);
+      const g=cx.createLinearGradient(0,0,w,0);
+      g.addColorStop(0,'#f0edff');g.addColorStop(.5,'#e8f8f0');g.addColorStop(1,'#ffe8f0');
+      cx.fillStyle=g;cx.fillRect(0,0,w,h);
+      for(let i=0;i<20;i++){const ph=Math.sin(t+i*.8+Math.sin(t*.5+i*.3)*.5)*.4+.5;cx.fillStyle=colors[i%colors.length];cx.globalAlpha=.2+ph*.2;cx.fillRect(i*(w/20),h-ph*h*.7,w/20-1,ph*h*.7)}
+      cx.globalAlpha=1;
+      const gr=cx.createRadialGradient(w/2,h/2,0,w/2,h/2,60);
+      gr.addColorStop(0,`rgba(108,92,231,${.05+.03*Math.sin(t)})`);gr.addColorStop(1,'transparent');
+      cx.fillStyle=gr;cx.fillRect(0,0,w,h);
+      vidAnim=requestAnimationFrame(draw);
+    }
+    draw();
+  }
+  function stopVidPreview(){if(vidAnim){cancelAnimationFrame(vidAnim);vidAnim=null}}
 
   // ── Prompt ──
-  const ta=document.getElementById('promptText');
-  const bi=document.getElementById('bottomInput');
+  const ta=document.getElementById('promptText'),bi=document.getElementById('bottomInput');
   ta.addEventListener('input',function(){this.nextElementSibling.innerHTML=this.value.length+' <span>/ 500</span>';bi.value=this.value});
   bi.addEventListener('input',function(){ta.value=this.value;ta.dispatchEvent(new Event('input'))});
+  document.querySelectorAll('.hints .h').forEach(el=>{el.addEventListener('click',function(){ta.value=this.textContent.trim();bi.value=this.textContent.trim();ta.dispatchEvent(new Event('input'))})});
 
-  document.querySelectorAll('.hints .h').forEach(el=>{
-    el.addEventListener('click',function(){
-      ta.value=this.textContent.trim();bi.value=this.textContent.trim();ta.dispatchEvent(new Event('input'));
-    });
-  });
-
-  window.createVideo=function(){
+  // ── Processing ──
+  let progInt=null;
+  window.startProcessing=function(){
     const p=ta.value.trim()||bi.value.trim();
-    if(!p){alert('Write a prompt first.');return}
-    alert(`✨ Creating "${p.substring(0,50)}${p.length>50?'...':''}"\n\nYour video is being processed.`);
+    if(!p){toast('Write a prompt first.');return}
+    if(selIdx<0){toast('Select a video first.');return}
+    goScreen(5);
+    const bar=document.getElementById('progBar'),stage=document.getElementById('progStage');
+    const stages=['Analyzing video...','Extracting frames...','Applying AI effects...','Syncing audio...','Rendering 4K...','Finalizing...'];
+    let prog=0,si=0;
+    clearInterval(progInt);
+    progInt=setInterval(()=>{
+      prog+=Math.random()*8+2;if(prog>100)prog=100;
+      bar.style.width=prog+'%';
+      const si2=Math.min(Math.floor(prog/100*stages.length),stages.length-1);
+      if(si2!==si){si=si2;stage.textContent=stages[si]}
+      if(prog>=100){clearInterval(progInt);stage.textContent='Done!';setTimeout(()=>goScreen(6),500)}
+    },400);
   };
 
-  // ── Album chips ──
-  document.querySelectorAll('.albums .a').forEach(el=>{
-    el.addEventListener('click',function(){this.parentElement.querySelectorAll('.a').forEach(s=>s.classList.remove('sel'));this.classList.add('sel')});
-  });
+  let toastTimer=null;
+  window.toast=function(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000)};
+
+  document.querySelectorAll('.albums .a').forEach(el=>{el.addEventListener('click',function(){this.parentElement.querySelectorAll('.a').forEach(s=>s.classList.remove('sel'));this.classList.add('sel')})});
 </script>
 </body>
 </html>
