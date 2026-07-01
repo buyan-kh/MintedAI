@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AE8348BAB71841577593BBC /* GeminiFileServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */; };
+		12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169EF55EE974C444870E14B2 /* GeminiFileService.swift */; };
 		135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */; };
+		2330C52FFEE6ECA2098C4E7D /* VideoImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */; };
 		31D29391BB36BFDD9B193570 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4F22779214FA443D6D3E5 /* RootView.swift */; };
 		34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */; };
 		4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */; };
+		728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */; };
 		9F3A1D0D4B43F35088B574EC /* VideoEditSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAAE9FA8D892D52ADF3A6C /* VideoEditSessionStore.swift */; };
+		A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */; };
 		A3216052DFD0BAE3817EAB00 /* VideoEditSessionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7349F3A206BD4F93597E4F6 /* VideoEditSessionStoreTests.swift */; };
+		A77D76B6AA711C504954EF8C /* VideoImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */; };
 		CB4B75FC1E64BF1DDEA56473 /* GeminiRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */; };
 		CF9F15D29D8C60D5E3B145C9 /* VideoEditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988851DBE27F72C2380FDFED /* VideoEditModels.swift */; };
 		FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */; };
@@ -38,11 +44,16 @@
 /* Begin PBXFileReference section */
 		03097B2CD0E967A2C1E66B6B /* Mint.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiRequestBuilderTests.swift; sourceTree = "<group>"; };
+		169EF55EE974C444870E14B2 /* GeminiFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiFileService.swift; sourceTree = "<group>"; };
+		25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyProvider.swift; sourceTree = "<group>"; };
 		2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		52EF6F94EC6762A885E44229 /* MintTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiFileServiceTests.swift; sourceTree = "<group>"; };
+		6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoImportService.swift; sourceTree = "<group>"; };
 		6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintApp.swift; sourceTree = "<group>"; };
 		988851DBE27F72C2380FDFED /* VideoEditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditModels.swift; sourceTree = "<group>"; };
 		9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniInteractionService.swift; sourceTree = "<group>"; };
+		A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoImportServiceTests.swift; sourceTree = "<group>"; };
 		A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiClient.swift; sourceTree = "<group>"; };
 		A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiDecodingTests.swift; sourceTree = "<group>"; };
 		ACAAAE9FA8D892D52ADF3A6C /* VideoEditSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditSessionStore.swift; sourceTree = "<group>"; };
@@ -51,6 +62,7 @@
 		DF4C30EA91A76927BA41C769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E7349F3A206BD4F93597E4F6 /* VideoEditSessionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditSessionStoreTests.swift; sourceTree = "<group>"; };
 		EEC5B9D11771160FA7CD6218 /* MintUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -65,8 +77,11 @@
 		181C971CB19AF74FF2476045 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */,
 				A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */,
+				169EF55EE974C444870E14B2 /* GeminiFileService.swift */,
 				9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */,
+				6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -84,9 +99,12 @@
 		492722C7291E375DA46B0649 /* MintTests */ = {
 			isa = PBXGroup;
 			children = (
+				FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */,
 				A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */,
+				63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */,
 				07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */,
 				E7349F3A206BD4F93597E4F6 /* VideoEditSessionStoreTests.swift */,
+				A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */,
 			);
 			path = MintTests;
 			sourceTree = "<group>";
@@ -259,9 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */,
 				34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */,
+				0AE8348BAB71841577593BBC /* GeminiFileServiceTests.swift in Sources */,
 				CB4B75FC1E64BF1DDEA56473 /* GeminiRequestBuilderTests.swift in Sources */,
 				A3216052DFD0BAE3817EAB00 /* VideoEditSessionStoreTests.swift in Sources */,
+				2330C52FFEE6ECA2098C4E7D /* VideoImportServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,12 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */,
 				135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */,
+				12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */,
 				FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */,
 				4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */,
 				31D29391BB36BFDD9B193570 /* RootView.swift in Sources */,
 				CF9F15D29D8C60D5E3B145C9 /* VideoEditModels.swift in Sources */,
 				9F3A1D0D4B43F35088B574EC /* VideoEditSessionStore.swift in Sources */,
+				A77D76B6AA711C504954EF8C /* VideoImportService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +424,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Mint/Supporting/Info.plist;
+				INFOPLIST_KEY_GEMINI_API_KEY = "$(GEMINI_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,6 +460,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Mint/Supporting/Info.plist;
+				INFOPLIST_KEY_GEMINI_API_KEY = "$(GEMINI_API_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
