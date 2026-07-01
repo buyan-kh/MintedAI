@@ -15,7 +15,9 @@
 		34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */; };
 		4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */; };
 		728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */; };
+		8D275C262A1BB7FCE8453F09 /* EditSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */; };
 		9F3A1D0D4B43F35088B574EC /* VideoEditSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAAE9FA8D892D52ADF3A6C /* VideoEditSessionStore.swift */; };
+		A0B755DB99BF3F62BE0476B8 /* EditSessionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC0244C53F6FC55E7F42D5 /* EditSessionViewModelTests.swift */; };
 		A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */; };
 		A3216052DFD0BAE3817EAB00 /* VideoEditSessionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7349F3A206BD4F93597E4F6 /* VideoEditSessionStoreTests.swift */; };
 		A77D76B6AA711C504954EF8C /* VideoImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */; };
@@ -53,9 +55,11 @@
 		6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintApp.swift; sourceTree = "<group>"; };
 		988851DBE27F72C2380FDFED /* VideoEditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditModels.swift; sourceTree = "<group>"; };
 		9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniInteractionService.swift; sourceTree = "<group>"; };
+		9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewModel.swift; sourceTree = "<group>"; };
 		A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoImportServiceTests.swift; sourceTree = "<group>"; };
 		A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiClient.swift; sourceTree = "<group>"; };
 		A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiDecodingTests.swift; sourceTree = "<group>"; };
+		AAEC0244C53F6FC55E7F42D5 /* EditSessionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewModelTests.swift; sourceTree = "<group>"; };
 		ACAAAE9FA8D892D52ADF3A6C /* VideoEditSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditSessionStore.swift; sourceTree = "<group>"; };
 		B8A1F041790A26DBD80539DB /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.example.xcconfig; sourceTree = "<group>"; };
 		C8E4F22779214FA443D6D3E5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */,
+				AAEC0244C53F6FC55E7F42D5 /* EditSessionViewModelTests.swift */,
 				A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */,
 				63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */,
 				07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */,
@@ -117,6 +122,14 @@
 				2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		8AA62ECD53A59EF4365C71F4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		98A9BB12E26AF216B9FBD9F9 /* MintUITests */ = {
@@ -150,6 +163,7 @@
 				A20DD3BCADF03CFF950699C8 /* Persistence */,
 				181C971CB19AF74FF2476045 /* Services */,
 				694D9202655FF7C96BB3F78D /* Supporting */,
+				8AA62ECD53A59EF4365C71F4 /* ViewModels */,
 				047DD1225053662826C518B0 /* Views */,
 			);
 			path = Mint;
@@ -278,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */,
+				A0B755DB99BF3F62BE0476B8 /* EditSessionViewModelTests.swift in Sources */,
 				34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */,
 				0AE8348BAB71841577593BBC /* GeminiFileServiceTests.swift in Sources */,
 				CB4B75FC1E64BF1DDEA56473 /* GeminiRequestBuilderTests.swift in Sources */,
@@ -291,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */,
+				8D275C262A1BB7FCE8453F09 /* EditSessionViewModel.swift in Sources */,
 				135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */,
 				12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */,
 				FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */,

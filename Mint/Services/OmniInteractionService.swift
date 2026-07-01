@@ -83,7 +83,7 @@ struct OmniInteractionResponse: Decodable, Equatable {
     }
 }
 
-protocol OmniInteracting {
+protocol OmniInteracting: Sendable {
     func createFirstEdit(fileURI: String, prompt: String) async throws -> OmniInteractionResponse
     func createFollowUp(previousInteractionID: String, prompt: String) async throws -> OmniInteractionResponse
 }

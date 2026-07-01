@@ -10,13 +10,13 @@ struct GeminiFileUploadResponse: Codable, Equatable {
     let file: GeminiUploadedFile
 }
 
-protocol GeminiFileServicing {
+protocol GeminiFileServicing: Sendable {
     func uploadVideo(fileURL: URL) async throws -> GeminiUploadedFile
     func waitUntilActive(fileName: String) async throws -> GeminiUploadedFile
     func downloadVideo(from remoteURI: String, to localURL: URL) async throws
 }
 
-struct GeminiUploadStartRequest {
+struct GeminiUploadStartRequest: Sendable {
     let apiKey: String
     let fileURL: URL
     let byteCount: Int

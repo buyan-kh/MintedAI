@@ -46,7 +46,7 @@ extension JSONDecoder {
     }
 }
 
-struct GeminiClient {
+struct GeminiClient: Sendable {
     let apiKey: String
     var session: URLSession = .shared
     var baseURL = URL(string: "https://generativelanguage.googleapis.com/v1beta")!
