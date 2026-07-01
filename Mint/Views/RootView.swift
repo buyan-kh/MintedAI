@@ -1,10 +1,28 @@
 import SwiftUI
 
 struct RootView: View {
+    @State private var appViewModel = AppViewModel()
+
     var body: some View {
-        Text("Mint")
-            .font(.system(size: 26, weight: .bold))
-            .foregroundStyle(Color(red: 0.067, green: 0.067, blue: 0.067))
+        Group {
+            switch appViewModel.route {
+            case .onboarding:
+                OnboardingView(
+                    index: appViewModel.onboardingIndex,
+                    onContinue: appViewModel.continueOnboarding,
+                    onSkip: appViewModel.skipToPaywall
+                )
+            case .paywall:
+                PaywallInviteView(onContinue: appViewModel.enterHome)
+            case .home:
+                HomeView(onCreate: appViewModel.startCreate)
+            case .picker, .prompt, .processing, .result:
+                HomeView(onCreate: appViewModel.startCreate)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(MintColor.background.ignoresSafeArea())
+        .preferredColorScheme(.light)
     }
 }
 

@@ -11,20 +11,26 @@
 		12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169EF55EE974C444870E14B2 /* GeminiFileService.swift */; };
 		135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */; };
 		2330C52FFEE6ECA2098C4E7D /* VideoImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */; };
+		234DED569679B6250044F09B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7933DDB23CC84096F09A13 /* LaunchScreen.storyboard */; };
+		2D67CD8DC3B94904BC945E90 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832AA98E79239BC39E38BE8 /* HomeView.swift */; };
 		31D29391BB36BFDD9B193570 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4F22779214FA443D6D3E5 /* RootView.swift */; };
 		34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */; };
 		4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */; };
 		6A709AC8A7792115066E5643 /* MintDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D502C5F5F2FDF2AC349273 /* MintDesign.swift */; };
 		728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */; };
 		8D275C262A1BB7FCE8453F09 /* EditSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */; };
+		9546E50D3A1EFE53533C3ED4 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820484B7C717BD42AC6658F /* AppRoute.swift */; };
+		968FBF20B9C1A3E85CF75EF3 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A304C0DFB6CEDCFD28E7D8 /* AppViewModel.swift */; };
 		9F3A1D0D4B43F35088B574EC /* VideoEditSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAAAE9FA8D892D52ADF3A6C /* VideoEditSessionStore.swift */; };
 		A0B755DB99BF3F62BE0476B8 /* EditSessionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC0244C53F6FC55E7F42D5 /* EditSessionViewModelTests.swift */; };
 		A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */; };
 		A3216052DFD0BAE3817EAB00 /* VideoEditSessionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7349F3A206BD4F93597E4F6 /* VideoEditSessionStoreTests.swift */; };
+		A3D3DBAFDD058B7D2BB73EA7 /* PaywallInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62288C82425CC9F28E21B1 /* PaywallInviteView.swift */; };
 		A77D76B6AA711C504954EF8C /* VideoImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */; };
 		AAF18C9341F3C2EF98B68E1E /* MintComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F75D4768599A4E37BC775B1 /* MintComponents.swift */; };
 		CB4B75FC1E64BF1DDEA56473 /* GeminiRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */; };
 		CF9F15D29D8C60D5E3B145C9 /* VideoEditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988851DBE27F72C2380FDFED /* VideoEditModels.swift */; };
+		E5D45DDFC3EE0B5EB37D1EC1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6696FB675F1583818DAFC2 /* OnboardingView.swift */; };
 		FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,12 +57,18 @@
 		0F75D4768599A4E37BC775B1 /* MintComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintComponents.swift; sourceTree = "<group>"; };
 		169EF55EE974C444870E14B2 /* GeminiFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiFileService.swift; sourceTree = "<group>"; };
 		25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyProvider.swift; sourceTree = "<group>"; };
+		2832AA98E79239BC39E38BE8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		44D502C5F5F2FDF2AC349273 /* MintDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintDesign.swift; sourceTree = "<group>"; };
 		52EF6F94EC6762A885E44229 /* MintTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F62288C82425CC9F28E21B1 /* PaywallInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInviteView.swift; sourceTree = "<group>"; };
 		63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiFileServiceTests.swift; sourceTree = "<group>"; };
+		6B7933DDB23CC84096F09A13 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C7FAEACDB8296A495FC83F6 /* VideoImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoImportService.swift; sourceTree = "<group>"; };
 		6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintApp.swift; sourceTree = "<group>"; };
+		6F6696FB675F1583818DAFC2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7820484B7C717BD42AC6658F /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		89A304C0DFB6CEDCFD28E7D8 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		988851DBE27F72C2380FDFED /* VideoEditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditModels.swift; sourceTree = "<group>"; };
 		9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniInteractionService.swift; sourceTree = "<group>"; };
 		9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionViewModel.swift; sourceTree = "<group>"; };
@@ -77,6 +89,9 @@
 		047DD1225053662826C518B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2832AA98E79239BC39E38BE8 /* HomeView.swift */,
+				6F6696FB675F1583818DAFC2 /* OnboardingView.swift */,
+				5F62288C82425CC9F28E21B1 /* PaywallInviteView.swift */,
 				C8E4F22779214FA443D6D3E5 /* RootView.swift */,
 			);
 			path = Views;
@@ -122,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				DF4C30EA91A76927BA41C769 /* Info.plist */,
+				6B7933DDB23CC84096F09A13 /* LaunchScreen.storyboard */,
 				B8A1F041790A26DBD80539DB /* Secrets.example.xcconfig */,
 				2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */,
 			);
@@ -140,6 +156,7 @@
 		8AA62ECD53A59EF4365C71F4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				89A304C0DFB6CEDCFD28E7D8 /* AppViewModel.swift */,
 				9F5ECE4CBE9B5ACF4E8EECFF /* EditSessionViewModel.swift */,
 			);
 			path = ViewModels;
@@ -196,6 +213,7 @@
 		ED49989AF3C05E696F21E549 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7820484B7C717BD42AC6658F /* AppRoute.swift */,
 				6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */,
 			);
 			path = App;
@@ -227,6 +245,7 @@
 			buildConfigurationList = FAB6D2590644797922B74618 /* Build configuration list for PBXNativeTarget "Mint" */;
 			buildPhases = (
 				6633FA9F6D02BB4B231CD313 /* Sources */,
+				62C0247593ADF5D6DEBFAE58 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -300,6 +319,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		62C0247593ADF5D6DEBFAE58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234DED569679B6250044F09B /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5F920A95E600CFD9E0750EDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -320,13 +350,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */,
+				9546E50D3A1EFE53533C3ED4 /* AppRoute.swift in Sources */,
+				968FBF20B9C1A3E85CF75EF3 /* AppViewModel.swift in Sources */,
 				8D275C262A1BB7FCE8453F09 /* EditSessionViewModel.swift in Sources */,
 				135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */,
 				12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */,
+				2D67CD8DC3B94904BC945E90 /* HomeView.swift in Sources */,
 				FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */,
 				AAF18C9341F3C2EF98B68E1E /* MintComponents.swift in Sources */,
 				6A709AC8A7792115066E5643 /* MintDesign.swift in Sources */,
 				4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */,
+				E5D45DDFC3EE0B5EB37D1EC1 /* OnboardingView.swift in Sources */,
+				A3D3DBAFDD058B7D2BB73EA7 /* PaywallInviteView.swift in Sources */,
 				31D29391BB36BFDD9B193570 /* RootView.swift in Sources */,
 				CF9F15D29D8C60D5E3B145C9 /* VideoEditModels.swift in Sources */,
 				9F3A1D0D4B43F35088B574EC /* VideoEditSessionStore.swift in Sources */,
