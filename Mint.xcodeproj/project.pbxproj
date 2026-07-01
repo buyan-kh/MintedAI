@@ -18,6 +18,7 @@
 		4887C0A28D8A494C97B9A5B6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA65A1E7254373C75FD74A /* AppContainer.swift */; };
 		4ED4B90C2C3E74FB379DAFA7 /* OmniInteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A79EADA2736C3367E70E61D /* OmniInteractionService.swift */; };
 		4F9CBE464B129D280226DE77 /* VideoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C893798B3404BA22704D72 /* VideoPickerView.swift */; };
+		5D214DB81B87049EFA15073E /* MintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA3AE97BBD8330430F439E /* MintUITests.swift */; };
 		6A60385D0D21D2895295E6C7 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6F73F46B28C39629A1936 /* ResultView.swift */; };
 		6A709AC8A7792115066E5643 /* MintDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D502C5F5F2FDF2AC349273 /* MintDesign.swift */; };
 		728D9AD97F9B7EE7642549E9 /* APIKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FEC367DDAF51FFE11F9200 /* APIKeyProvider.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		03097B2CD0E967A2C1E66B6B /* Mint.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiRequestBuilderTests.swift; sourceTree = "<group>"; };
+		0ABA3AE97BBD8330430F439E /* MintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintUITests.swift; sourceTree = "<group>"; };
 		0D01C96E967E880CB87DC4B8 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
 		0F75D4768599A4E37BC775B1 /* MintComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintComponents.swift; sourceTree = "<group>"; };
 		169EF55EE974C444870E14B2 /* GeminiFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiFileService.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		98A9BB12E26AF216B9FBD9F9 /* MintUITests */ = {
 			isa = PBXGroup;
 			children = (
+				0ABA3AE97BBD8330430F439E /* MintUITests.swift */,
 			);
 			path = MintUITests;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D214DB81B87049EFA15073E /* MintUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -92,6 +92,7 @@ struct HomeView: View {
 
                     MintPrimaryButton(title: "Create", systemImage: "plus", action: onCreate)
                         .frame(maxWidth: 220)
+                        .accessibilityIdentifier("Primary create")
                 }
                 .padding(.horizontal, MintSpacing.screen)
                 .padding(.bottom, 118)

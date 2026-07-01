@@ -30,6 +30,16 @@ struct ResultView: View {
                 VStack(alignment: .leading, spacing: MintSpacing.md) {
                     VideoPlayerView(url: latestTurn?.outputVideoURL, height: 260)
 
+                    if latestTurn?.status == .completed {
+                        Text("Saved to Mint")
+                            .font(.mintSmall)
+                            .foregroundStyle(MintColor.success)
+                            .padding(.horizontal, MintSpacing.sm)
+                            .padding(.vertical, MintSpacing.xs)
+                            .background(MintColor.successBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: MintRadius.standard, style: .continuous))
+                    }
+
                     if let saveMessage {
                         Text(saveMessage)
                             .font(.mintSmall)
@@ -78,6 +88,7 @@ struct ResultView: View {
                             .padding(14)
                             .background(MintColor.surfaceHover)
                             .clipShape(RoundedRectangle(cornerRadius: MintRadius.extra, style: .continuous))
+                            .accessibilityLabel("Follow-up prompt")
                     }
 
                     HStack(spacing: MintSpacing.xs) {
