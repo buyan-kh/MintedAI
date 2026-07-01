@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31D29391BB36BFDD9B193570 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4F22779214FA443D6D3E5 /* RootView.swift */; };
+		FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A77879A8F61BC51F256CE98F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD701BD29631C1A7E42369D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA027476E11D60D25DB8E667;
+			remoteInfo = Mint;
+		};
+		D9A99C5998504627C0D5BCD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD701BD29631C1A7E42369D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA027476E11D60D25DB8E667;
+			remoteInfo = Mint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03097B2CD0E967A2C1E66B6B /* Mint.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		52EF6F94EC6762A885E44229 /* MintTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintApp.swift; sourceTree = "<group>"; };
+		B8A1F041790A26DBD80539DB /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.example.xcconfig; sourceTree = "<group>"; };
+		C8E4F22779214FA443D6D3E5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		DF4C30EA91A76927BA41C769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EEC5B9D11771160FA7CD6218 /* MintUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		047DD1225053662826C518B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8E4F22779214FA443D6D3E5 /* RootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		24FB00E03FD1C1D89FF0392B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03097B2CD0E967A2C1E66B6B /* Mint.app */,
+				52EF6F94EC6762A885E44229 /* MintTests.xctest */,
+				EEC5B9D11771160FA7CD6218 /* MintUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		492722C7291E375DA46B0649 /* MintTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MintTests;
+			sourceTree = "<group>";
+		};
+		694D9202655FF7C96BB3F78D /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				DF4C30EA91A76927BA41C769 /* Info.plist */,
+				B8A1F041790A26DBD80539DB /* Secrets.example.xcconfig */,
+				2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		98A9BB12E26AF216B9FBD9F9 /* MintUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MintUITests;
+			sourceTree = "<group>";
+		};
+		BD20CD100D95E62E4B37DCA8 /* Mint */ = {
+			isa = PBXGroup;
+			children = (
+				ED49989AF3C05E696F21E549 /* App */,
+				694D9202655FF7C96BB3F78D /* Supporting */,
+				047DD1225053662826C518B0 /* Views */,
+			);
+			path = Mint;
+			sourceTree = "<group>";
+		};
+		DB70F235DE1B607973367167 = {
+			isa = PBXGroup;
+			children = (
+				BD20CD100D95E62E4B37DCA8 /* Mint */,
+				492722C7291E375DA46B0649 /* MintTests */,
+				98A9BB12E26AF216B9FBD9F9 /* MintUITests */,
+				24FB00E03FD1C1D89FF0392B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED49989AF3C05E696F21E549 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6CF4C89B70E7DB3326F7E4AE /* MintApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EE495B359038E217CBEFB8E /* MintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA1852656E885F138C7ABAB1 /* Build configuration list for PBXNativeTarget "MintTests" */;
+			buildPhases = (
+				5F920A95E600CFD9E0750EDF /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22E3D6972B86EA337E56B9D0 /* PBXTargetDependency */,
+			);
+			name = MintTests;
+			packageProductDependencies = (
+			);
+			productName = MintTests;
+			productReference = 52EF6F94EC6762A885E44229 /* MintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CA027476E11D60D25DB8E667 /* Mint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAB6D2590644797922B74618 /* Build configuration list for PBXNativeTarget "Mint" */;
+			buildPhases = (
+				6633FA9F6D02BB4B231CD313 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mint;
+			packageProductDependencies = (
+			);
+			productName = Mint;
+			productReference = 03097B2CD0E967A2C1E66B6B /* Mint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D37713CD17B5828FB3C23EAC /* MintUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B988D0EFCC16F8C7EC939B02 /* Build configuration list for PBXNativeTarget "MintUITests" */;
+			buildPhases = (
+				C7DCF7C4586AB3EC876881BC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46B49D1185F184FCD1DDB51F /* PBXTargetDependency */,
+			);
+			name = MintUITests;
+			packageProductDependencies = (
+			);
+			productName = MintUITests;
+			productReference = EEC5B9D11771160FA7CD6218 /* MintUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD701BD29631C1A7E42369D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2EE495B359038E217CBEFB8E = {
+						DevelopmentTeam = "";
+					};
+					CA027476E11D60D25DB8E667 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					D37713CD17B5828FB3C23EAC = {
+						DevelopmentTeam = "";
+						TestTargetID = CA027476E11D60D25DB8E667;
+					};
+				};
+			};
+			buildConfigurationList = D065B886A3329713E285B17F /* Build configuration list for PBXProject "Mint" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DB70F235DE1B607973367167;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 24FB00E03FD1C1D89FF0392B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA027476E11D60D25DB8E667 /* Mint */,
+				2EE495B359038E217CBEFB8E /* MintTests */,
+				D37713CD17B5828FB3C23EAC /* MintUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F920A95E600CFD9E0750EDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6633FA9F6D02BB4B231CD313 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4A05B45610AC9F13EEAAC3 /* MintApp.swift in Sources */,
+				31D29391BB36BFDD9B193570 /* RootView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DCF7C4586AB3EC876881BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22E3D6972B86EA337E56B9D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA027476E11D60D25DB8E667 /* Mint */;
+			targetProxy = D9A99C5998504627C0D5BCD7 /* PBXContainerItemProxy */;
+		};
+		46B49D1185F184FCD1DDB51F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA027476E11D60D25DB8E667 /* Mint */;
+			targetProxy = A77879A8F61BC51F256CE98F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		280D74D1D814640CDBB4CBEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.MintTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mint.app/Mint";
+			};
+			name = Debug;
+		};
+		5C96F6BC858D40FB5F682B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		67788F7F5A8A2491EA3386DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.MintTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mint.app/Mint";
+			};
+			name = Release;
+		};
+		679D14DC24C259A761F94664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2ABAA2D5570A5D8F9B0B19B5 /* Secrets.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Mint/Supporting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.Mint;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93DFE2754F31B262F32A5CDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.MintUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mint;
+			};
+			name = Debug;
+		};
+		B2C91B36EB58B532D2FABC81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Mint/Supporting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.Mint;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DD8E13EA27C422076196B2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mintedai.MintUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mint;
+			};
+			name = Release;
+		};
+		E3FB7260C611CF097FC31A52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B988D0EFCC16F8C7EC939B02 /* Build configuration list for PBXNativeTarget "MintUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93DFE2754F31B262F32A5CDD /* Debug */,
+				DD8E13EA27C422076196B2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D065B886A3329713E285B17F /* Build configuration list for PBXProject "Mint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FB7260C611CF097FC31A52 /* Debug */,
+				5C96F6BC858D40FB5F682B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA1852656E885F138C7ABAB1 /* Build configuration list for PBXNativeTarget "MintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				280D74D1D814640CDBB4CBEB /* Debug */,
+				67788F7F5A8A2491EA3386DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FAB6D2590644797922B74618 /* Build configuration list for PBXNativeTarget "Mint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				679D14DC24C259A761F94664 /* Debug */,
+				B2C91B36EB58B532D2FABC81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD701BD29631C1A7E42369D1 /* Project object */;
+}

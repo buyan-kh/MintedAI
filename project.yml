@@ -1,0 +1,52 @@
+name: Mint
+options:
+  bundleIdPrefix: com.mintedai
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: ""
+    SWIFT_VERSION: "6.0"
+configs:
+  Debug: debug
+  Release: release
+packages: {}
+targets:
+  Mint:
+    type: application
+    platform: iOS
+    sources:
+      - Mint
+    resources: []
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mintedai.Mint
+        INFOPLIST_FILE: Mint/Supporting/Info.plist
+        CODE_SIGN_STYLE: Automatic
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+    configFiles:
+      Debug: Mint/Supporting/Secrets.xcconfig
+  MintTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - MintTests
+    dependencies:
+      - target: Mint
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mintedai.MintTests
+        GENERATE_INFOPLIST_FILE: YES
+  MintUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - MintUITests
+    dependencies:
+      - target: Mint
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mintedai.MintUITests
+        GENERATE_INFOPLIST_FILE: YES

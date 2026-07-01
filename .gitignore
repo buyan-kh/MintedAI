@@ -1,0 +1,5 @@
+DerivedData/
+*.xcuserdata/
+*.xcuserstate
+Mint/Supporting/Secrets.xcconfig
+.DS_Store
