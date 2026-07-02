@@ -99,7 +99,7 @@ struct GeminiFileService: GeminiFileServicing {
     }
 
     func downloadVideo(from remoteURI: String, to localURL: URL) async throws {
-        guard let url = URL(string: remoteURI) else { throw GeminiClientError.invalidResponse }
+        let url = try downloadURL(for: remoteURI)
         let (temporaryURL, response) = try await session.download(from: url)
         guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
             throw GeminiClientError.api("The generated video could not be downloaded.")
@@ -111,6 +111,28 @@ struct GeminiFileService: GeminiFileServicing {
             try FileManager.default.removeItem(at: localURL)
         }
         try FileManager.default.moveItem(at: temporaryURL, to: localURL)
+    }
+
+    private func downloadURL(for remoteURI: String) throws -> URL {
+        if remoteURI.hasPrefix("files/") {
+            let fileID = remoteURI.dropFirst("files/".count)
+            var components = URLComponents(url: client.baseURL.appendingPathComponent("files/\(fileID):download"), resolvingAgainstBaseURL: false)!
+            components.queryItems = [
+                URLQueryItem(name: "alt", value: "media"),
+                URLQueryItem(name: "key", value: client.apiKey)
+            ]
+            return components.url!
+        }
+
+        guard var components = URLComponents(string: remoteURI) else { throw GeminiClientError.invalidResponse }
+        var queryItems = components.queryItems ?? []
+        if components.host?.contains("generativelanguage.googleapis.com") == true,
+           queryItems.contains(where: { $0.name == "key" }) == false {
+            queryItems.append(URLQueryItem(name: "key", value: client.apiKey))
+            components.queryItems = queryItems
+        }
+        guard let url = components.url else { throw GeminiClientError.invalidResponse }
+        return url
     }
 
     static func mimeType(for fileURL: URL) -> String {

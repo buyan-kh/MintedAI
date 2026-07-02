@@ -6,9 +6,13 @@ struct RootView: View {
     @State private var processingTitle = "Creating your video"
     @State private var processingMessage = "AI is working on it..."
     @State private var processingStage = "Starting..."
+    @State private var generationErrorMessage: String?
+    @State private var generatedVideo: GeneratedVideo?
+    private let textToVideoService: TextToVideoGenerating
 
     init(container: AppContainer = .live()) {
         _editSessionViewModel = State(initialValue: container.editSessionViewModel)
+        textToVideoService = container.textToVideoService
     }
 
     var body: some View {
@@ -29,6 +33,7 @@ struct RootView: View {
                 )
             case .generate:
                 GenerateView(
+                    errorMessage: generationErrorMessage,
                     onBack: appViewModel.enterHome,
                     onGenerate: { prompt in
                         submitGeneration(prompt)
@@ -89,17 +94,21 @@ struct RootView: View {
 
     private func submitGeneration(_ prompt: String) {
         guard prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
+        generationErrorMessage = nil
         processingTitle = "Creating your video"
         processingMessage = "AI is working on it..."
         processingStage = "Starting..."
         appViewModel.route = .processing
         Task {
-            let stages = ["Generating frames...", "Applying style...", "Adding motion...", "Rendering 4K...", "Finalizing...", "Done!"]
-            for stage in stages {
-                try? await Task.sleep(nanoseconds: 450_000_000)
-                processingStage = stage
+            do {
+                processingStage = "Generating frames..."
+                generatedVideo = try await textToVideoService.generateVideo(prompt: prompt, aspectRatio: "9:16")
+                processingStage = "Done!"
+                appViewModel.route = .success
+            } catch {
+                generationErrorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                appViewModel.route = .generate
             }
-            appViewModel.route = .success
         }
     }
 }

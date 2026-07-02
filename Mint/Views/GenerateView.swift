@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GenerateView: View {
+    var errorMessage: String?
     let onBack: () -> Void
     let onGenerate: (String) -> Void
 
@@ -40,6 +41,22 @@ struct GenerateView: View {
 
                 promptBox
                 suggestionRow
+
+                if let errorMessage {
+                    Text(errorMessage)
+                        .font(.figtree(size: 13, weight: .medium))
+                        .foregroundStyle(MintColor.secondaryText)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(MintColor.surfaceAlt)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .stroke(MintColor.border, lineWidth: 1)
+                        }
+                        .padding(.top, 12)
+                }
 
                 Spacer(minLength: 0)
             }
@@ -256,5 +273,5 @@ private struct FlowLayout: Layout {
 }
 
 #Preview {
-    GenerateView(onBack: {}, onGenerate: { _ in })
+    GenerateView(errorMessage: nil, onBack: {}, onGenerate: { _ in })
 }

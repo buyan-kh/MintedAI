@@ -69,7 +69,9 @@ private actor MockOmniInteractionService: OmniInteracting {
         return OmniInteractionResponse(
             id: "interactions/first",
             status: "completed",
-            output: [OmniOutput(type: "video", uri: "https://download/output.mp4", mimeType: "video/mp4")]
+            output: [OmniOutput(type: "video", uri: "https://download/output.mp4", data: nil, mimeType: "video/mp4")],
+            outputVideo: nil,
+            steps: nil
         )
     }
 
@@ -78,7 +80,19 @@ private actor MockOmniInteractionService: OmniInteracting {
         return OmniInteractionResponse(
             id: "interactions/second",
             status: "completed",
-            output: [OmniOutput(type: "video", uri: "https://download/output-2.mp4", mimeType: "video/mp4")]
+            output: [OmniOutput(type: "video", uri: "https://download/output-2.mp4", data: nil, mimeType: "video/mp4")],
+            outputVideo: nil,
+            steps: nil
+        )
+    }
+
+    func createTextToVideo(prompt: String, aspectRatio: String) async throws -> OmniInteractionResponse {
+        OmniInteractionResponse(
+            id: "interactions/generated",
+            status: "completed",
+            output: [OmniOutput(type: "video", uri: "https://download/generated.mp4", data: nil, mimeType: "video/mp4")],
+            outputVideo: nil,
+            steps: nil
         )
     }
 }

@@ -1,15 +1,13 @@
 import XCTest
 
+@MainActor
 final class MintUITests: XCTestCase {
     func testGeneratePathMatchesHTMLFlow() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST_MOCK_GEMINI"]
         app.launch()
 
-        app.buttons["Continue"].tap()
-        app.buttons["Continue"].tap()
-        app.buttons["Get started"].tap()
-        app.buttons["Maybe later"].tap()
+        completeOnboarding(app)
         app.buttons["Generate mode"].tap()
         app.buttons["Primary create"].tap()
 
@@ -28,10 +26,7 @@ final class MintUITests: XCTestCase {
         app.launchArguments = ["UITEST_MOCK_GEMINI"]
         app.launch()
 
-        app.buttons["Continue"].tap()
-        app.buttons["Continue"].tap()
-        app.buttons["Get started"].tap()
-        app.buttons["Maybe later"].tap()
+        completeOnboarding(app)
         app.buttons["Primary create"].tap()
         app.buttons["Use sample video"].tap()
         app.textViews.firstMatch.tap()
@@ -45,5 +40,27 @@ final class MintUITests: XCTestCase {
         app.buttons["Refine"].tap()
 
         XCTAssertTrue(app.staticTexts["Make the arm reflective too."].waitForExistence(timeout: 10))
+    }
+
+    private func completeOnboarding(_ app: XCUIApplication) {
+        tapButton("Continue", in: app)
+        XCTAssertTrue(app.staticTexts["Real example"].waitForExistence(timeout: 5))
+
+        tapButton("Continue", in: app)
+        XCTAssertTrue(app.staticTexts["Also: Generate"].waitForExistence(timeout: 5))
+
+        tapButton("Get started", in: app)
+        tapButton("Maybe later", in: app)
+    }
+
+    private func tapButton(_ label: String, in app: XCUIApplication, timeout: TimeInterval = 5) {
+        let button = app.buttons[label]
+        XCTAssertTrue(button.waitForExistence(timeout: timeout))
+        let deadline = Date().addingTimeInterval(timeout)
+        while button.isHittable == false, Date() < deadline {
+            RunLoop.current.run(until: Date().addingTimeInterval(0.05))
+        }
+        XCTAssertTrue(button.isHittable)
+        button.tap()
     }
 }
