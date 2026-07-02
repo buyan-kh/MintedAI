@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-<title>Mint — AI Video Editor</title>
+<title>Mint — AI Video Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -57,48 +57,30 @@
     width:100%;padding:16px;border-radius:14px;
     background:#111;color:#fff;border:none;
     font-size:17px;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:transform .15s,opacity .15s
+    cursor:pointer;transition:transform .15s
   }
   .btn-primary:active{transform:scale(.97)}
-  .btn-primary.small{padding:12px 20px;width:auto;font-size:15px}
 
-  /* ═══ ONBOARDING ═══ */
+  /* ONBOARDING */
   .onboarding{height:100%;display:flex;flex-direction:column;background:#fff}
   .onboarding .carousel{flex:1;position:relative;overflow:hidden;padding:60px 32px 0}
-  .onboarding .slide{
-    position:absolute;inset:60px 32px 0;
-    display:flex;flex-direction:column;align-items:center;
-    justify-content:center;text-align:center;
-    opacity:0;transform:translateX(40px);
-    transition:opacity .5s,transform .5s cubic-bezier(.22,1,.36,1);pointer-events:none
-  }
+  .onboarding .slide{position:absolute;inset:60px 32px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:translateX(40px);transition:opacity .5s,transform .5s cubic-bezier(.22,1,.36,1);pointer-events:none}
   .onboarding .slide.active{opacity:1;transform:translateX(0);pointer-events:all}
   .onboarding .slide .e{font-size:72px;margin-bottom:24px}
   .onboarding .slide h1{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:10px;color:#111}
   .onboarding .slide p{font-size:16px;line-height:1.5;color:#666;max-width:300px;font-weight:400}
+  .onboarding .slide .badge{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:20px;background:#f0edff;color:#6c5ce7;font-size:11px;font-weight:600;letter-spacing:.3px}
   .onboarding .slide .fl{text-align:left;margin-top:20px;width:100%;max-width:280px}
-  .onboarding .slide .fl .fi{
-    display:flex;align-items:center;gap:12px;padding:10px 0;
-    border-bottom:1px solid #f0f0f0;font-size:15px;color:#333;font-weight:500
-  }
+  .onboarding .slide .fl .fi{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:15px;color:#333;font-weight:500}
   .onboarding .slide .fl .fi:last-child{border:none}
-  .onboarding .slide .fl .fi .ck{
-    width:22px;height:22px;border-radius:50%;background:#111;color:#fff;
-    font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0
-  }
-  .onboarding .slide .badge{
-    display:inline-block;margin-top:14px;
-    padding:4px 12px;border-radius:20px;
-    background:#f0edff;color:#6c5ce7;font-size:11px;font-weight:600;
-    letter-spacing:.3px
-  }
+  .onboarding .slide .fl .fi .ck{width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .onboarding .dots{display:flex;justify-content:center;gap:6px;padding:24px 0 16px}
   .onboarding .dots span{width:6px;height:6px;border-radius:3px;background:#ddd;transition:all .3s;cursor:pointer}
   .onboarding .dots span.active{width:24px;background:#111}
   .onboarding .ba{padding:0 24px 40px}
   .onboarding .skp{display:block;margin:12px auto 0;background:none;border:none;color:#999;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline}
 
-  /* ═══ PAYWALL ═══ */
+  /* PAYWALL */
   .paywall{height:100%;display:flex;flex-direction:column;background:#fff}
   .paywall .top{padding:48px 24px 0;text-align:center;flex-shrink:0}
   .paywall .top .icon{font-size:48px;margin-bottom:8px}
@@ -134,24 +116,15 @@
   .paywall .restore{text-align:center;margin-top:6px}
   .paywall .restore button{background:none;border:none;color:#888;font-size:12px;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline}
 
-  /* ═══ HOME ═══ */
+  /* HOME */
   .home{height:100%;display:flex;flex-direction:column;background:#fff}
-  .home .hero-bar{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:0 20px;height:52px;flex-shrink:0
-  }
+  .home .hero-bar{display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:52px;flex-shrink:0}
   .home .hero-bar .logo{font-size:22px;font-weight:800;color:#111;letter-spacing:-.5px}
   .home .hero-bar .logo span{color:#6c5ce7}
   .home .hero-bar .settings{font-size:20px;cursor:pointer;opacity:.4;transition:opacity .15s;padding:4px}
   .home .hero-bar .settings:hover{opacity:1}
-  .home .mode-switch{
-    display:flex;margin:0 20px 14px;padding:3px;
-    background:#f5f5f5;border-radius:10px;flex-shrink:0
-  }
-  .home .mode-switch .m{
-    flex:1;text-align:center;padding:10px;border-radius:8px;
-    font-size:13px;font-weight:600;color:#888;cursor:pointer;transition:all .2s
-  }
+  .home .mode-switch{display:flex;margin:0 20px 14px;padding:3px;background:#f5f5f5;border-radius:10px;flex-shrink:0}
+  .home .mode-switch .m{flex:1;text-align:center;padding:10px;border-radius:8px;font-size:13px;font-weight:600;color:#888;cursor:pointer;transition:all .2s}
   .home .mode-switch .m.sel{background:#fff;color:#111;box-shadow:0 1px 3px rgba(0,0,0,.06)}
   .home .mode-switch .m .sub{font-size:9px;font-weight:400;color:#aaa;margin-top:1px}
   .home .mode-switch .m.sel .sub{color:#888}
@@ -162,79 +135,33 @@
   .home .hero .stats .s{flex:1;background:#f8f8f8;border:1px solid #e8e8ed;border-radius:10px;padding:10px 12px;text-align:center}
   .home .hero .stats .s .num{font-size:20px;font-weight:700;color:#111}
   .home .hero .stats .s .lbl{font-size:11px;color:#888;margin-top:1px;font-weight:400}
-  .home .gallery-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);
-    gap:8px;padding:0 20px 80px;flex:1;overflow-y:auto;align-content:start
-  }
+  .home .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 20px 80px;flex:1;overflow-y:auto;align-content:start}
   .home .gallery-grid::-webkit-scrollbar{display:none}
-  .home .gallery-card{
-    background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s
-  }
+  .home .gallery-card{background:#f8f8f8;border:1px solid #e8e8ed;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s}
   .home .gallery-card:active{transform:scale(.97)}
-  .home .gallery-card .thumb{
-    aspect-ratio:9/16;position:relative;
-    display:flex;align-items:center;justify-content:center;
-    font-size:36px;overflow:hidden
-  }
-  .home .gallery-card .mode-badge{
-    position:absolute;top:6px;left:6px;z-index:2;
-    font-size:8px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
-    padding:2px 6px;border-radius:4px
-  }
+  .home .gallery-card .thumb{aspect-ratio:9/16;position:relative;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden}
+  .home .gallery-card .mode-badge{position:absolute;top:6px;left:6px;z-index:2;font-size:8px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:2px 6px;border-radius:4px}
   .home .gallery-card .mode-badge.edit-mode{background:rgba(108,92,231,.7);color:#fff}
   .home .gallery-card .mode-badge.gen{background:rgba(0,0,0,.4);color:#fff}
-  .home .gallery-card .edit-count{
-    position:absolute;top:6px;right:6px;z-index:2;
-    font-size:8px;font-weight:600;padding:2px 5px;border-radius:4px;
-    background:rgba(0,0,0,.4);color:#fff
-  }
-  .home .gallery-card .thumb .play-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);
-    display:flex;align-items:flex-end;padding:8px
-  }
-  .home .gallery-card .thumb .play-overlay .dur{
-    font-size:10px;color:#fff;font-weight:600;
-    background:rgba(0,0,0,.5);padding:1px 6px;border-radius:3px
-  }
+  .home .gallery-card .edit-count{position:absolute;top:6px;right:6px;z-index:2;font-size:8px;font-weight:600;padding:2px 5px;border-radius:4px;background:rgba(0,0,0,.4);color:#fff}
+  .home .gallery-card .thumb .play-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);display:flex;align-items:flex-end;padding:8px}
+  .home .gallery-card .thumb .play-overlay .dur{font-size:10px;color:#fff;font-weight:600;background:rgba(0,0,0,.5);padding:1px 6px;border-radius:3px}
   .home .gallery-card .info{padding:8px 10px 10px}
   .home .gallery-card .info .tt{font-size:12px;font-weight:500;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .home .gallery-card .info .dt{font-size:10px;color:#888;margin-top:1px;font-weight:400}
   .home .gallery-card .info .edits{font-size:9px;color:#6c5ce7;margin-top:2px;font-weight:500}
-  .home .gallery-card .info .views{font-size:9px;color:#888;margin-top:1px;font-weight:400}
-  .home .fab{
-    position:absolute;bottom:24px;right:20px;z-index:20;
-    width:56px;height:56px;border-radius:50%;
-    background:#111;color:#fff;border:none;
-    font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 6px 20px rgba(0,0,0,.2);transition:transform .15s
-  }
+  .home .fab{position:absolute;bottom:24px;right:20px;z-index:20;width:56px;height:56px;border-radius:50%;background:#111;color:#fff;border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:transform .15s}
   .home .fab:active{transform:scale(.92)}
-  .home .fab-label{
-    position:absolute;bottom:84px;right:20px;z-index:19;
-    padding:5px 10px;border-radius:6px;
-    background:#111;color:#fff;font-size:10px;font-weight:500;
-    pointer-events:none;white-space:nowrap
-  }
+  .home .fab-label{position:absolute;bottom:84px;right:20px;z-index:19;padding:5px 10px;border-radius:6px;background:#111;color:#fff;font-size:10px;font-weight:500;pointer-events:none;white-space:nowrap}
 
-  /* ═══ GENERATE ═══ */
+  /* GENERATE */
   .generate{height:100%;display:flex;flex-direction:column;background:#fff}
-  .generate .gen-area{
-    flex:1;display:flex;flex-direction:column;
-    padding:0 20px;justify-content:center
-  }
+  .generate .gen-area{flex:1;display:flex;flex-direction:column;padding:0 20px;justify-content:center}
   .generate .gen-area .hero-icon{font-size:56px;margin-bottom:16px;text-align:center}
   .generate .gen-area h1{font-size:24px;font-weight:700;color:#111;text-align:center;margin-bottom:6px}
   .generate .gen-area .sub{font-size:14px;color:#888;text-align:center;margin-bottom:20px;font-weight:400;line-height:1.4}
-  .generate .gen-area .prompt-box{
-    background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:14px;padding:16px;display:flex;flex-direction:column;min-height:160px
-  }
-  .generate .gen-area .prompt-box textarea{
-    flex:1;resize:none;background:transparent;border:none;outline:none;
-    color:#111;font-size:15px;line-height:1.6;font-family:'Figtree',sans-serif;font-weight:500
-  }
+  .generate .gen-area .prompt-box{background:#f8f8f8;border:1px solid #e8e8ed;border-radius:14px;padding:16px;display:flex;flex-direction:column;min-height:160px}
+  .generate .gen-area .prompt-box textarea{flex:1;resize:none;background:transparent;border:none;outline:none;color:#111;font-size:15px;line-height:1.6;font-family:'Figtree',sans-serif;font-weight:500}
   .generate .gen-area .prompt-box textarea::placeholder{color:#aaa}
   .generate .gen-area .prompt-box .cc{text-align:right;font-size:10px;color:#bbb;padding-top:8px;border-top:1px solid #e8e8ed;margin-top:8px;font-weight:400}
   .generate .gen-area .suggestions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;justify-content:center}
@@ -246,7 +173,7 @@
   .generate .bottom-bar .gen-btn{padding:10px 20px;border-radius:20px;background:#111;color:#fff;border:none;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform .15s;white-space:nowrap}
   .generate .bottom-bar .gen-btn:active{transform:scale(.95)}
 
-  /* ═══ PROCESSING ═══ */
+  /* PROCESSING */
   .processing{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:40px}
   .processing .spinner{width:64px;height:64px;border-radius:50%;border:4px solid #eee;border-top-color:#111;animation:spin .8s linear infinite;margin-bottom:24px}
   @keyframes spin{to{transform:rotate(360deg)}}
@@ -256,7 +183,7 @@
   .processing .track .bar{height:100%;width:0%;background:#111;border-radius:2px;transition:width .3s}
   .processing .stage{font-size:12px;color:#888;margin-top:12px;font-weight:400}
 
-  /* ═══ SUCCESS ═══ */
+  /* SUCCESS */
   .success{height:100%;display:flex;flex-direction:column;background:#fff;padding:40px 24px;align-items:center;justify-content:center;text-align:center}
   .success .icon{width:80px;height:80px;border-radius:50%;background:#e8f5e9;display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:20px}
   .success h1{font-size:24px;font-weight:700;color:#111;margin-bottom:6px}
@@ -269,7 +196,7 @@
   .success .actions .btn-ghost{width:100%;padding:14px;border-radius:14px;background:transparent;border:1.5px solid #e8e8ed;color:#111;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s}
   .success .actions .btn-ghost:active{background:#f5f5f5}
 
-  /* ═══ CAMERA ROLL ═══ */
+  /* CAMERA ROLL */
   .camera-roll{height:100%;display:flex;flex-direction:column;background:#fff}
   .albums{display:flex;gap:8px;padding:8px 20px 12px;flex-shrink:0;overflow-x:auto;border-bottom:1px solid #f0f0f0}
   .albums::-webkit-scrollbar{display:none}
@@ -278,53 +205,116 @@
   .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px;flex:1;align-content:start;overflow-y:auto}
   .photo-grid::-webkit-scrollbar{display:none}
   .photo-cell{aspect-ratio:1;background:#f5f5f5;position:relative;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .photo-cell.sel::after{content:'';position:absolute;inset:0;border:3px solid #111;pointer-events:none;z-index:2}
+  .photo-cell.sel .sel-check{position:absolute;top:6px;right:6px;z-index:3;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2)}
   .photo-cell:active{opacity:.7}
   .photo-cell .dur{position:absolute;bottom:4px;left:4px;z-index:2;font-size:10px;color:#fff;font-weight:600;background:rgba(0,0,0,.5);padding:1px 5px;border-radius:3px}
   .photo-cell .type{position:absolute;bottom:4px;right:4px;z-index:2;font-size:11px;opacity:.5}
 
-  /* ═══ EDITOR ═══ */
+  /* EDITOR — BIG INPUT */
   .editor{height:100%;display:flex;flex-direction:column;background:#fff}
-  .editor .hero-tag{
-    text-align:center;padding:6px 0 0;
-    font-size:10px;font-weight:600;color:#6c5ce7;letter-spacing:.4px;
-    text-transform:uppercase;flex-shrink:0
+  .editor .top-bar{border-bottom:1px solid #f0f0f0}
+  .editor .preview-wrap{
+    flex-shrink:0;position:relative;height:200px;
+    background:#f8f8f8;border-bottom:1px solid #f0f0f0;
+    display:flex;align-items:center;justify-content:center;overflow:hidden
   }
-  .editor .video-preview{
-    margin:6px 20px 0;flex-shrink:0;height:200px;
-    background:#f5f5f5;border-radius:12px;overflow:hidden;
-    position:relative;border:1px solid #e8e8ed
+  .editor .preview-wrap canvas{width:100%;height:100%;object-fit:cover}
+  .editor .preview-wrap .status-tag{
+    position:absolute;bottom:10px;left:16px;z-index:2;
+    font-size:10px;font-weight:600;color:#888;
+    display:flex;align-items:center;gap:4px;
+    background:rgba(255,255,255,.85);padding:3px 10px;border-radius:6px;
+    backdrop-filter:blur(4px)
   }
-  .editor .video-preview canvas{width:100%;height:100%;display:block}
-  .editor .video-preview .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-  .editor .video-preview .play-center{width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;backdrop-filter:blur(4px);cursor:pointer}
-  .editor .clip-info{display:flex;align-items:center;gap:10px;margin:8px 20px 0;flex-shrink:0}
-  .editor .clip-info .nm{font-size:13px;font-weight:500;color:#111}
-  .editor .clip-info .edits-count{font-size:10px;color:#6c5ce7;font-weight:600}
-  .editor .clip-info .chg{font-size:12px;color:#111;font-weight:600;cursor:pointer;margin-left:auto}
-  .editor .edit-history{flex:1;margin:8px 20px 0;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:4px}
-  .editor .edit-history::-webkit-scrollbar{display:none}
-  .editor .edit-history .entry{display:flex;gap:10px;padding:10px 12px;background:#f8f8f8;border:1px solid #e8e8ed;border-radius:10px;align-items:flex-start}
-  .editor .edit-history .entry .num{width:20px;height:20px;border-radius:50%;background:#111;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-  .editor .edit-history .entry .content{flex:1;min-width:0}
-  .editor .edit-history .entry .content .prompt-text{font-size:12px;color:#333;line-height:1.4;font-weight:400}
-  .editor .edit-history .entry .content .result{font-size:10px;color:#2e7d32;font-weight:500;margin-top:3px;display:flex;align-items:center;gap:4px}
-  .editor .edit-history .entry .content .result .dot{width:4px;height:4px;border-radius:50%;background:#2e7d32}
-  .editor .edit-history .entry .status-badge{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:2px 6px;border-radius:4px;flex-shrink:0}
-  .editor .edit-history .entry .status-badge.done{background:#e8f5e9;color:#2e7d32}
-  .editor .edit-history .entry .status-badge.proc{background:#f0edff;color:#6c5ce7}
-  .editor .edit-history .entry.pending{border-color:#ddd;background:#fafafa}
-  .editor .edit-history .entry.pending .num{background:#ddd;color:#888}
-  .editor .edit-input{padding:8px 20px 8px;flex-shrink:0;border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px}
-  .editor .edit-input input{flex:1;background:#f5f5f5;border:1px solid #e8e8ed;border-radius:20px;padding:10px 14px;font-size:14px;color:#111;font-family:'Figtree',sans-serif;font-weight:500}
-  .editor .edit-input input::placeholder{color:#aaa}
-  .editor .edit-input .send{width:38px;height:38px;border-radius:50%;background:#6c5ce7;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
-  .editor .edit-input .send:active{transform:scale(.9)}
-  .editor .edit-input .send:disabled{opacity:.3}
-  .editor .bottom-actions{display:flex;gap:8px;padding:8px 20px 24px;flex-shrink:0}
-  .editor .bottom-actions .btn-ghost{flex:1;padding:12px;border-radius:14px;background:transparent;border:1.5px solid #e8e8ed;color:#111;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer}
-  .editor .bottom-actions .btn-primary{flex:2;padding:12px;border-radius:14px;background:#111;color:#fff;border:none;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer}
+  .editor .preview-wrap .status-tag .d{width:5px;height:5px;border-radius:50%}
+  .editor .preview-wrap .status-tag .d.on{background:#2e7d32}
+  .editor .preview-wrap .status-tag .d.off{background:#ddd}
+  .editor .preview-wrap .version-badge{
+    position:absolute;bottom:10px;right:16px;z-index:2;
+    font-size:12px;font-weight:700;color:#fff;
+    background:rgba(108,92,231,.85);padding:2px 10px;border-radius:6px;
+    backdrop-filter:blur(4px);transition:opacity .3s
+  }
+  .editor .preview-wrap .flash{
+    position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:#fff;opacity:0;transition:opacity .15s
+  }
+  .editor .edit-area{
+    flex:1;display:flex;flex-direction:column;
+    padding:12px 20px 0;
+    overflow-y:auto
+  }
+  .editor .edit-area::-webkit-scrollbar{display:none}
+  .editor .edit-area .version-strip{
+    display:flex;gap:4px;margin-bottom:10px;overflow-x:auto;flex-shrink:0
+  }
+  .editor .edit-area .version-strip::-webkit-scrollbar{display:none}
+  .editor .edit-area .version-strip .v{
+    width:40px;height:28px;border-radius:4px;
+    background:#f0f0f0;border:1px solid #e8e8ed;
+    display:flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:600;color:#bbb;flex-shrink:0;
+    cursor:pointer;transition:all .15s;position:relative
+  }
+  .editor .edit-area .version-strip .v.done{
+    background:#111;border-color:#111;color:#fff
+  }
+  .editor .edit-area .version-strip .v.pending{
+    background:#f0edff;border-color:#6c5ce7;color:#6c5ce7
+  }
+  .editor .edit-area .version-strip .v .check{font-size:7px}
+  .editor .edit-area .version-strip .v .dot-pulse{
+    width:4px;height:4px;border-radius:50%;background:#6c5ce7;
+    animation:pulseDot .5s infinite alternate
+  }
+  @keyframes pulseDot{0%{opacity:.3}100%{opacity:1}}
+  .editor .edit-area .big-input{
+    width:100%;min-height:100px;
+    background:#f8f8f8;border:1px solid #e8e8ed;
+    border-radius:12px;padding:12px 14px;
+    font-size:15px;line-height:1.5;
+    color:#111;font-family:'Figtree',sans-serif;font-weight:500;
+    resize:none;outline:none;flex-shrink:0
+  }
+  .editor .edit-area .big-input:focus{border-color:#111}
+  .editor .edit-area .big-input::placeholder{color:#aaa;font-size:15px}
+  .editor .edit-area .big-input:disabled{opacity:.6;cursor:default}
+  .editor .edit-area .hints{
+    display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;flex-shrink:0
+  }
+  .editor .edit-area .hints .h{
+    padding:7px 12px;border-radius:8px;
+    font-size:12px;font-weight:500;
+    background:#f5f5f5;border:1px solid #e8e8ed;
+    color:#555;cursor:pointer;transition:all .15s
+  }
+  .editor .edit-area .hints .h:active{background:#eee}
+  .editor .bottom-actions{
+    padding:8px 20px 20px;flex-shrink:0;
+    border-top:1px solid #f0f0f0;display:flex;flex-direction:column;gap:6px
+  }
+  .editor .bottom-actions .send-btn{
+    width:100%;padding:16px;border-radius:14px;
+    background:#111;color:#fff;border:none;
+    font-size:17px;font-weight:600;font-family:inherit;
+    cursor:pointer;transition:transform .15s
+  }
+  .editor .bottom-actions .send-btn:active{transform:scale(.97)}
+  .editor .bottom-actions .export-row{display:flex;gap:8px}
+  .editor .bottom-actions .export-row .undo-btn{
+    flex:1;padding:12px;border-radius:14px;
+    background:transparent;border:1.5px solid #e8e8ed;color:#111;
+    font-size:14px;font-weight:600;font-family:inherit;cursor:pointer
+  }
+  .editor .bottom-actions .export-row .export-btn{
+    flex:2;padding:12px;border-radius:14px;
+    background:#111;color:#fff;border:none;
+    font-size:14px;font-weight:600;font-family:inherit;cursor:pointer
+  }
+  .editor .bottom-actions .export-row{display:none}
 
-  /* ═══ SETTINGS ═══ */
+  /* SETTINGS */
   .settings{height:100%;display:flex;flex-direction:column;background:#fff}
   .settings .body{padding:8px 20px 20px;flex:1;overflow-y:auto}
   .settings .body::-webkit-scrollbar{display:none}
@@ -352,14 +342,40 @@
   .settings .plan-card-static .manage{display:block;margin-top:14px;background:none;border:none;color:#111;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;text-decoration:underline;padding:0}
   .settings .version{text-align:center;font-size:11px;color:#bbb;font-weight:400;padding:16px 0 40px}
 
-  .toast{
-    position:absolute;bottom:100px;left:20px;right:20px;z-index:300;
-    padding:14px 18px;border-radius:12px;background:#111;color:#fff;
-    font-size:14px;font-weight:500;text-align:center;
-    opacity:0;transform:translateY(20px);
-    transition:opacity .3s,transform .3s;pointer-events:none
-  }
+  .toast{position:absolute;bottom:100px;left:20px;right:20px;z-index:300;padding:14px 18px;border-radius:12px;background:#111;color:#fff;font-size:14px;font-weight:500;text-align:center;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;pointer-events:none}
   .toast.show{opacity:1;transform:translateY(0);pointer-events:all}
+
+  /* BUY TOKENS OVERLAY */
+  .buy-overlay{
+    position:absolute;inset:0;z-index:400;
+    background:rgba(0,0,0,.5);backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s
+  }
+  .buy-overlay.show{opacity:1;pointer-events:all}
+  .buy-overlay .sheet{
+    background:#fff;border-radius:20px;padding:24px;
+    width:320px;text-align:center
+  }
+  .buy-overlay .sheet h3{font-size:18px;font-weight:700;color:#111;margin-bottom:4px}
+  .buy-overlay .sheet p{font-size:13px;color:#888;font-weight:400;margin-bottom:16px}
+  .buy-overlay .sheet .packs{display:flex;flex-direction:column;gap:8px}
+  .buy-overlay .sheet .pack{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 14px;border:1px solid #e8e8ed;border-radius:10px;
+    cursor:pointer;transition:all .15s
+  }
+  .buy-overlay .sheet .pack:active{background:#f5f5f5}
+  .buy-overlay .sheet .pack .left{text-align:left}
+  .buy-overlay .sheet .pack .left .qty{font-size:15px;font-weight:600;color:#111}
+  .buy-overlay .sheet .pack .left .per{font-size:10px;color:#888;font-weight:400}
+  .buy-overlay .sheet .pack .price{font-size:16px;font-weight:700;color:#111}
+  .buy-overlay .sheet .close-btn{
+    margin-top:14px;padding:8px 20px;border-radius:8px;
+    background:none;border:none;color:#888;
+    font-size:13px;font-weight:500;font-family:inherit;cursor:pointer
+  }
 
   @media(max-width:440px){.device{width:100vw;height:100%;margin:0;border-radius:0;border:none;box-shadow:none;min-height:100vh}}
 </style>
@@ -379,35 +395,20 @@
           <div class="slide active">
             <div class="e">✂️</div>
             <h1>Edit your videos<br>with AI. Naturally.</h1>
-            <p>Not another video generator. Mint lets you take any clip and transform it — prompt by prompt, like talking to your video.</p>
+            <p>Not another generator. Take any clip and transform it — prompt by prompt, like talking to your video.</p>
             <div class="badge">✦ The AI editor, not generator</div>
-            <div class="fl">
-              <div class="fi"><span class="ck">✂️</span> Pick a video, describe the change</div>
-              <div class="fi"><span class="ck">✦</span> Each edit builds on the last — stateful</div>
-              <div class="fi"><span class="ck">↩</span> Undo anything, keep what works</div>
-            </div>
           </div>
           <div class="slide">
             <div class="e">🎬</div>
             <h1>Real example</h1>
-            <p>Start with a selfie. Prompt: "When I touch the mirror, make it ripple like liquid." Done. Then prompt again: "Now make my arm turn reflective." It builds.</p>
+            <p>Start with a selfie. Prompt: "When I touch the mirror, make it ripple." Done. Then prompt again. It builds.</p>
             <div class="badge">✦ Iterative. Not one-shot.</div>
-            <div class="fl">
-              <div class="fi"><span class="ck">1</span> Upload any clip from your camera roll</div>
-              <div class="fi"><span class="ck">2</span> Describe the edit in natural language</div>
-              <div class="fi"><span class="ck">3</span> See it transform. Then refine again.</div>
-            </div>
           </div>
           <div class="slide">
             <div class="e">✨</div>
             <h1>Also: Generate</h1>
-            <p>Sometimes you want something from nothing. Type a scene — AI generates it. But that's not the main act.</p>
+            <p>Sometimes you want something from nothing. Type a scene — AI generates it. But editing is the main act.</p>
             <div class="badge">✦ Editing is the hero feature</div>
-            <div class="fl">
-              <div class="fi"><span class="ck">✓</span> Text-to-video included, always</div>
-              <div class="fi"><span class="ck">✓</span> 4K export · No watermark</div>
-              <div class="fi"><span class="ck">✓</span> Save to Photos, share anywhere</div>
-            </div>
           </div>
         </div>
         <div class="dots" id="odots"><span class="active"></span><span></span><span></span></div>
@@ -424,34 +425,33 @@
         <div class="top">
           <div class="icon">✨</div>
           <h1>Unlock Mint Pro</h1>
-          <p>Try free for 7 days, then from just $4.99/mo. Cancel anytime.</p>
-          <div class="tbadge">🎁 7 days free</div>
+          <p>Try free for 3 days. After that, 8 edits/day included with Pro — buy extra packs if you need more.</p>
+          <div class="tbadge">🎁 3 days free</div>
         </div>
         <div class="cards" id="planCards">
           <div class="pc pop sel" data-plan="annual">
             <div class="pbadge">★ BEST VALUE</div>
-            <div class="r"><div><div class="nm">Annual</div><div class="per">$4.99 / month</div><div class="sv">Save 50% vs monthly</div></div><div><div class="pr">$59.99<sub>/yr</sub></div></div></div>
+            <div class="r"><div><div class="nm">Annual</div><div class="per">$8.33 / month</div><div class="sv">Save 44% vs monthly</div></div><div><div class="pr">$99.99<sub>/yr</sub></div></div></div>
             <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
           </div>
           <div class="pc" data-plan="monthly">
-            <div class="r"><div><div class="nm">Monthly</div><div class="per">$9.99 / month</div></div><div><div class="pr">$9.99<sub>/mo</sub></div></div></div>
-            <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
-          </div>
-          <div class="pc" data-plan="lifetime">
-            <div class="r"><div><div class="nm">Lifetime</div><div class="per">One-time payment</div><div class="sv">Never pay again</div></div><div><div class="pr">$99.99</div></div></div>
+            <div class="r"><div><div class="nm">Monthly</div><div class="per">$14.99 / month</div></div><div><div class="pr">$14.99<sub>/mo</sub></div></div></div>
             <div class="r" style="margin-top:10px"><div></div><div class="ra"></div></div>
           </div>
         </div>
         <div class="tr"><div><div class="l">Free trial</div><div class="s">Cancel anytime before it renews</div></div><div class="tog on" id="trialToggle"><div class="kn"></div></div></div>
         <div class="feats">
-          <div class="f"><span class="ck">✓</span> Unlimited stateful edits</div>
-          <div class="f"><span class="ck">✓</span> All AI effects &amp; style transfers</div>
+          <div class="f"><span class="ck">✓</span> 8 edits/day included</div>
           <div class="f"><span class="ck">✓</span> 4K export · No watermark</div>
+          <div class="f"><span class="ck">✓</span> All effects &amp; style transfers</div>
+          <div class="f"><span class="ck">✓</span> Priority processing</div>
+          <div class="f"><span class="ck">✓</span> Buy token packs for extra</div>
         </div>
         <div class="ba">
-          <button class="btn-primary" id="payBtn">Start 7-day free trial</button>
-          <div class="fine">Renews at $59.99/year. Cancel anytime in settings.</div>
+          <button class="btn-primary" id="payBtn">Start 3-day free trial</button>
+          <div class="fine">After trial: $14.99/month or $99.99/year. 8 edits/day included, extra token packs available. Cancel anytime.</div>
           <div class="restore"><button onclick="goScreen(2)">Maybe later</button></div>
+          <div style="text-align:center;margin-top:4px"><button style="background:none;border:none;color:#888;font-size:11px;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:underline" onclick="toast('Restored purchases — no prior purchases found')">Restore purchases</button></div>
         </div>
       </div>
     </div>
@@ -469,11 +469,11 @@
         </div>
         <div class="hero">
           <div class="greeting" id="homeGreeting">Your edits</div>
-          <div class="sub" id="homeSub">Stateful AI edits live here. Start with a clip, then refine.</div>
+          <div class="sub" id="homeSub">Stateful AI edits live here.</div>
           <div class="stats">
             <div class="s"><div class="num">23</div><div class="lbl">Videos</div></div>
             <div class="s"><div class="num">12</div><div class="lbl">This month</div></div>
-            <div class="s"><div class="num">4.8K</div><div class="lbl">Total views</div></div>
+            <div class="s"><div class="num">4.8K</div><div class="lbl">Views</div></div>
           </div>
         </div>
         <div class="albums" style="border:none;padding:0 20px 10px">
@@ -483,6 +483,11 @@
           <span class="a">Favorites</span>
         </div>
         <div class="gallery-grid" id="editGrid"></div>
+        <div id="emptyHome" style="display:none;flex:1;padding:40px 20px;text-align:center">
+          <div style="font-size:48px;margin-bottom:12px">🎬</div>
+          <div style="font-size:18px;font-weight:600;color:#111;margin-bottom:4px">No videos yet</div>
+          <div style="font-size:13px;color:#888;font-weight:400;line-height:1.4;margin-bottom:16px">Create your first video — pick a clip and describe an edit, or generate from scratch.</div>
+        </div>
         <div class="fab-label" id="fabLabel">New edit</div>
         <button class="fab" id="fabBtn" onclick="startNew()">+</button>
       </div>
@@ -499,9 +504,9 @@
         <div class="gen-area">
           <div class="hero-icon">✨</div>
           <h1>What do you want to see?</h1>
-          <p class="sub">Describe any scene. AI generates it from scratch.</p>
+          <p class="sub">Describe any scene. AI generates it from scratch. <span style="color:#6c5ce7;font-weight:600"><span id="genTokenDisplay">8</span>/8</span> edits remaining today.</p>
           <div class="prompt-box">
-            <textarea id="genPrompt" placeholder='e.g. "Cinematic slow-motion of a neon-lit cyberpunk city at night with rain and flying cars"' maxlength="500"></textarea>
+            <textarea id="genPrompt" placeholder='e.g. "Cinematic slow-motion of a neon-lit cyberpunk city at night"' maxlength="500"></textarea>
             <div class="cc">0 <span>/ 500</span></div>
           </div>
           <div class="suggestions">
@@ -512,6 +517,7 @@
         </div>
         <div class="bottom-bar">
           <input id="genBottomInput" placeholder="Describe your video..." maxlength="500">
+          <span style="font-size:10px;color:#888;font-weight:500;white-space:nowrap"><span id="genTokenDisplay2" style="color:#6c5ce7;font-weight:700">8</span>/8</span>
           <button class="gen-btn" onclick="startGenerate()">✨ Generate</button>
         </div>
       </div>
@@ -551,9 +557,9 @@
     <div class="screen" data-screen="6">
       <div class="camera-roll">
         <div class="top-bar">
-          <span class="left" onclick="prevScreen()">← Back</span>
+          <span class="left" onclick="goScreen(2)">← Back</span>
           <h2>Photos</h2>
-          <span style="width:40px"></span>
+          <span class="next-btn" id="cameraNext" onclick="proceedToEditor()" style="font-size:16px;font-weight:600;color:#111;opacity:.3;cursor:pointer;transition:opacity .2s">Next</span>
         </div>
         <div class="albums">
           <span class="a sel">Recents</span>
@@ -571,25 +577,42 @@
         <div class="top-bar">
           <span class="left" onclick="closeEditor()">← Back</span>
           <h2>Edit</h2>
-          <span class="done-btn" style="font-size:16px;font-weight:600;color:#111;cursor:pointer" onclick="finishEditing()">Export</span>
+          <span style="width:40px"></span>
         </div>
-        <div class="hero-tag">✦ Stateful AI editing — each prompt builds on the last</div>
-        <div class="video-preview" id="editorPreview">
+
+        <div class="preview-wrap">
           <canvas id="editorCanvas"></canvas>
-          <div class="overlay"><div class="play-center" id="editorPlayBtn">▶</div></div>
+          <div class="flash" id="flashOverlay"></div>
+          <div class="status-tag">
+            <span class="d on" id="statusDot"></span>
+            <span id="statusLabel">Ready</span>
+            <span style="color:#ddd;margin:0 4px">·</span>
+            <span id="editCountLabel">0 edits</span>
+            <span style="color:#ddd;margin:0 4px">·</span>
+            <span id="tokenDisplay" style="color:#6c5ce7;font-weight:700">8</span>
+            <span style="color:#888">/ 8</span>
+          </div>
+          <div class="version-badge" id="versionBadge" style="opacity:0">v1</div>
         </div>
-        <div class="clip-info">
-          <div><span class="nm">selfie_clip.mov</span> · <span class="edits-count" id="editCounter">✂️ 0 edits</span></div>
-          <span class="chg" onclick="closeEditor()">Change</span>
+
+        <div class="edit-area">
+          <div class="version-strip" id="versionStrip"></div>
+          <textarea class="big-input" id="editInput" placeholder="Describe your edit — e.g. &quot;When I touch the mirror, make it ripple like liquid&quot;" maxlength="500"></textarea>
+          <div style="text-align:right;font-size:10px;color:#bbb;font-weight:400;padding-top:4px;flex-shrink:0"><span id="editCharCount">0</span> <span style="color:#ccc">/ 500</span></div>
+          <div class="hints">
+            <span class="h" onclick="fillHint('cinematic')">🎬 Cinematic</span>
+            <span class="h" onclick="fillHint('mirror')">🪞 Mirror ripple</span>
+            <span class="h" onclick="fillHint('reflective')">✨ Reflective arm</span>
+            <span class="h" onclick="fillHint('slowmo')">⏱️ Slow motion</span>
+          </div>
         </div>
-        <div class="edit-history" id="editHistory"></div>
-        <div class="edit-input">
-          <input id="editInput" placeholder='Describe an edit — e.g. "When I touch the mirror, make it ripple like liquid"' maxlength="500">
-          <button class="send" id="editSendBtn" onclick="submitEdit()">✂️</button>
-        </div>
-        <div class="bottom-actions" id="editActions" style="display:none">
-          <button class="btn-ghost" onclick="undoLastEdit()">↩ Undo</button>
-          <button class="btn-primary" onclick="finishEditing()">Export video</button>
+
+        <div class="bottom-actions">
+          <button class="send-btn" id="editSendBtn" onclick="submitEdit()">✂️ Edit video</button>
+          <div class="export-row" id="exportRow">
+            <button class="undo-btn" onclick="undoLastEdit()">↩ Undo</button>
+            <button class="export-btn" onclick="finishEditing()">Export video</button>
+          </div>
         </div>
       </div>
     </div>
@@ -598,7 +621,7 @@
     <div class="screen" data-screen="8">
       <div class="settings">
         <div class="top-bar">
-          <span class="left" onclick="prevScreen()">← Back</span>
+          <span class="left" onclick="goScreen(2)">← Back</span>
           <h2>Settings</h2>
           <span style="width:40px"></span>
         </div>
@@ -606,8 +629,9 @@
           <div class="sec">
             <div class="title">Subscription</div>
             <div class="plan-card-static">
-              <div class="tp"><div><div class="plan-nm">Mint Pro Annual</div><div class="detail">Renews April 15, 2027 · $59.99/yr</div></div><span class="plan-badge">Active</span></div>
-              <div class="usage"><div class="r2"><span>Videos this month</span><span class="num">7 / 50</span></div><div class="track"><div class="fill"></div></div></div>
+              <div class="tp"><div><div class="plan-nm">Mint Pro Annual</div><div class="detail">Renews April 15, 2027 · $99.99/yr</div></div><span class="plan-badge">Active</span></div>
+              <div class="usage"><div class="r2"><span>Edits used today</span><span class="num">3 / 8</span></div><div class="track"><div class="fill" style="width:37.5%"></div></div></div>
+              <div class="usage" style="margin-top:8px"><div class="r2"><span>Token balance</span><span class="num">2</span></div></div>
               <button class="manage" onclick="toast('Opening App Store...')">Manage subscription →</button>
             </div>
           </div>
@@ -615,11 +639,7 @@
             <div class="title">Account</div>
             <div class="row"><div class="l"><span class="ic">👤</span><div><div class="t">Apple ID</div><div class="sub">buyan@icloud.com</div></div></div><div class="v">• • • <span class="chev">›</span></div></div>
             <div class="row"><div class="l"><span class="ic">📊</span><div><div class="t">Videos created</div><div class="sub">Total: 23 videos</div></div></div><div class="v">23 <span class="chev">›</span></div></div>
-          </div>
-          <div class="sec">
-            <div class="title">Preferences</div>
-            <div class="row"><div class="l"><span class="ic">🌙</span><div class="t">Dark mode</div></div><div class="v"><span style="color:#ccc">Follow system</span> <span class="chev">›</span></div></div>
-            <div class="row"><div class="l"><span class="ic">🎬</span><div class="t">Default export quality</div></div><div class="v">1080p <span class="chev">›</span></div></div>
+            <div class="row" onclick="toast('Signed out')"><div class="l"><span class="ic">🚪</span><div class="t" style="color:#ff4757">Sign out</div></div><div class="v"><span class="chev">›</span></div></div>
           </div>
           <div class="sec">
             <div class="title">Support</div>
@@ -634,231 +654,173 @@
 
   </div>
 
+  <!-- BUY TOKENS OVERLAY -->
+  <div class="buy-overlay" id="buyTokensOverlay">
+    <div class="sheet">
+      <h3>Out of daily edits</h3>
+      <p>You've used all 8 today. Grab a pack to keep going.</p>
+      <div class="packs">
+        <div class="pack" onclick="buyTokens(10)"><div class="left"><div class="qty">10 edits</div><div class="per">$0.20 each</div></div><div class="price">$1.99</div></div>
+        <div class="pack" onclick="buyTokens(50)"><div class="left"><div class="qty">50 edits</div><div class="per">$0.16 each</div></div><div class="price">$7.99</div></div>
+        <div class="pack" onclick="buyTokens(200)"><div class="left"><div class="qty">200 edits</div><div class="per">$0.12 each</div></div><div class="price">$24.99</div></div>
+      </div>
+      <button class="close-btn" onclick="closeBuyTokens()">Maybe later</button>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-  // ── Screen indices ──
-  // 0:Onboarding  1:Paywall  2:Home  3:Generate  4:Processing
-  // 5:Success  6:CameraRoll  7:Editor  8:Settings
-
   let cur=0;
   const scr=document.querySelectorAll('.screen');
-  goScreen=(i)=>{
-    if(i<0||i>=scr.length)return;
-    scr.forEach((s,idx)=>{s.classList.remove('active','exit-left');if(idx<i)s.classList.add('exit-left')});
-    scr[i].classList.add('active');cur=i;
-    if(i===7)startEditorPreview();else stopEditorPreview();
-  };
-  nextScreen=()=>goScreen(cur+1);
-  prevScreen=()=>goScreen(cur-1);
+  goScreen=(i)=>{if(i<0||i>=scr.length)return;scr.forEach((s,idx)=>{s.classList.remove('active','exit-left');if(idx<i)s.classList.add('exit-left')});scr[i].classList.add('active');cur=i;if(i===7)startEditorPreview();else stopEditorPreview();if(i===3){document.getElementById('genTokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay2').textContent=tokensRemaining}};
+  nextScreen=()=>goScreen(cur+1);prevScreen=()=>goScreen(cur-1);
 
-  // ── Onboarding ──
+  // Onboarding
   let oIdx=0;
   const oSl=document.querySelectorAll('#ocarousel .slide'),oDo=document.querySelectorAll('#odots span'),oBtn=document.getElementById('oNextBtn');
-  function goSlide(i){
-    if(i<0||i>=oSl.length)return;
-    oSl.forEach((s,idx)=>s.classList.toggle('active',idx===i));
-    oDo.forEach((d,idx)=>d.classList.toggle('active',idx===i));oIdx=i;
-    if(i===oSl.length-1){oBtn.textContent='Get started';oBtn.onclick=()=>goScreen(1)}
-    else{oBtn.textContent='Continue';oBtn.onclick=()=>goSlide(oIdx+1)}
-  }
-  oBtn.onclick=()=>goSlide(1);
-  oDo.forEach(d=>d.addEventListener('click',()=>goSlide(Array.from(oDo).indexOf(d))));
+  function goSlide(i){if(i<0||i>=oSl.length)return;oSl.forEach((s,idx)=>s.classList.toggle('active',idx===i));oDo.forEach((d,idx)=>d.classList.toggle('active',idx===i));oIdx=i;if(i===oSl.length-1){oBtn.textContent='Get started';oBtn.onclick=()=>goScreen(1)}else{oBtn.textContent='Continue';oBtn.onclick=()=>goSlide(oIdx+1)}}
+  oBtn.onclick=()=>goSlide(1);oDo.forEach(d=>d.addEventListener('click',()=>goSlide(Array.from(oDo).indexOf(d))));
 
-  // ── Paywall ──
+  // Paywall
   document.querySelectorAll('#planCards .pc').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('#planCards .pc').forEach(p=>p.classList.remove('sel'));this.classList.add('sel')})});
   document.getElementById('trialToggle').addEventListener('click',function(){this.classList.toggle('on')});
   document.getElementById('payBtn').addEventListener('click',()=>goScreen(2));
 
-  // ── Mode toggle ──
-  let currentMode='edit'; // default to Edit, not Generate
-  document.querySelectorAll('.mode-switch .m').forEach(el=>{
-    el.addEventListener('click',function(){
-      document.querySelectorAll('.mode-switch .m').forEach(s=>s.classList.remove('sel'));
-      this.classList.add('sel');
-      currentMode=this.dataset.mode;
-      document.getElementById('fabLabel').textContent=currentMode==='edit'?'New edit':'Generate';
-      document.getElementById('homeGreeting').textContent=currentMode==='edit'?'Your edits':'Generated';
-      document.getElementById('homeSub').textContent=currentMode==='edit'
-        ?'Stateful AI edits live here. Start with a clip, then refine.'
-        :'Text-to-video. Describe a scene, AI creates it.';
-      document.querySelectorAll('.gallery-card').forEach(c=>{
-        if(selectedFilter==='All'||c.dataset.mode===selectedFilter.toLowerCase()||c.dataset.mode===currentMode||currentMode==='all') c.style.display='';
-        else c.style.display='none';
-      });
-    });
-  });
+  // Mode toggle
+  let currentMode='edit';
+  document.querySelectorAll('.mode-switch .m').forEach(el=>{el.addEventListener('click',function(){document.querySelectorAll('.mode-switch .m').forEach(s=>s.classList.remove('sel'));this.classList.add('sel');currentMode=this.dataset.mode;document.getElementById('fabLabel').textContent=currentMode==='edit'?'New edit':'Generate';document.getElementById('homeGreeting').textContent=currentMode==='edit'?'Your edits':'Generated'})});
 
-  let selectedFilter='All';
-  document.querySelectorAll('.albums .a').forEach(el=>{el.addEventListener('click',function(){document.querySelectorAll('.albums .a').forEach(s=>s.classList.remove('sel'));this.classList.add('sel');selectedFilter=this.textContent;filterGallery()})});
-  function filterGallery(){
-    document.querySelectorAll('.gallery-card').forEach(c=>{c.style.display=(selectedFilter==='All'||c.dataset.mode===selectedFilter.toLowerCase())?'':'none'});
-  }
+  // FAB
+  window.startNew=function(){if(currentMode==='edit')goScreen(6);else goScreen(3)};
 
-  // ── FAB ──
-  window.startNew=function(){
-    if(currentMode==='edit') goScreen(6); // camera roll → editor
-    else goScreen(3); // generate (text → video)
-  };
+  // Gallery
+  const edits=[{e:'🎬',t:'Mirror Ripple',d:'Today',dur:'0:08',m:'edit',n:4},{e:'🌆',t:'Neon Tokyo',d:'Today',dur:'0:12',m:'generate',n:null},{e:'🏖️',t:'Beach Grade',d:'Yesterday',dur:'0:15',m:'edit',n:2},{e:'🌟',t:'Stargazing',d:'2 days ago',dur:'0:18',m:'edit',n:6},{e:'🌸',t:'Cherry Blossom',d:'3 days ago',dur:'0:10',m:'generate',n:null},{e:'🌃',t:'City Lights',d:'4 days ago',dur:'0:14',m:'edit',n:3}];
+  const g2=document.getElementById('editGrid');
+  edits.forEach(e=>{const c=document.createElement('div');c.className='gallery-card';c.dataset.mode=e.m;const h=Math.floor(Math.random()*360);c.innerHTML=`<div class="thumb" style="background:hsl(${h},18%,92%)"><span style="font-size:40px">${e.e}</span><span class="mode-badge ${e.m==='edit'?'edit-mode':'gen'}">${e.m==='edit'?'✂️':'✨'}</span>${e.n?`<span class="edit-count">${e.n}</span>`:''}<div class="play-overlay"><span class="dur">${e.dur}</span></div></div><div class="info"><div class="tt">${e.t}</div><div class="dt">${e.d}</div></div>`;c.addEventListener('click',()=>toast(`Opening "${e.t}"`));g2.appendChild(c)});
 
-  // ── Gallery ──
-  const edits=[
-    {emoji:'🎬',title:'Mirror Ripple Edit',date:'Today',dur:'0:08',mode:'edit',edits:4,views:234},
-    {emoji:'🌆',title:'Neon Tokyo Cityscape',date:'Today',dur:'0:12',mode:'generate',edits:null,views:89},
-    {emoji:'🏖️',title:'Beach Memories',date:'Yesterday',dur:'0:15',mode:'edit',edits:2,views:156},
-    {emoji:'🌟',title:'Stargazing Reframe',date:'2 days ago',dur:'0:18',mode:'edit',edits:6,views:412},
-    {emoji:'🌸',title:'Cherry Blossom Anime',date:'3 days ago',dur:'0:10',mode:'generate',edits:null,views:67},
-    {emoji:'🌃',title:'City Lights Grade',date:'4 days ago',dur:'0:14',mode:'edit',edits:3,views:198},
-  ];
-  const grid2=document.getElementById('editGrid');
-  edits.forEach((e,i)=>{
-    const c=document.createElement('div');c.className='gallery-card';c.dataset.mode=e.mode;
-    const hue=Math.floor(Math.random()*360);
-    const badge=e.mode==='edit'
-      ?'<span class="mode-badge edit-mode">✂️ Edit</span>'
-      :'<span class="mode-badge gen">✨ Gen</span>';
-    const editCount=e.edits?`<span class="edit-count">${e.edits}</span>`:'';
-    c.innerHTML=`
-      <div class="thumb" style="background:hsl(${hue},18%,92%)">
-        <span style="font-size:40px">${e.emoji}</span>
-        ${badge}${editCount}
-        <div class="play-overlay"><span class="dur">${e.dur}</span></div>
-      </div>
-      <div class="info"><div class="tt">${e.title}</div><div class="dt">${e.date} · ${e.views} views</div>${e.edits?`<div class="edits">✂️ ${e.edits} stateful edits</div>`:''}</div>
-    `;
-    c.addEventListener('click',()=>toast(`Opening "${e.title}"`));
-    grid2.appendChild(c);
-  });
-
-  // ── Photo grid ──
-  const pEmojis=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴'];
-  const pDurs=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20'];
-  const pTypes=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸'];
+  // Photo grid
+  const pe=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴'];
+  const pd=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20'];
+  const pt=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸'];
   const pg=document.getElementById('photoGrid');
-  for(let i=0;i<30;i++){
-    const c=document.createElement('div');c.className='photo-cell';c.dataset.idx=i;
-    const hue=Math.floor(Math.random()*360);c.style.background=`hsl(${hue},18%,92%)`;
-    const dur=pDurs[i%pDurs.length];
-    c.innerHTML=`${dur!=='—'?`<div class="dur">${dur}</div>`:''}<div class="type">${pTypes[i%pTypes.length]}</div>${pEmojis[i%pEmojis.length]}`;
-    c.addEventListener('click',function(){resetEditor();goScreen(7)});
-    pg.appendChild(c);
-  }
+  for(let i=0;i<30;i++){const c=document.createElement('div');c.className='photo-cell';c.dataset.idx=i;const h=Math.floor(Math.random()*360);c.style.background=`hsl(${h},18%,92%)`;const d=pd[i%pd.length];c.innerHTML=`${d!=='—'?`<div class="dur">${d}</div>`:''}<div class="type">${pt[i%pt.length]}<span class="sel-check">✓</span></div>${pe[i%pe.length]}`;c.addEventListener('click',function(){const wasSel=this.classList.contains('sel');pg.querySelectorAll('.photo-cell').forEach(p=>p.classList.remove('sel'));if(wasSel){document.getElementById('cameraNext').style.opacity='.3';return}this.classList.add('sel');document.getElementById('cameraNext').style.opacity='1'});pg.appendChild(c)}
 
-  // ── Generate ──
-  const genTa=document.getElementById('genPrompt'), genBi=document.getElementById('genBottomInput');
-  genTa.addEventListener('input',function(){this.nextElementSibling.innerHTML=this.value.length+' <span>/ 500</span>';genBi.value=this.value});
-  genBi.addEventListener('input',function(){genTa.value=this.value;genTa.dispatchEvent(new Event('input'))});
-  window.fillGen=function(t){genTa.value=t;genBi.value=t;genTa.dispatchEvent(new Event('input'))};
+  // Generate
+  const gt=document.getElementById('genPrompt'),gb=document.getElementById('genBottomInput');
+  gt.addEventListener('input',function(){this.nextElementSibling.innerHTML=this.value.length+' <span>/ 500</span>';gb.value=this.value});
+  gb.addEventListener('input',function(){gt.value=this.value;gt.dispatchEvent(new Event('input'))});
+  window.proceedToEditor=function(){if(!document.querySelector('.photo-cell.sel'))return;document.querySelector('.photo-cell.sel').classList.remove('sel');document.getElementById('cameraNext').style.opacity='.3';goScreen(7)};
+  window.fillGen=function(t){gt.value=t;gb.value=t;gt.dispatchEvent(new Event('input'))};
+  window.startGenerate=function(){const p=gt.value.trim()||gb.value.trim();if(!p){toast('Describe first.');return}
+    if(tokensRemaining<=0){document.getElementById('buyTokensOverlay').classList.add('show');return}
+    tokensRemaining--;document.getElementById('tokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay2').textContent=tokensRemaining;
+    goScreen(4);const bar=document.getElementById('progBar'),sg=document.getElementById('progStage');const ss=['Generating frames...','Applying style...','Adding motion...','Rendering 4K...','Finalizing...'];let pr=0,si=0;clearInterval(window._pi);window._pi=setInterval(()=>{pr+=Math.random()*8+2;if(pr>100)pr=100;bar.style.width=pr+'%';const s2=Math.min(Math.floor(pr/100*ss.length),ss.length-1);if(s2!==si){si=s2;sg.textContent=ss[si]}if(pr>=100){clearInterval(window._pi);sg.textContent='Done!';setTimeout(()=>goScreen(5),500)}},400)};
 
-  window.startGenerate=function(){
-    const p=genTa.value.trim()||genBi.value.trim();
-    if(!p){toast('Describe what you want to generate.');return}
-    goScreen(4);
-    const bar=document.getElementById('progBar'),stage=document.getElementById('progStage');
-    const stages=['Generating frames...','Applying style...','Adding motion...','Rendering 4K...','Finalizing...'];
-    let prog=0,si=0;
-    clearInterval(window._progInt);
-    window._progInt=setInterval(()=>{
-      prog+=Math.random()*8+2;if(prog>100)prog=100;
-      bar.style.width=prog+'%';
-      const si2=Math.min(Math.floor(prog/100*stages.length),stages.length-1);
-      if(si2!==si){si=si2;stage.textContent=stages[si]}
-      if(prog>=100){clearInterval(window._progInt);stage.textContent='Done!';setTimeout(()=>goScreen(5),500)}
-    },400);
-  };
-
-  // ── Editor ──
+  // Editor — smart stateful flow
   let editorAnim=null;
-  function startEditorPreview(){
-    const c=document.getElementById('editorCanvas'),p=c.parentElement;
-    if(!c)return;
-    c.width=p.offsetWidth||350;c.height=p.offsetHeight||200;
-    const cx=c.getContext('2d'),w=c.width,h=c.height;let t=0;
-    function draw(){
-      t+=.015;cx.clearRect(0,0,w,h);
-      const g=cx.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2);
-      g.addColorStop(0,'#1a1a2e');g.addColorStop(.5,'#0c0c12');g.addColorStop(1,'#000');
-      cx.fillStyle=g;cx.fillRect(0,0,w,h);
-      for(let i=0;i<h;i+=3){cx.fillStyle=`rgba(255,255,255,${.01+Math.sin(t+i*.05)*.01})`;cx.fillRect(0,i,w,1)}
-      cx.fillStyle='rgba(255,255,255,.05)';cx.font='13px Figtree';cx.textAlign='center';
-      cx.fillText(`Edit v${editCount}`,w/2,h-16);
-      editorAnim=requestAnimationFrame(draw);
-    }
-    draw();
-  }
+  let editCount=0;
+  let editVersions=[];
+  let tokensRemaining=8;
+  const maxDailyTokens=8;
+  const colorsets=[['#6c5ce7','#a29bfe'],['#00d2a0','#00b894'],['#fd79a8','#e84393'],['#fdcb6e','#f39c12'],['#00cec9','#00b894'],['#e17055','#d63031']];
+  const hints={cinematic:"Make this cinematic with warm highlights and smooth camera motion",mirror:"When the person touches the mirror, make it ripple beautifully like liquid",reflective:"Turn the person's arm into reflective mirror material while keeping the face natural",slowmo:"Slow the motion down and make the moment feel dramatic and polished"};
+
+  function startEditorPreview(){const c=document.getElementById('editorCanvas'),p=c.parentElement;if(!c)return;c.width=p.offsetWidth||393;c.height=p.offsetHeight||200;const cx=c.getContext('2d'),w=c.width,h=c.height;let t=0,cs=0;(function draw(){t+=.01;cs=Math.min(editCount,colorsets.length-1);const c1=colorsets[cs][0],c2=colorsets[cs][1];cx.clearRect(0,0,w,h);const g=cx.createRadialGradient(w/2,h/2,0,w/2,h/2,w/2);g.addColorStop(0,c1+'33');g.addColorStop(.5,c2+'22');g.addColorStop(1,'#000');cx.fillStyle=g;cx.fillRect(0,0,w,h);for(let i=0;i<h;i+=3){const a=.01+Math.sin(t+i*.05+editCount*.3)*.01;cx.fillStyle=`rgba(255,255,255,${a})`;cx.fillRect(0,i,w,1)};editorAnim=requestAnimationFrame(draw)})()}
   function stopEditorPreview(){if(editorAnim){cancelAnimationFrame(editorAnim);editorAnim=null}}
 
-  let editCount=0, editHistory=[];
-  const suggestions=[
-    '"When I touch the mirror, make it ripple like liquid"',
-    '"Now make my arm turn into reflective mirror material"',
-    '"Add a subtle blue glow around the reflection"',
-    '"Slow the motion down when I reach for the mirror"'
-  ];
-  function resetEditor(){
-    editCount=0;editHistory=[];
-    document.getElementById('editHistory').innerHTML=`
-      <div style="padding:20px 0;text-align:center">
-        <div style="font-size:32px;margin-bottom:8px">✂️</div>
-        <div style="font-size:14px;font-weight:500;color:#111">Start editing</div>
-        <div style="font-size:12px;color:#888;margin-top:4px;font-weight:400">Each edit builds on the last.</div>
-        <div style="font-size:11px;color:#aaa;margin-top:12px;font-weight:400">Try: ${suggestions[Math.floor(Math.random()*suggestions.length)]}</div>
-      </div>
-    `;
-    document.getElementById('editCounter').textContent='✂️ 0 edits';
-    document.getElementById('editActions').style.display='none';
-    document.getElementById('editInput').value='';
-    document.getElementById('editInput').placeholder='Describe an edit...';
-    document.getElementById('editSendBtn').disabled=false;
+  window.fillHint=function(k){document.getElementById('editInput').value=hints[k]||''};
+
+  function flashPreview(){
+    const f=document.getElementById('flashOverlay');
+    f.style.opacity='.25';
+    setTimeout(()=>{f.style.opacity='0'},150)
+  }
+
+  function updateVersionStrip(){
+    const strip=document.getElementById('versionStrip');
+    strip.innerHTML='';
+    for(let i=0;i<editVersions.length;i++){
+      const v=document.createElement('div');
+      v.className='v done';
+      v.textContent='v'+(i+1);
+      v.title=editVersions[i];
+      v.style.cursor='pointer';
+      v.addEventListener('click',()=>toast(`↩ Reverted to v${i+1}`));
+      strip.appendChild(v);
+    }
+    if(editCount>0){
+      const badge=document.getElementById('versionBadge');
+      badge.textContent='v'+editCount;
+      badge.style.opacity='1'
+    }
   }
 
   window.submitEdit=function(){
-    const input=document.getElementById('editInput');
-    const text=input.value.trim();
-    if(!text){toast('Describe your edit first.');return}
-    document.getElementById('editSendBtn').disabled=true;
+    if(tokensRemaining<=0){
+      document.getElementById('buyTokensOverlay').classList.add('show');
+      return
+    }
+    const inp=document.getElementById('editInput'),txt=inp.value.trim();
+    if(!txt){toast('Describe an edit first.');return}
+    tokensRemaining--;
+    document.getElementById('tokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay2').textContent=tokensRemaining;
     editCount++;
-    const entryNum=editCount;
-    editHistory.push(text);
-    const history=document.getElementById('editHistory');
-    const empty=history.querySelector('div[style*="text-align:center"]');
-    if(empty) history.innerHTML='';
-    const entry=document.createElement('div');
-    entry.className='entry pending';
-    entry.innerHTML=`<div class="num">${entryNum}</div><div class="content"><div class="prompt-text">${escHtml(text)}</div><div class="result" style="color:#888"><span class="dot" style="background:#6c5ce7;animation:pulseDot .6s infinite alternate"></span> Processing edit ${entryNum}...</div></div><span class="status-badge proc">⟳</span>`;
-    history.appendChild(entry);history.scrollTop=history.scrollHeight;
-    input.value='';
-    document.getElementById('editCounter').textContent=`✂️ ${editCount} edits`;
+    editVersions.push(txt);
+    inp.value='';
+    inp.placeholder='Editing...';
+    inp.disabled=true;
+    const btn=document.getElementById('editSendBtn');btn.textContent='⏳ Editing...';btn.disabled=true;
+    const dot=document.getElementById('statusDot'),lab=document.getElementById('statusLabel'),cnt=document.getElementById('editCountLabel');
+    dot.className='d off';lab.textContent='Editing v'+editCount+'...';cnt.textContent=editCount+' edits';
+
+    // Scroll preview to be visible
+    document.querySelector('.editor .edit-area')?.scrollTo(0,0);
+
     setTimeout(()=>{
-      entry.classList.remove('pending');
-      entry.querySelector('.result').innerHTML=`<span class="dot"></span> Applied — v${entryNum}`;
-      entry.querySelector('.status-badge').className='status-badge done';
-      entry.querySelector('.status-badge').textContent='✓';
-      document.getElementById('editSendBtn').disabled=false;
-      document.getElementById('editActions').style.display='flex';
-      input.placeholder=`Next edit? Try ${suggestions[Math.floor(Math.random()*suggestions.length)]}`;
-    },1200+Math.random()*800);
+      // Flash the preview to simulate new video
+      flashPreview();
+      // Update version strip
+      updateVersionStrip();
+      // Re-enable input
+      inp.disabled=false;
+      const nextHints=['Try adding a glow effect','What if the background changed?','Make the lighting warmer','Add particle effects'];
+      inp.placeholder='Next edit? '+nextHints[Math.floor(Math.random()*nextHints.length)];
+      btn.textContent='✂️ Edit video';btn.disabled=false;
+      document.getElementById('exportRow').style.display='flex';
+      dot.className='d on';lab.textContent='Ready';
+      toast(`✨ v${editCount} — ${txt.substring(0,40)}${txt.length>40?'...':''}`);
+    },1200+Math.random()*800)
   };
 
   window.undoLastEdit=function(){
-    if(editHistory.length===0){toast('Nothing to undo');return}
-    editHistory.pop();editCount--;
-    const history=document.getElementById('editHistory');
-    history.removeChild(history.lastElementChild);
-    document.getElementById('editCounter').textContent=`✂️ ${editCount} edits`;
-    if(editCount===0){document.getElementById('editActions').style.display='none';resetEditor()}
-    toast('↩ Undid last edit');
+    if(editCount===0){toast('Nothing to undo');return}
+    editVersions.pop();
+    tokensRemaining++;
+    document.getElementById('tokenDisplay').textContent=tokensRemaining;
+    editCount--;
+    document.getElementById('editCountLabel').textContent=editCount+' edits';
+    if(editCount===0){
+      document.getElementById('exportRow').style.display='none';
+      document.getElementById('versionBadge').style.opacity='0';
+    }
+    updateVersionStrip();
+    const inp=document.getElementById('editInput');
+    inp.placeholder='Describe your edit...';
+    toast('↩ Undid v'+(editCount+1)+' — token restored');
   };
 
-  function escHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
-  window.closeEditor=function(){stopEditorPreview();goScreen(2)};
-  window.finishEditing=function(){if(editCount===0){toast('Make at least one edit first.');return}stopEditorPreview();goScreen(5)};
-  document.getElementById('editorPlayBtn')?.addEventListener('click',function(){this.textContent=this.textContent==='▶'?'⏸':'▶'});
-  document.getElementById('editInput')?.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitEdit()}});
+  window.finishEditing=function(){if(editCount===0){toast('Make an edit first.');return}stopEditorPreview();goScreen(5)};
+  window.closeEditor=function(){if(editCount>0&&!confirm('You have unsaved edits. Leave anyway?'))return;stopEditorPreview();goScreen(2)};
+
+  // Editor char counter
+  document.getElementById('editInput')?.addEventListener('input',function(){document.getElementById('editCharCount').textContent=this.value.length});
 
   let toastTimer=null;
-  window.toast=function(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000)};
+  window.toast=function(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000)};
+  window.buyTokens=function(n){toast(`✨ Purchased ${n} edits!`);tokensRemaining+=n;document.getElementById('tokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay').textContent=tokensRemaining;document.getElementById('genTokenDisplay2').textContent=tokensRemaining;document.getElementById('buyTokensOverlay').classList.remove('show')};
+  window.closeBuyTokens=function(){document.getElementById('buyTokensOverlay').classList.remove('show')};
 </script>
 </body>
 </html>
