@@ -144,7 +144,7 @@ struct HomeView: View {
                 Text(selectedMode == .edit ? "Your edits" : "Generated")
                     .font(.figtree(size: 22, weight: .bold))
                     .foregroundStyle(MintColor.primaryText)
-                Text(selectedMode == .edit ? "Stateful AI edits live here." : "Text-to-video. Describe a scene, AI creates it.")
+                Text("Stateful AI edits live here.")
                     .font(.figtree(size: 14, weight: .regular))
                     .lineSpacing(2)
                     .foregroundStyle(MintColor.tertiaryText)

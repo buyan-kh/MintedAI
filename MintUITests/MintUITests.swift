@@ -132,6 +132,11 @@ final class MintUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["Beach Memories"].exists)
         XCTAssertFalse(app.staticTexts["Today · 234 views"].exists)
         XCTAssertFalse(app.staticTexts["✂️ 4 stateful edits"].exists)
+
+        app.buttons["Generate mode"].tap()
+        XCTAssertTrue(app.staticTexts["Generated"].exists)
+        XCTAssertTrue(app.staticTexts["Stateful AI edits live here."].exists)
+        XCTAssertFalse(app.staticTexts["Text-to-video. Describe a scene, AI creates it."].exists)
     }
 
     func testPaywallRouteMatchesHTMLPlansAndTrialCopy() {
