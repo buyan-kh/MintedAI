@@ -2,6 +2,20 @@ import XCTest
 
 @MainActor
 final class MintUITests: XCTestCase {
+    func testOnboardingFirstSlideMatchesHTMLHeroOnly() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Not another generator. Take any clip and transform it — prompt by prompt, like talking to your video."].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["✦ The AI editor, not generator"].exists)
+        XCTAssertTrue(app.buttons["Continue"].exists)
+        XCTAssertTrue(app.buttons["Skip"].exists)
+        XCTAssertFalse(app.staticTexts["Pick a video, describe the change"].exists)
+        XCTAssertFalse(app.staticTexts["Each edit builds on the last — stateful"].exists)
+        XCTAssertFalse(app.staticTexts["Undo anything, keep what works"].exists)
+    }
+
     func testGeneratePathMatchesHTMLFlow() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST_MOCK_GEMINI"]

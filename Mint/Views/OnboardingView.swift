@@ -9,35 +9,20 @@ struct OnboardingView: View {
         OnboardingSlide(
             icon: "✂️",
             title: "Edit your videos\nwith AI. Naturally.",
-            message: "Not another video generator. Mint lets you take any clip and transform it — prompt by prompt, like talking to your video.",
-            badge: "✦ The AI editor, not generator",
-            features: [
-                ("✂️", "Pick a video, describe the change"),
-                ("✦", "Each edit builds on the last — stateful"),
-                ("↩", "Undo anything, keep what works")
-            ]
+            message: "Not another generator. Take any clip and transform it — prompt by prompt, like talking to your video.",
+            badge: "✦ The AI editor, not generator"
         ),
         OnboardingSlide(
             icon: "🎬",
             title: "Real example",
-            message: "Start with a selfie. Prompt: \"When I touch the mirror, make it ripple like liquid.\" Done. Then prompt again: \"Now make my arm turn reflective.\" It builds.",
-            badge: "✦ Iterative. Not one-shot.",
-            features: [
-                ("1", "Upload any clip from your camera roll"),
-                ("2", "Describe the edit in natural language"),
-                ("3", "See it transform. Then refine again.")
-            ]
+            message: "Start with a selfie. Prompt: \"When I touch the mirror, make it ripple.\" Done. Then prompt again. It builds.",
+            badge: "✦ Iterative. Not one-shot."
         ),
         OnboardingSlide(
             icon: "✨",
             title: "Also: Generate",
-            message: "Sometimes you want something from nothing. Type a scene — AI generates it. But that's not the main act.",
-            badge: "✦ Editing is the hero feature",
-            features: [
-                ("✓", "Text-to-video included, always"),
-                ("✓", "4K export · No watermark"),
-                ("✓", "Save to Photos, share anywhere")
-            ]
+            message: "Sometimes you want something from nothing. Type a scene — AI generates it. But editing is the main act.",
+            badge: "✦ Editing is the hero feature"
         )
     ]
 
@@ -119,35 +104,6 @@ private struct OnboardingSlideView: View {
                 .clipShape(Capsule())
                 .padding(.top, 14)
 
-            VStack(spacing: 0) {
-                ForEach(slide.features, id: \.text) { feature in
-                    HStack(spacing: 12) {
-                        Text(feature.icon)
-                            .font(.figtree(size: 11, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 22, height: 22)
-                            .background(MintColor.accent)
-                            .clipShape(Circle())
-                        Text(feature.text)
-                            .font(.figtree(size: 15, weight: .medium))
-                            .foregroundStyle(Color(red: 0.200, green: 0.200, blue: 0.200))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.82)
-                        Spacer(minLength: 0)
-                    }
-                    .padding(.vertical, 10)
-                    .overlay(alignment: .bottom) {
-                        if feature.text != slide.features.last?.text {
-                            Rectangle()
-                                .fill(MintColor.borderLight)
-                                .frame(height: 1)
-                        }
-                    }
-                }
-            }
-            .frame(maxWidth: 280)
-            .padding(.top, 20)
-
             Spacer(minLength: 0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -159,7 +115,6 @@ private struct OnboardingSlide {
     let title: String
     let message: String
     let badge: String
-    let features: [(icon: String, text: String)]
 }
 
 #Preview {
