@@ -33,6 +33,7 @@ final class MintUITests: XCTestCase {
         XCTAssertFalse(app.buttons["Use sample video"].exists)
         XCTAssertFalse(app.staticTexts["Browse files"].exists)
         XCTAssertFalse(app.staticTexts["Choose from Photos"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", ".mp4")).firstMatch.exists)
 
         app.textViews.firstMatch.tap()
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")

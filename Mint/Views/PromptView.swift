@@ -29,11 +29,11 @@ struct PromptView: View {
                     VideoPlayerView(url: viewModel.session?.sourceVideoURL, height: 200)
 
                     HStack {
-                        Text(viewModel.session?.sourceVideoURL.lastPathComponent ?? "Selected video")
+                        Text("Selected video")
                             .font(.mintSmall)
                             .foregroundStyle(MintColor.primaryText)
                             .lineLimit(1)
-                        Text("0 edits")
+                        Text("\(viewModel.session?.turns.count ?? 0) edits")
                             .font(.mintTiny)
                             .foregroundStyle(MintColor.tertiaryText)
                         Spacer()
