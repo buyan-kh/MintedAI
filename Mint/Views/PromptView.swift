@@ -126,10 +126,10 @@ struct PromptView: View {
             Text("·")
                 .foregroundStyle(MintColor.border)
                 .padding(.horizontal, 4)
-            Text("10")
+            Text("5")
                 .fontWeight(.bold)
                 .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
-            Text("/ 10")
+            Text("/ 5")
         }
         .font(.figtree(size: 10, weight: .semibold))
         .foregroundStyle(MintColor.tertiaryText)
