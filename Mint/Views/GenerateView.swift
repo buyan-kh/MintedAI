@@ -8,7 +8,10 @@ struct GenerateView: View {
     @State private var prompt = ""
     @FocusState private var isPromptFocused: Bool
 
+    private let remainingEdits = 5
+    private let dailyEditLimit = 5
     private let placeholder = "e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night with rain and flying cars\""
+    private var tokenText: String { "\(remainingEdits)/\(dailyEditLimit)" }
     private let suggestions = [
         ("🌆 Cityscape", "Cinematic sunset over a futuristic city skyline, drone shot"),
         ("🌸 Anime", "Anime-style girl walking through a cherry blossom forest, golden hour"),
@@ -32,12 +35,7 @@ struct GenerateView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 6)
 
-                Text("Describe any scene. AI generates it from scratch.")
-                    .font(.figtree(size: 14, weight: .regular))
-                    .lineSpacing(2)
-                    .foregroundStyle(MintColor.tertiaryText)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 20)
+                generateSubtitle
 
                 promptBox
                 suggestionRow
@@ -86,6 +84,25 @@ struct GenerateView: View {
         }
         .frame(height: 52)
         .padding(.horizontal, 20)
+    }
+
+    private var generateSubtitle: some View {
+        HStack(spacing: 0) {
+            Text("Describe any scene. AI generates it from scratch. ")
+                .foregroundStyle(MintColor.tertiaryText)
+            Text(tokenText)
+                .font(.figtree(size: 14, weight: .semibold))
+                .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
+                .accessibilityIdentifier("Generate hero token count")
+            Text(" edits remaining today.")
+                .foregroundStyle(MintColor.tertiaryText)
+        }
+        .font(.figtree(size: 14, weight: .regular))
+        .lineLimit(2)
+        .minimumScaleFactor(0.9)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
+        .padding(.bottom, 20)
     }
 
     private var promptBox: some View {
@@ -186,6 +203,13 @@ struct GenerateView: View {
                         prompt = String(newValue.prefix(500))
                     }
                 }
+
+            Text(tokenText)
+                .font(.figtree(size: 10, weight: .bold))
+                .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
+                .lineLimit(1)
+                .fixedSize()
+                .accessibilityIdentifier("Generate bottom token count")
 
             Button { onGenerate(prompt) } label: {
                 Text("✨ Generate")

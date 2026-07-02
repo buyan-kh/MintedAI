@@ -72,6 +72,17 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
     }
 
+    func testGenerateRouteShowsHTMLTokenCounters() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "generate"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["What do you want to see?"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["Generate hero token count"].label, "5/5")
+        XCTAssertEqual(app.staticTexts["Generate bottom token count"].label, "5/5")
+    }
+
     func testProcessingRouteMatchesHTMLLoadingScreen() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST_MOCK_GEMINI"]
