@@ -34,10 +34,19 @@ final class MintUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["Browse files"].exists)
         XCTAssertFalse(app.staticTexts["Choose from Photos"].exists)
         XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", ".mp4")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
+        XCTAssertTrue(app.staticTexts["0 edits"].exists)
+        XCTAssertTrue(app.staticTexts["10"].exists)
+        XCTAssertTrue(app.staticTexts["/ 10"].exists)
+        XCTAssertTrue(app.buttons["🎬 Cinematic"].exists)
+        XCTAssertTrue(app.buttons["🪞 Mirror ripple"].exists)
+        XCTAssertTrue(app.buttons["✨ Reflective arm"].exists)
+        XCTAssertTrue(app.buttons["⏱️ Slow motion"].exists)
+        XCTAssertTrue(app.buttons["Edit video"].exists)
 
         app.textViews.firstMatch.tap()
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")
-        app.buttons["Send"].tap()
+        app.buttons["Edit video"].tap()
 
         XCTAssertTrue(app.staticTexts["Saved to Mint"].waitForExistence(timeout: 10))
 
