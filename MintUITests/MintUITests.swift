@@ -81,8 +81,14 @@ final class MintUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["Settings"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Mint Pro Annual"].exists)
-        XCTAssertTrue(app.staticTexts["Videos this month"].exists)
-        XCTAssertTrue(app.staticTexts["Default export quality"].exists)
+        XCTAssertTrue(app.staticTexts["Renews April 15, 2027 · $99.99/yr"].exists)
+        XCTAssertTrue(app.staticTexts["Edits used today"].exists)
+        XCTAssertTrue(app.staticTexts["3 / 5"].exists)
+        XCTAssertTrue(app.staticTexts["Token balance"].exists)
+        XCTAssertTrue(app.staticTexts["2"].exists)
+        XCTAssertTrue(app.staticTexts["Sign out"].exists)
+        XCTAssertFalse(app.staticTexts["Videos this month"].exists)
+        XCTAssertFalse(app.staticTexts["Default export quality"].exists)
         XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
     }
 

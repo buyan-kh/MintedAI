@@ -23,11 +23,7 @@ struct SettingsView: View {
                     settingsSection(title: "Account") {
                         SettingsRow(icon: "👤", title: "Apple ID", subtitle: "buyan@icloud.com", value: "• • •")
                         SettingsRow(icon: "📊", title: "Videos created", subtitle: "Total: 23 videos", value: "23")
-                    }
-
-                    settingsSection(title: "Preferences") {
-                        SettingsRow(icon: "🌙", title: "Dark mode", value: "Follow system")
-                        SettingsRow(icon: "🎬", title: "Default export quality", value: "1080p")
+                        SettingsRow(icon: "🚪", title: "Sign out", titleColor: Color(red: 1.000, green: 0.278, blue: 0.341))
                     }
 
                     settingsSection(title: "Support") {
@@ -58,7 +54,7 @@ struct SettingsView: View {
                     Text("Mint Pro Annual")
                         .font(.figtree(size: 16, weight: .semibold))
                         .foregroundStyle(MintColor.primaryText)
-                    Text("Renews April 15, 2027 · $59.99/yr")
+                    Text("Renews April 15, 2027 · $99.99/yr")
                         .font(.figtree(size: 13, weight: .regular))
                         .foregroundStyle(MintColor.tertiaryText)
                 }
@@ -72,15 +68,15 @@ struct SettingsView: View {
                     .foregroundStyle(.white)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 2)
-                    .background(MintColor.accent)
+                    .background(MintColor.primaryText)
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             }
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Text("Videos this month")
+                    Text("Edits used today")
                     Spacer()
-                    Text("7 / 50")
+                    Text("3 / 5")
                         .fontWeight(.semibold)
                         .foregroundStyle(MintColor.primaryText)
                 }
@@ -92,12 +88,23 @@ struct SettingsView: View {
                         Capsule()
                             .fill(Color(red: 0.933, green: 0.933, blue: 0.933))
                         Capsule()
-                            .fill(MintColor.accent)
-                            .frame(width: proxy.size.width * 0.35)
+                            .fill(MintColor.primaryText)
+                            .frame(width: proxy.size.width * 0.60)
                     }
                 }
                 .frame(height: 4)
             }
+
+            HStack {
+                Text("Token balance")
+                Spacer()
+                Text("2")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(MintColor.primaryText)
+            }
+            .font(.figtree(size: 13, weight: .regular))
+            .foregroundStyle(MintColor.secondaryText)
+            .padding(.top, -6)
 
             Button("Manage subscription →") {}
                 .font(.figtree(size: 14, weight: .semibold))
@@ -137,6 +144,7 @@ struct SettingsView: View {
 private struct SettingsRow: View {
     let icon: String
     let title: String
+    var titleColor = MintColor.primaryText
     var subtitle: String?
     var value: String?
 
@@ -150,7 +158,7 @@ private struct SettingsRow: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .font(.figtree(size: 15, weight: .medium))
-                        .foregroundStyle(MintColor.primaryText)
+                        .foregroundStyle(titleColor)
                     if let subtitle {
                         Text(subtitle)
                             .font(.figtree(size: 11, weight: .regular))
