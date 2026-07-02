@@ -72,6 +72,18 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
     }
 
+    func testProcessingRouteMatchesHTMLLoadingScreen() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "processing"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Creating your video"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["AI is working on it..."].exists)
+        XCTAssertTrue(app.staticTexts["Starting..."].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["Processing progress track"].exists)
+    }
+
     private func completeOnboarding(_ app: XCUIApplication) {
         tapButton("Continue", in: app)
         XCTAssertTrue(app.staticTexts["Real example"].waitForExistence(timeout: 5))

@@ -41,6 +41,9 @@ struct ProcessingView: View {
             }
             .frame(width: 200, height: 4)
             .padding(.top, 24)
+            .accessibilityElement(children: .ignore)
+            .accessibilityIdentifier("Processing progress track")
+            .accessibilityLabel("Processing progress")
 
             Text(stage)
                 .font(.figtree(size: 12, weight: .regular))
