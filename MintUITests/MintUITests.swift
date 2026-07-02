@@ -92,6 +92,39 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
     }
 
+    func testHomeRouteMatchesHTMLGalleryCopy() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "home"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Mint"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Your edits"].exists)
+        XCTAssertTrue(app.staticTexts["Stateful AI edits live here."].exists)
+        XCTAssertTrue(app.staticTexts["Views"].exists)
+        XCTAssertFalse(app.staticTexts["Stateful AI edits live here. Start with a clip, then refine."].exists)
+        XCTAssertFalse(app.staticTexts["Total views"].exists)
+        XCTAssertTrue(app.buttons["Edit mode"].exists)
+        XCTAssertTrue(app.buttons["Generate mode"].exists)
+        XCTAssertTrue(app.buttons["All"].exists)
+        XCTAssertTrue(app.buttons["Edited"].exists)
+        XCTAssertTrue(app.buttons["Generated"].exists)
+        XCTAssertTrue(app.buttons["Favorites"].exists)
+        XCTAssertTrue(app.staticTexts["New edit"].exists)
+        XCTAssertTrue(app.staticTexts["Mirror Ripple"].exists)
+        XCTAssertTrue(app.staticTexts["Neon Tokyo"].exists)
+        XCTAssertTrue(app.staticTexts["Beach Grade"].exists)
+        XCTAssertTrue(app.staticTexts["Stargazing"].exists)
+        XCTAssertTrue(app.staticTexts["Cherry Blossom"].exists)
+        XCTAssertTrue(app.staticTexts["City Lights"].exists)
+        XCTAssertTrue(app.staticTexts["Today"].exists)
+        XCTAssertFalse(app.staticTexts["Mirror Ripple Edit"].exists)
+        XCTAssertFalse(app.staticTexts["Neon Tokyo Cityscape"].exists)
+        XCTAssertFalse(app.staticTexts["Beach Memories"].exists)
+        XCTAssertFalse(app.staticTexts["Today · 234 views"].exists)
+        XCTAssertFalse(app.staticTexts["✂️ 4 stateful edits"].exists)
+    }
+
     func testPaywallRouteMatchesHTMLPlansAndTrialCopy() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST_MOCK_GEMINI"]

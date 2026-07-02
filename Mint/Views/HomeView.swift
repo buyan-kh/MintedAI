@@ -9,12 +9,12 @@ struct HomeView: View {
     @State private var selectedFilter = GalleryFilter.all
 
     private let items: [GalleryItem] = [
-        .init(emoji: "🎬", title: "Mirror Ripple Edit", date: "Today", duration: "0:08", mode: .edit, edits: 4, views: 234, hue: 212),
-        .init(emoji: "🌆", title: "Neon Tokyo Cityscape", date: "Today", duration: "0:12", mode: .generate, edits: nil, views: 89, hue: 42),
-        .init(emoji: "🏖️", title: "Beach Memories", date: "Yesterday", duration: "0:15", mode: .edit, edits: 2, views: 156, hue: 176),
-        .init(emoji: "🌟", title: "Stargazing Reframe", date: "2 days ago", duration: "0:18", mode: .edit, edits: 6, views: 412, hue: 284),
-        .init(emoji: "🌸", title: "Cherry Blossom Anime", date: "3 days ago", duration: "0:10", mode: .generate, edits: nil, views: 67, hue: 338),
-        .init(emoji: "🌃", title: "City Lights Grade", date: "4 days ago", duration: "0:14", mode: .edit, edits: 3, views: 198, hue: 246)
+        .init(emoji: "🎬", title: "Mirror Ripple", date: "Today", duration: "0:08", mode: .edit, edits: 4, views: 234, hue: 212),
+        .init(emoji: "🌆", title: "Neon Tokyo", date: "Today", duration: "0:12", mode: .generate, edits: nil, views: 89, hue: 42),
+        .init(emoji: "🏖️", title: "Beach Grade", date: "Yesterday", duration: "0:15", mode: .edit, edits: 2, views: 156, hue: 176),
+        .init(emoji: "🌟", title: "Stargazing", date: "2 days ago", duration: "0:18", mode: .edit, edits: 6, views: 412, hue: 284),
+        .init(emoji: "🌸", title: "Cherry Blossom", date: "3 days ago", duration: "0:10", mode: .generate, edits: nil, views: 67, hue: 338),
+        .init(emoji: "🌃", title: "City Lights", date: "4 days ago", duration: "0:14", mode: .edit, edits: 3, views: 198, hue: 246)
     ]
 
     private var visibleItems: [GalleryItem] {
@@ -144,7 +144,7 @@ struct HomeView: View {
                 Text(selectedMode == .edit ? "Your edits" : "Generated")
                     .font(.figtree(size: 22, weight: .bold))
                     .foregroundStyle(MintColor.primaryText)
-                Text(selectedMode == .edit ? "Stateful AI edits live here. Start with a clip, then refine." : "Text-to-video. Describe a scene, AI creates it.")
+                Text(selectedMode == .edit ? "Stateful AI edits live here." : "Text-to-video. Describe a scene, AI creates it.")
                     .font(.figtree(size: 14, weight: .regular))
                     .lineSpacing(2)
                     .foregroundStyle(MintColor.tertiaryText)
@@ -153,7 +153,7 @@ struct HomeView: View {
             HStack(spacing: 12) {
                 stat(value: "23", label: "Videos")
                 stat(value: "12", label: "This month")
-                stat(value: "4.8K", label: "Total views")
+                stat(value: "4.8K", label: "Views")
             }
         }
     }
@@ -218,7 +218,7 @@ private struct GalleryCard: View {
                     .font(.system(size: 40))
                 VStack {
                     HStack {
-                        Text(item.mode == .edit ? "✂️ Edit" : "✨ Gen")
+                        Text(item.mode == .edit ? "✂️" : "✨")
                             .font(.figtree(size: 8, weight: .bold))
                             .tracking(0.3)
                             .textCase(.uppercase)
@@ -259,16 +259,10 @@ private struct GalleryCard: View {
                     .font(.figtree(size: 12, weight: .medium))
                     .lineLimit(1)
                     .foregroundStyle(MintColor.primaryText)
-                Text("\(item.date) · \(item.views) views")
+                Text(item.date)
                     .font(.figtree(size: 10, weight: .regular))
                     .foregroundStyle(MintColor.tertiaryText)
                     .padding(.top, 1)
-                if let edits = item.edits {
-                    Text("✂️ \(edits) stateful edits")
-                        .font(.figtree(size: 9, weight: .medium))
-                        .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
-                        .padding(.top, 2)
-                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 10)
