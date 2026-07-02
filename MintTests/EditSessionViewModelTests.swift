@@ -40,6 +40,27 @@ final class EditSessionViewModelTests: XCTestCase {
         XCTAssertEqual(session?.turns[1].previousInteractionID, "interactions/first")
         XCTAssertEqual(session?.turns[1].interactionID, "interactions/second")
     }
+
+    func testRevertToVersionKeepsRequestedHistoryAndReturnsRemovedCount() async throws {
+        let fileService = MockGeminiFileService()
+        let omni = MockOmniInteractionService()
+        let store = VideoEditSessionStore(directory: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString))
+        let viewModel = await EditSessionViewModel(fileService: fileService, omniService: omni, store: store)
+
+        await viewModel.startSession(sourceVideoURL: URL(fileURLWithPath: "/tmp/source.mov"))
+        await viewModel.submitPrompt("First prompt")
+        await viewModel.submitPrompt("Second prompt")
+        await viewModel.submitPrompt("Third prompt")
+
+        let removed = await viewModel.revertToVersion(1)
+
+        let session = await viewModel.session
+        let lastFollowUpPreviousID = await omni.followUpPreviousID
+        XCTAssertEqual(removed, 2)
+        XCTAssertEqual(session?.turns.count, 1)
+        XCTAssertEqual(session?.turns.first?.prompt, "First prompt")
+        XCTAssertEqual(lastFollowUpPreviousID, "interactions/second")
+    }
 }
 
 private actor MockGeminiFileService: GeminiFileServicing {

@@ -120,6 +120,20 @@ final class EditSessionViewModel {
         errorMessage = nil
     }
 
+    @discardableResult
+    func revertToVersion(_ version: Int) -> Int {
+        guard var currentSession = session else { return 0 }
+        let clampedVersion = min(max(version, 0), currentSession.turns.count)
+        let removedCount = currentSession.turns.count - clampedVersion
+        guard removedCount > 0 else { return 0 }
+        currentSession.turns.removeLast(removedCount)
+        currentSession.updatedAt = Date()
+        session = currentSession
+        stage = "Ready"
+        errorMessage = nil
+        return removedCount
+    }
+
     private func updateLastTurn(_ turn: VideoEditTurn, in currentSession: inout VideoEditSession) {
         guard currentSession.turns.isEmpty == false else { return }
         currentSession.turns[currentSession.turns.count - 1] = turn

@@ -49,7 +49,7 @@ struct HomeView: View {
                         if visibleItems.isEmpty {
                             EmptyGalleryState(
                                 title: "No videos yet",
-                                message: "Create your first AI video to fill this gallery."
+                                message: "Create your first video — pick a clip and describe an edit, or generate from scratch."
                             )
                             .padding(.horizontal, 20)
                             .padding(.top, 32)

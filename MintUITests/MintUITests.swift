@@ -66,18 +66,25 @@ final class MintUITests: XCTestCase {
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")
         app.buttons["Edit video"].tap()
 
+        XCTAssertFalse(app.staticTexts["Creating your video"].waitForExistence(timeout: 1))
         XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["v1"].exists)
         XCTAssertTrue(app.staticTexts["1 edits"].exists)
-        XCTAssertTrue(app.buttons["v1"].exists)
+        let firstVersionButton = app.buttons["v1"]
+        XCTAssertTrue(firstVersionButton.exists)
         XCTAssertTrue(app.buttons["Undo"].exists)
         XCTAssertTrue(app.buttons["Export video"].exists)
         XCTAssertFalse(app.staticTexts["Saved to Mint"].exists)
         XCTAssertFalse(app.textFields["Follow-up prompt"].exists)
         XCTAssertFalse(app.buttons["Refine"].exists)
 
-        app.buttons["v1"].tap()
-        XCTAssertTrue(app.staticTexts["Revert to v1"].waitForExistence(timeout: 2))
+        let versionDeadline = Date().addingTimeInterval(5)
+        while firstVersionButton.isEnabled == false, Date() < versionDeadline {
+            RunLoop.current.run(until: Date().addingTimeInterval(0.05))
+        }
+        XCTAssertTrue(firstVersionButton.isEnabled)
+        firstVersionButton.tap()
+        XCTAssertTrue(app.staticTexts["Reverted to v1"].waitForExistence(timeout: 2))
 
         app.buttons["Undo"].tap()
         XCTAssertTrue(app.staticTexts["↩ Undid v1 — token restored"].waitForExistence(timeout: 2))
@@ -89,7 +96,13 @@ final class MintUITests: XCTestCase {
         app.textViews.firstMatch.typeText("Make it glow softly.")
         app.buttons["Edit video"].tap()
         XCTAssertTrue(app.staticTexts["v1"].waitForExistence(timeout: 10))
-        app.buttons["Export video"].tap()
+        let exportButton = app.buttons["Export video"]
+        let exportDeadline = Date().addingTimeInterval(8)
+        while exportButton.isEnabled == false, Date() < exportDeadline {
+            RunLoop.current.run(until: Date().addingTimeInterval(0.05))
+        }
+        XCTAssertTrue(exportButton.isEnabled)
+        exportButton.tap()
 
         XCTAssertTrue(app.staticTexts["Saved to Photos"].waitForExistence(timeout: 5))
     }
@@ -208,7 +221,8 @@ final class MintUITests: XCTestCase {
         app.textViews.firstMatch.typeText("A polished launch video.")
         app.buttons["Generate"].tap()
 
-        XCTAssertTrue(app.staticTexts["Need more edits?"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["Out of daily edits"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["You've used all 8 today. Grab a pack to keep going."].exists)
         XCTAssertTrue(app.buttons["10 edits"].exists)
         XCTAssertTrue(app.buttons["50 edits"].exists)
         XCTAssertTrue(app.buttons["200 edits"].exists)

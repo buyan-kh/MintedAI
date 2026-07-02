@@ -67,6 +67,9 @@ struct RootView: View {
                             submit(prompt)
                         },
                         onUndo: editSessionViewModel.undoLastEdit,
+                        onRevert: { version in
+                            revertToVersion(version)
+                        },
                         onOutOfTokens: { isBuyTokensPresented = true },
                         onToast: showToast,
                         onExport: { appViewModel.route = .success }
@@ -130,17 +133,24 @@ struct RootView: View {
     }
 
     private func submit(_ prompt: String) {
-        processingTitle = "Creating your video"
-        processingMessage = "AI is working on it..."
-        processingStage = "Starting..."
-        appViewModel.route = .processing
         Task {
             await editSessionViewModel.submitPrompt(prompt)
             if editSessionViewModel.errorMessage != nil {
                 tokenLedger.restoreDailyToken()
             }
-            appViewModel.route = .prompt
         }
+    }
+
+    private func revertToVersion(_ version: Int) {
+        let removedCount = editSessionViewModel.revertToVersion(version)
+        guard removedCount > 0 else {
+            showToast("Reverted to v\(version)")
+            return
+        }
+        for _ in 0..<removedCount {
+            tokenLedger.restoreDailyToken()
+        }
+        showToast("Reverted to v\(version)")
     }
 
     private func submitGeneration(_ prompt: String) {
@@ -207,12 +217,12 @@ private struct BuyTokensOverlay: View {
                     .padding(.top, 10)
                     .padding(.bottom, 16)
 
-                Text("Need more edits?")
+                Text("Out of daily edits")
                     .font(.figtree(size: 18, weight: .bold))
                     .foregroundStyle(MintColor.primaryText)
                     .padding(.bottom, 4)
 
-                Text("Buy extra edit tokens to keep creating today.")
+                Text("You've used all 8 today. Grab a pack to keep going.")
                     .font(.figtree(size: 13, weight: .regular))
                     .foregroundStyle(MintColor.tertiaryText)
                     .padding(.bottom, 16)

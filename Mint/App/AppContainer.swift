@@ -57,11 +57,13 @@ private actor MockOmniInteractionService: OmniInteracting {
     private var turnCount = 0
 
     func createFirstEdit(fileURI: String, prompt: String) async throws -> OmniInteractionResponse {
+        try await Task.sleep(nanoseconds: 2_500_000_000)
         turnCount += 1
         return response(id: "mock-interaction-\(turnCount)")
     }
 
     func createFollowUp(previousInteractionID: String, prompt: String) async throws -> OmniInteractionResponse {
+        try await Task.sleep(nanoseconds: 2_500_000_000)
         turnCount += 1
         return response(id: "mock-interaction-\(turnCount)")
     }

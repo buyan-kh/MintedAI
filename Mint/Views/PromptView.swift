@@ -8,6 +8,7 @@ struct PromptView: View {
     let onBack: () -> Void
     let onSubmit: (String) -> Void
     let onUndo: () -> Void
+    let onRevert: (Int) -> Void
     let onOutOfTokens: () -> Void
     let onToast: (String) -> Void
     let onExport: () -> Void
@@ -79,7 +80,11 @@ struct PromptView: View {
     }
 
     private var canSend: Bool {
-        prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false
+        viewModel.isProcessing == false && prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false
+    }
+
+    private var statusLabel: String {
+        viewModel.isProcessing ? "Editing v\(max(editCount, 1))..." : "Ready"
     }
 
     private var editorPreview: some View {
@@ -128,9 +133,10 @@ struct PromptView: View {
     private var statusTag: some View {
         HStack(spacing: 4) {
             Circle()
-                .fill(MintColor.success)
+                .fill(viewModel.isProcessing ? Color(red: 0.867, green: 0.867, blue: 0.867) : MintColor.success)
                 .frame(width: 5, height: 5)
-            Text("Ready")
+            Text(statusLabel)
+                .accessibilityIdentifier("Editor status")
             Text("·")
                 .foregroundStyle(MintColor.border)
                 .padding(.horizontal, 4)
@@ -158,7 +164,7 @@ struct PromptView: View {
                 HStack(spacing: 4) {
                     ForEach(1...editCount, id: \.self) { version in
                         Button {
-                            onToast("Revert to v\(version)")
+                            onRevert(version)
                         } label: {
                             Text("v\(version)")
                                 .font(.figtree(size: 9, weight: .semibold))
@@ -168,6 +174,7 @@ struct PromptView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
                         }
                         .buttonStyle(.plain)
+                        .disabled(viewModel.isProcessing)
                         .accessibilityLabel("v\(version)")
                     }
                 }
@@ -181,9 +188,10 @@ struct PromptView: View {
                 .font(.mintBody)
                 .scrollContentBackground(.hidden)
                 .frame(minHeight: 100)
+                .disabled(viewModel.isProcessing)
                 .overlay(alignment: .topLeading) {
                     if prompt.isEmpty {
-                        Text("Describe your edit — e.g. \"When I touch the mirror, make it ripple like liquid\"")
+                        Text(viewModel.isProcessing ? "Editing..." : "Describe your edit — e.g. \"When I touch the mirror, make it ripple like liquid\"")
                             .font(.mintBody)
                             .foregroundStyle(MintColor.placeholderText)
                             .padding(.top, 8)
@@ -222,9 +230,11 @@ struct PromptView: View {
                     onOutOfTokens()
                     return
                 }
-                onSubmit(prompt)
+                let submittedPrompt = prompt
+                prompt = ""
+                onSubmit(submittedPrompt)
             } label: {
-                Text("✂️ Edit video")
+                Text(viewModel.isProcessing ? "⏳ Editing..." : "✂️ Edit video")
                     .font(.figtree(size: 17, weight: .semibold))
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
@@ -233,6 +243,7 @@ struct PromptView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
             .buttonStyle(.plain)
+            .disabled(viewModel.isProcessing)
             .accessibilityLabel("Edit video")
 
             if editCount > 0 {
@@ -247,6 +258,7 @@ struct PromptView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     .buttonStyle(.plain)
+                    .disabled(viewModel.isProcessing)
                     .accessibilityLabel("Undo")
 
                     Button(action: onExport) {
@@ -259,6 +271,7 @@ struct PromptView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     .buttonStyle(.plain)
+                    .disabled(viewModel.isProcessing)
                     .accessibilityLabel("Export video")
                 }
                 .padding(.top, 2)
