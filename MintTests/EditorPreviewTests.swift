@@ -13,4 +13,17 @@ final class EditorPreviewTests: XCTestCase {
         )
         XCTAssertTrue(source.contains("EditorVideoPreview"))
     }
+
+    func testPaywallSelectedPlanUsesHTMLBlackInsteadOfAccent() throws {
+        let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let paywallURL = projectDirectory.appendingPathComponent("Mint/Views/PaywallInviteView.swift")
+        let source = try String(contentsOf: paywallURL, encoding: .utf8)
+
+        XCTAssertFalse(source.contains("selectedPlan == name || isPopular ? MintColor.accent"))
+        XCTAssertFalse(source.contains(".background(MintColor.accent)"))
+        XCTAssertFalse(source.contains("isSelected ? MintColor.accent"))
+        XCTAssertFalse(source.contains(".fill(MintColor.accent)"))
+        XCTAssertTrue(source.contains("htmlSelectedPlanColor"))
+    }
 }

@@ -4,6 +4,7 @@ struct PaywallInviteView: View {
     let onContinue: () -> Void
     @State private var selectedPlan = "Annual"
     @State private var trialEnabled = true
+    private let htmlSelectedPlanColor = Color(red: 0.067, green: 0.067, blue: 0.067)
 
     var body: some View {
         VStack(spacing: 0) {
@@ -165,7 +166,7 @@ struct PaywallInviteView: View {
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(selectedPlan == name || isPopular ? MintColor.accent : MintColor.border, lineWidth: 1.5)
+                    .stroke(selectedPlan == name || isPopular ? htmlSelectedPlanColor : MintColor.border, lineWidth: 1.5)
             }
             .overlay(alignment: .top) {
                 if isPopular {
@@ -175,7 +176,7 @@ struct PaywallInviteView: View {
                         .foregroundStyle(.white)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 2)
-                        .background(MintColor.accent)
+                        .background(htmlSelectedPlanColor)
                         .clipShape(Capsule())
                         .offset(y: -8)
                 }
@@ -188,15 +189,16 @@ struct PaywallInviteView: View {
 
 private struct RadioMark: View {
     let isSelected: Bool
+    private let htmlSelectedPlanColor = Color(red: 0.067, green: 0.067, blue: 0.067)
 
     var body: some View {
         Circle()
-            .stroke(isSelected ? MintColor.accent : Color(red: 0.867, green: 0.867, blue: 0.867), lineWidth: 2)
+            .stroke(isSelected ? htmlSelectedPlanColor : Color(red: 0.867, green: 0.867, blue: 0.867), lineWidth: 2)
             .frame(width: 20, height: 20)
             .overlay {
                 if isSelected {
                     Circle()
-                        .fill(MintColor.accent)
+                        .fill(htmlSelectedPlanColor)
                         .padding(3)
                 }
             }
