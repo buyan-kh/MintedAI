@@ -85,14 +85,6 @@ struct RootView: View {
                         onHome: appViewModel.enterHome,
                         onGenerateAnother: appViewModel.startGenerate
                     )
-                case .result:
-                    ResultView(
-                        viewModel: editSessionViewModel,
-                        onHome: appViewModel.enterHome,
-                        onRefine: { prompt in
-                            submit(prompt)
-                        }
-                    )
                 case .settings:
                     SettingsView(tokenLedger: tokenLedger, onBack: appViewModel.enterHome)
                 }

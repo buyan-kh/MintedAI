@@ -7,6 +7,5 @@ enum AppRoute: Equatable {
     case prompt
     case processing
     case success
-    case result
     case settings
 }

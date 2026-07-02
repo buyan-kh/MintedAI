@@ -40,6 +40,24 @@ final class EditorPreviewTests: XCTestCase {
         XCTAssertFalse(source.contains(".font(.system(size: 16, weight: .medium))"))
     }
 
+    func testLegacyResultRouteIsNotPartOfNativeHTMLFlow() throws {
+        let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let routeSource = try String(
+            contentsOf: projectDirectory.appendingPathComponent("Mint/App/AppRoute.swift"),
+            encoding: .utf8
+        )
+        let rootSource = try String(
+            contentsOf: projectDirectory.appendingPathComponent("Mint/Views/RootView.swift"),
+            encoding: .utf8
+        )
+        let resultViewURL = projectDirectory.appendingPathComponent("Mint/Views/ResultView.swift")
+
+        XCTAssertFalse(routeSource.contains("case result"))
+        XCTAssertFalse(rootSource.contains("ResultView("))
+        XCTAssertFalse(FileManager.default.fileExists(atPath: resultViewURL.path))
+    }
+
     func testGenerateBottomTokenCounterMatchesHTMLSplitStyling() throws {
         let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
         let projectDirectory = testsDirectory.deletingLastPathComponent()
