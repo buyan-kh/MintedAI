@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     let onCreateGenerate: () -> Void
     let onCreateEdit: () -> Void
+    let onSettings: () -> Void
 
     @State private var selectedMode = GalleryMode.edit
     @State private var selectedFilter = GalleryFilter.all
@@ -94,7 +95,7 @@ struct HomeView: View {
                 .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
                 .offset(x: -4)
             Spacer()
-            Button(action: {}) {
+            Button(action: onSettings) {
                 Text("⚙︎")
                     .font(.system(size: 20, weight: .regular))
                     .foregroundStyle(MintColor.primaryText.opacity(0.4))
@@ -323,5 +324,5 @@ private enum GalleryFilter: CaseIterable, Identifiable {
 }
 
 #Preview {
-    HomeView(onCreateGenerate: {}, onCreateEdit: {})
+    HomeView(onCreateGenerate: {}, onCreateEdit: {}, onSettings: {})
 }

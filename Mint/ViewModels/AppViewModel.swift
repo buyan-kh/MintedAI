@@ -19,6 +19,8 @@ final class AppViewModel {
             route = .processing
         case "success":
             route = .success
+        case "settings":
+            route = .settings
         default:
             route = .onboarding
         }
@@ -46,5 +48,9 @@ final class AppViewModel {
 
     func startEdit() {
         route = .picker
+    }
+
+    func openSettings() {
+        route = .settings
     }
 }

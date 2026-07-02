@@ -48,6 +48,21 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Make the arm reflective too."].waitForExistence(timeout: 10))
     }
 
+    func testSettingsGearOpensNativeSettingsScreen() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "home"
+        app.launch()
+
+        app.buttons["Settings"].tap()
+
+        XCTAssertTrue(app.staticTexts["Settings"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Mint Pro Annual"].exists)
+        XCTAssertTrue(app.staticTexts["Videos this month"].exists)
+        XCTAssertTrue(app.staticTexts["Default export quality"].exists)
+        XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
+    }
+
     private func completeOnboarding(_ app: XCUIApplication) {
         tapButton("Continue", in: app)
         XCTAssertTrue(app.staticTexts["Real example"].waitForExistence(timeout: 5))

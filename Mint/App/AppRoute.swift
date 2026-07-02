@@ -8,4 +8,5 @@ enum AppRoute: Equatable {
     case processing
     case success
     case result
+    case settings
 }

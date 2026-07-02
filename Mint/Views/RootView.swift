@@ -29,7 +29,8 @@ struct RootView: View {
             case .home:
                 HomeView(
                     onCreateGenerate: appViewModel.startGenerate,
-                    onCreateEdit: appViewModel.startEdit
+                    onCreateEdit: appViewModel.startEdit,
+                    onSettings: appViewModel.openSettings
                 )
             case .generate:
                 GenerateView(
@@ -74,6 +75,8 @@ struct RootView: View {
                         submit(prompt)
                     }
                 )
+            case .settings:
+                SettingsView(onBack: appViewModel.enterHome)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
