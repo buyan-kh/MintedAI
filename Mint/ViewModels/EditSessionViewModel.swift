@@ -111,6 +111,15 @@ final class EditSessionViewModel {
         isProcessing = false
     }
 
+    func undoLastEdit() {
+        guard var currentSession = session, currentSession.turns.isEmpty == false else { return }
+        currentSession.turns.removeLast()
+        currentSession.updatedAt = Date()
+        session = currentSession
+        stage = "Ready"
+        errorMessage = nil
+    }
+
     private func updateLastTurn(_ turn: VideoEditTurn, in currentSession: inout VideoEditSession) {
         guard currentSession.turns.isEmpty == false else { return }
         currentSession.turns[currentSession.turns.count - 1] = turn

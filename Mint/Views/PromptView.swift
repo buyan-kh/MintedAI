@@ -6,6 +6,8 @@ struct PromptView: View {
     @Bindable var viewModel: EditSessionViewModel
     let onBack: () -> Void
     let onSubmit: (String) -> Void
+    let onUndo: () -> Void
+    let onExport: () -> Void
 
     @State private var prompt = ""
 
@@ -214,6 +216,35 @@ struct PromptView: View {
             .disabled(canSend == false)
             .buttonStyle(.plain)
             .accessibilityLabel("Edit video")
+
+            if editCount > 0 {
+                HStack(spacing: 8) {
+                    Button(action: onUndo) {
+                        Text("↩ Undo")
+                            .font(.figtree(size: 14, weight: .semibold))
+                            .foregroundStyle(MintColor.primaryText)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(MintColor.surfaceHover)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Undo")
+
+                    Button(action: onExport) {
+                        Text("Export video")
+                            .font(.figtree(size: 14, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(MintColor.primaryText)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Export video")
+                }
+                .padding(.top, 2)
+            }
         }
         .padding(.horizontal, 20)
         .padding(.top, 8)

@@ -35,7 +35,7 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Saved to Photos"].waitForExistence(timeout: 10))
     }
 
-    func testMockedHappyPathShowsResultAndFollowUp() {
+    func testMockedEditFlowStaysInEditorAndExportsLikeHTML() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST_MOCK_GEMINI"]
         app.launch()
@@ -65,13 +65,18 @@ final class MintUITests: XCTestCase {
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")
         app.buttons["Edit video"].tap()
 
-        XCTAssertTrue(app.staticTexts["Saved to Mint"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["v1"].exists)
+        XCTAssertTrue(app.staticTexts["1 edits"].exists)
+        XCTAssertTrue(app.buttons["Undo"].exists)
+        XCTAssertTrue(app.buttons["Export video"].exists)
+        XCTAssertFalse(app.staticTexts["Saved to Mint"].exists)
+        XCTAssertFalse(app.textFields["Follow-up prompt"].exists)
+        XCTAssertFalse(app.buttons["Refine"].exists)
 
-        app.textFields["Follow-up prompt"].tap()
-        app.textFields["Follow-up prompt"].typeText("Make the arm reflective too.")
-        app.buttons["Refine"].tap()
+        app.buttons["Export video"].tap()
 
-        XCTAssertTrue(app.staticTexts["Make the arm reflective too."].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Saved to Photos"].waitForExistence(timeout: 5))
     }
 
     func testSettingsGearOpensNativeSettingsScreen() {

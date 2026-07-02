@@ -54,7 +54,9 @@ struct RootView: View {
                     onBack: { appViewModel.route = .picker },
                     onSubmit: { prompt in
                         submit(prompt)
-                    }
+                    },
+                    onUndo: editSessionViewModel.undoLastEdit,
+                    onExport: { appViewModel.route = .success }
                 )
             case .processing:
                 ProcessingView(
@@ -91,7 +93,7 @@ struct RootView: View {
         appViewModel.route = .processing
         Task {
             await editSessionViewModel.submitPrompt(prompt)
-            appViewModel.route = editSessionViewModel.errorMessage == nil ? .result : .prompt
+            appViewModel.route = .prompt
         }
     }
 
