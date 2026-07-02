@@ -16,8 +16,8 @@ struct VideoPickerView: View {
     var body: some View {
         VStack(spacing: 0) {
             MintTopBar(title: "Photos") {
-                Button("Back", action: onBack)
-                    .font(.system(size: 16, weight: .medium))
+                Button("← Back", action: onBack)
+                    .font(.figtree(size: 16, weight: .medium))
                     .foregroundStyle(MintColor.primaryText)
                     .buttonStyle(.plain)
             } trailing: {

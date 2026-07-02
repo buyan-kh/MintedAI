@@ -26,4 +26,16 @@ final class EditorPreviewTests: XCTestCase {
         XCTAssertFalse(source.contains(".fill(MintColor.accent)"))
         XCTAssertTrue(source.contains("htmlSelectedPlanColor"))
     }
+
+    func testPhotosPickerBackButtonMatchesHTMLTopBar() throws {
+        let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let pickerURL = projectDirectory.appendingPathComponent("Mint/Views/VideoPickerView.swift")
+        let source = try String(contentsOf: pickerURL, encoding: .utf8)
+
+        XCTAssertTrue(source.contains("Button(\"← Back\""))
+        XCTAssertTrue(source.contains(".font(.figtree(size: 16, weight: .medium))"))
+        XCTAssertFalse(source.contains("Button(\"Back\""))
+        XCTAssertFalse(source.contains(".font(.system(size: 16, weight: .medium))"))
+    }
 }
