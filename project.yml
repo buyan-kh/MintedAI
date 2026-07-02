@@ -17,7 +17,8 @@ targets:
     platform: iOS
     sources:
       - Mint
-    resources: []
+    resources:
+      - Mint/Resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mintedai.Mint

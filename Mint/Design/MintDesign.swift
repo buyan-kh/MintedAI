@@ -39,15 +39,19 @@ enum MintSpacing {
 }
 
 extension Font {
-    static var mintTitle: Font { .system(size: 26, weight: .bold) }
-    static var mintOnboardingTitle: Font { .system(size: 28, weight: .bold) }
-    static var mintSection: Font { .system(size: 20, weight: .bold) }
-    static var mintCardTitle: Font { .system(size: 18, weight: .bold) }
-    static var mintBody: Font { .system(size: 15, weight: .medium) }
-    static var mintBodyRegular: Font { .system(size: 15, weight: .regular) }
-    static var mintSmall: Font { .system(size: 13, weight: .medium) }
-    static var mintTiny: Font { .system(size: 11, weight: .medium) }
-    static var mintStatus: Font { .system(size: 12, weight: .semibold) }
+    static func figtree(size: CGFloat, weight: Font.Weight = .medium) -> Font {
+        .custom("Figtree", size: size).weight(weight)
+    }
+
+    static var mintTitle: Font { .figtree(size: 26, weight: .bold) }
+    static var mintOnboardingTitle: Font { .figtree(size: 28, weight: .bold) }
+    static var mintSection: Font { .figtree(size: 20, weight: .bold) }
+    static var mintCardTitle: Font { .figtree(size: 18, weight: .bold) }
+    static var mintBody: Font { .figtree(size: 15, weight: .medium) }
+    static var mintBodyRegular: Font { .figtree(size: 15, weight: .regular) }
+    static var mintSmall: Font { .figtree(size: 13, weight: .medium) }
+    static var mintTiny: Font { .figtree(size: 11, weight: .medium) }
+    static var mintStatus: Font { .figtree(size: 12, weight: .semibold) }
 }
 
 extension View {

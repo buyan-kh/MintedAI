@@ -14,7 +14,7 @@ struct MintPrimaryButton: View {
                         .font(.system(size: 16, weight: .semibold))
                 }
                 Text(title)
-                    .font(.system(size: 17, weight: .semibold))
+                    .font(.figtree(size: 17, weight: .semibold))
             }
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)

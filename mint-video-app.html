@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-<title>Mint — AI Video Studio</title>
+<title>Mint — AI Video Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -57,9 +57,10 @@
     width:100%;padding:16px;border-radius:14px;
     background:#111;color:#fff;border:none;
     font-size:17px;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:transform .15s
+    cursor:pointer;transition:transform .15s,opacity .15s
   }
   .btn-primary:active{transform:scale(.97)}
+  .btn-primary.small{padding:12px 20px;width:auto;font-size:15px}
 
   /* ═══ ONBOARDING ═══ */
   .onboarding{height:100%;display:flex;flex-direction:column;background:#fff}
@@ -73,7 +74,7 @@
   }
   .onboarding .slide.active{opacity:1;transform:translateX(0);pointer-events:all}
   .onboarding .slide .e{font-size:72px;margin-bottom:24px}
-  .onboarding .slide h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:12px;color:#111}
+  .onboarding .slide h1{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:10px;color:#111}
   .onboarding .slide p{font-size:16px;line-height:1.5;color:#666;max-width:300px;font-weight:400}
   .onboarding .slide .fl{text-align:left;margin-top:20px;width:100%;max-width:280px}
   .onboarding .slide .fl .fi{
@@ -81,7 +82,16 @@
     border-bottom:1px solid #f0f0f0;font-size:15px;color:#333;font-weight:500
   }
   .onboarding .slide .fl .fi:last-child{border:none}
-  .onboarding .slide .fl .fi .ic{font-size:16px;width:24px;text-align:center;flex-shrink:0}
+  .onboarding .slide .fl .fi .ck{
+    width:22px;height:22px;border-radius:50%;background:#111;color:#fff;
+    font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0
+  }
+  .onboarding .slide .badge{
+    display:inline-block;margin-top:14px;
+    padding:4px 12px;border-radius:20px;
+    background:#f0edff;color:#6c5ce7;font-size:11px;font-weight:600;
+    letter-spacing:.3px
+  }
   .onboarding .dots{display:flex;justify-content:center;gap:6px;padding:24px 0 16px}
   .onboarding .dots span{width:6px;height:6px;border-radius:3px;background:#ddd;transition:all .3s;cursor:pointer}
   .onboarding .dots span.active{width:24px;background:#111}
@@ -96,6 +106,7 @@
   .paywall .top p{font-size:15px;color:#666;font-weight:400;line-height:1.4}
   .paywall .top .tbadge{display:inline-block;margin-top:12px;padding:4px 14px;border-radius:20px;background:#e8f5e9;color:#2e7d32;font-size:13px;font-weight:600}
   .paywall .cards{flex:1;padding:20px 24px 0;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+  .paywall .cards::-webkit-scrollbar{display:none}
   .paywall .pc{border:1.5px solid #e8e8ed;border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative}
   .paywall .pc.pop{border-color:#111;background:#fafafa}
   .paywall .pc.pop .pbadge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);padding:2px 14px;border-radius:12px;background:#111;color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
@@ -125,12 +136,20 @@
 
   /* ═══ HOME ═══ */
   .home{height:100%;display:flex;flex-direction:column;background:#fff}
+  .home .hero-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 20px;height:52px;flex-shrink:0
+  }
+  .home .hero-bar .logo{font-size:22px;font-weight:800;color:#111;letter-spacing:-.5px}
+  .home .hero-bar .logo span{color:#6c5ce7}
+  .home .hero-bar .settings{font-size:20px;cursor:pointer;opacity:.4;transition:opacity .15s;padding:4px}
+  .home .hero-bar .settings:hover{opacity:1}
   .home .mode-switch{
     display:flex;margin:0 20px 14px;padding:3px;
     background:#f5f5f5;border-radius:10px;flex-shrink:0
   }
   .home .mode-switch .m{
-    flex:1;text-align:center;padding:8px;border-radius:8px;
+    flex:1;text-align:center;padding:10px;border-radius:8px;
     font-size:13px;font-weight:600;color:#888;cursor:pointer;transition:all .2s
   }
   .home .mode-switch .m.sel{background:#fff;color:#111;box-shadow:0 1px 3px rgba(0,0,0,.06)}
@@ -150,7 +169,7 @@
   .home .gallery-grid::-webkit-scrollbar{display:none}
   .home .gallery-card{
     background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s
+    border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s
   }
   .home .gallery-card:active{transform:scale(.97)}
   .home .gallery-card .thumb{
@@ -163,8 +182,8 @@
     font-size:8px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
     padding:2px 6px;border-radius:4px
   }
-  .home .gallery-card .mode-badge.gen{background:rgba(0,0,0,.5);color:#fff}
   .home .gallery-card .mode-badge.edit-mode{background:rgba(108,92,231,.7);color:#fff}
+  .home .gallery-card .mode-badge.gen{background:rgba(0,0,0,.4);color:#fff}
   .home .gallery-card .edit-count{
     position:absolute;top:6px;right:6px;z-index:2;
     font-size:8px;font-weight:600;padding:2px 5px;border-radius:4px;
@@ -183,6 +202,7 @@
   .home .gallery-card .info .tt{font-size:12px;font-weight:500;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .home .gallery-card .info .dt{font-size:10px;color:#888;margin-top:1px;font-weight:400}
   .home .gallery-card .info .edits{font-size:9px;color:#6c5ce7;margin-top:2px;font-weight:500}
+  .home .gallery-card .info .views{font-size:9px;color:#888;margin-top:1px;font-weight:400}
   .home .fab{
     position:absolute;bottom:24px;right:20px;z-index:20;
     width:56px;height:56px;border-radius:50%;
@@ -198,57 +218,32 @@
     pointer-events:none;white-space:nowrap
   }
 
-  /* ═══ GENERATE: prompt → generated ═══ */
+  /* ═══ GENERATE ═══ */
   .generate{height:100%;display:flex;flex-direction:column;background:#fff}
   .generate .gen-area{
     flex:1;display:flex;flex-direction:column;
     padding:0 20px;justify-content:center
   }
-  .generate .gen-area .hero-icon{
-    font-size:56px;margin-bottom:16px;text-align:center
-  }
+  .generate .gen-area .hero-icon{font-size:56px;margin-bottom:16px;text-align:center}
   .generate .gen-area h1{font-size:24px;font-weight:700;color:#111;text-align:center;margin-bottom:6px}
   .generate .gen-area .sub{font-size:14px;color:#888;text-align:center;margin-bottom:20px;font-weight:400;line-height:1.4}
   .generate .gen-area .prompt-box{
     background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:14px;padding:16px;display:flex;flex-direction:column;
-    min-height:160px
+    border-radius:14px;padding:16px;display:flex;flex-direction:column;min-height:160px
   }
   .generate .gen-area .prompt-box textarea{
     flex:1;resize:none;background:transparent;border:none;outline:none;
-    color:#111;font-size:15px;line-height:1.6;
-    font-family:'Figtree',sans-serif;font-weight:500
+    color:#111;font-size:15px;line-height:1.6;font-family:'Figtree',sans-serif;font-weight:500
   }
   .generate .gen-area .prompt-box textarea::placeholder{color:#aaa}
-  .generate .gen-area .prompt-box .cc{
-    text-align:right;font-size:10px;color:#bbb;
-    padding-top:8px;border-top:1px solid #e8e8ed;margin-top:8px;font-weight:400
-  }
-  .generate .gen-area .suggestions{
-    display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;justify-content:center
-  }
-  .generate .gen-area .suggestions .s{
-    padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;
-    background:#f5f5f5;border:1px solid #e8e8ed;
-    color:#555;cursor:pointer;transition:all .15s
-  }
+  .generate .gen-area .prompt-box .cc{text-align:right;font-size:10px;color:#bbb;padding-top:8px;border-top:1px solid #e8e8ed;margin-top:8px;font-weight:400}
+  .generate .gen-area .suggestions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;justify-content:center}
+  .generate .gen-area .suggestions .s{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;background:#f5f5f5;border:1px solid #e8e8ed;color:#555;cursor:pointer;transition:all .15s}
   .generate .gen-area .suggestions .s:active{background:#eee}
-  .generate .bottom-bar{
-    padding:8px 20px 24px;flex-shrink:0;
-    border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px
-  }
-  .generate .bottom-bar input{
-    flex:1;background:#f5f5f5;border:1px solid #e8e8ed;
-    border-radius:20px;padding:10px 14px;
-    font-size:14px;color:#111;font-family:'Figtree',sans-serif;font-weight:500
-  }
+  .generate .bottom-bar{padding:8px 20px 24px;flex-shrink:0;border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px}
+  .generate .bottom-bar input{flex:1;background:#f5f5f5;border:1px solid #e8e8ed;border-radius:20px;padding:10px 14px;font-size:14px;color:#111;font-family:'Figtree',sans-serif;font-weight:500}
   .generate .bottom-bar input::placeholder{color:#aaa}
-  .generate .bottom-bar .gen-btn{
-    padding:10px 20px;border-radius:20px;
-    background:#111;color:#fff;border:none;
-    font-size:14px;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:transform .15s;white-space:nowrap
-  }
+  .generate .bottom-bar .gen-btn{padding:10px 20px;border-radius:20px;background:#111;color:#fff;border:none;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform .15s;white-space:nowrap}
   .generate .bottom-bar .gen-btn:active{transform:scale(.95)}
 
   /* ═══ PROCESSING ═══ */
@@ -276,79 +271,42 @@
 
   /* ═══ CAMERA ROLL ═══ */
   .camera-roll{height:100%;display:flex;flex-direction:column;background:#fff}
-  .albums{
-    display:flex;gap:8px;padding:8px 20px 12px;flex-shrink:0;
-    overflow-x:auto;border-bottom:1px solid #f0f0f0
-  }
+  .albums{display:flex;gap:8px;padding:8px 20px 12px;flex-shrink:0;overflow-x:auto;border-bottom:1px solid #f0f0f0}
   .albums::-webkit-scrollbar{display:none}
-  .albums .a{
-    padding:5px 14px;border-radius:8px;
-    font-size:13px;font-weight:500;color:#888;
-    background:#f5f5f5;cursor:pointer;white-space:nowrap;transition:all .15s
-  }
+  .albums .a{padding:5px 14px;border-radius:8px;font-size:13px;font-weight:500;color:#888;background:#f5f5f5;cursor:pointer;white-space:nowrap;transition:all .15s}
   .albums .a.sel{background:#111;color:#fff}
-  .photo-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:2px;padding:2px;flex:1;align-content:start;overflow-y:auto
-  }
+  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px;flex:1;align-content:start;overflow-y:auto}
   .photo-grid::-webkit-scrollbar{display:none}
-  .photo-cell{
-    aspect-ratio:1;background:#f5f5f5;
-    position:relative;cursor:pointer;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    font-size:32px
-  }
+  .photo-cell{aspect-ratio:1;background:#f5f5f5;position:relative;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:32px}
   .photo-cell:active{opacity:.7}
-  .photo-cell .dur{
-    position:absolute;bottom:4px;left:4px;z-index:2;
-    font-size:10px;color:#fff;font-weight:600;
-    background:rgba(0,0,0,.5);padding:1px 5px;border-radius:3px
-  }
-  .photo-cell .type{
-    position:absolute;bottom:4px;right:4px;z-index:2;font-size:11px;opacity:.5
-  }
+  .photo-cell .dur{position:absolute;bottom:4px;left:4px;z-index:2;font-size:10px;color:#fff;font-weight:600;background:rgba(0,0,0,.5);padding:1px 5px;border-radius:3px}
+  .photo-cell .type{position:absolute;bottom:4px;right:4px;z-index:2;font-size:11px;opacity:.5}
 
-  /* ═══ STATEFUL EDITOR ═══ */
+  /* ═══ EDITOR ═══ */
   .editor{height:100%;display:flex;flex-direction:column;background:#fff}
+  .editor .hero-tag{
+    text-align:center;padding:6px 0 0;
+    font-size:10px;font-weight:600;color:#6c5ce7;letter-spacing:.4px;
+    text-transform:uppercase;flex-shrink:0
+  }
   .editor .video-preview{
-    margin:0 20px;flex-shrink:0;height:200px;
+    margin:6px 20px 0;flex-shrink:0;height:200px;
     background:#f5f5f5;border-radius:12px;overflow:hidden;
     position:relative;border:1px solid #e8e8ed
   }
   .editor .video-preview canvas{width:100%;height:100%;display:block}
-  .editor .video-preview .overlay{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none
-  }
-  .editor .video-preview .play-center{
-    width:48px;height:48px;border-radius:50%;
-    background:rgba(0,0,0,.4);color:#fff;display:flex;align-items:center;
-    justify-content:center;font-size:18px;backdrop-filter:blur(4px);cursor:pointer
-  }
-  .editor .clip-info{
-    display:flex;align-items:center;gap:10px;margin:8px 20px 0;flex-shrink:0
-  }
+  .editor .video-preview .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .editor .video-preview .play-center{width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;backdrop-filter:blur(4px);cursor:pointer}
+  .editor .clip-info{display:flex;align-items:center;gap:10px;margin:8px 20px 0;flex-shrink:0}
   .editor .clip-info .nm{font-size:13px;font-weight:500;color:#111}
   .editor .clip-info .edits-count{font-size:10px;color:#6c5ce7;font-weight:600}
   .editor .clip-info .chg{font-size:12px;color:#111;font-weight:600;cursor:pointer;margin-left:auto}
-
-  .editor .edit-history{
-    flex:1;margin:8px 20px 0;overflow-y:auto;
-    display:flex;flex-direction:column;gap:6px;padding-right:4px
-  }
+  .editor .edit-history{flex:1;margin:8px 20px 0;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:4px}
   .editor .edit-history::-webkit-scrollbar{display:none}
-  .editor .edit-history .entry{
-    display:flex;gap:10px;padding:10px 12px;
-    background:#f8f8f8;border:1px solid #e8e8ed;
-    border-radius:10px;align-items:flex-start
-  }
-  .editor .edit-history .entry .num{
-    width:20px;height:20px;border-radius:50%;
-    background:#111;color:#fff;font-size:10px;font-weight:700;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px
-  }
+  .editor .edit-history .entry{display:flex;gap:10px;padding:10px 12px;background:#f8f8f8;border:1px solid #e8e8ed;border-radius:10px;align-items:flex-start}
+  .editor .edit-history .entry .num{width:20px;height:20px;border-radius:50%;background:#111;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
   .editor .edit-history .entry .content{flex:1;min-width:0}
   .editor .edit-history .entry .content .prompt-text{font-size:12px;color:#333;line-height:1.4;font-weight:400}
-  .editor .edit-history .entry .content .prompt-text .hl{color:#6c5ce7;font-weight:500}
   .editor .edit-history .entry .content .result{font-size:10px;color:#2e7d32;font-weight:500;margin-top:3px;display:flex;align-items:center;gap:4px}
   .editor .edit-history .entry .content .result .dot{width:4px;height:4px;border-radius:50%;background:#2e7d32}
   .editor .edit-history .entry .status-badge{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:2px 6px;border-radius:4px;flex-shrink:0}
@@ -356,39 +314,15 @@
   .editor .edit-history .entry .status-badge.proc{background:#f0edff;color:#6c5ce7}
   .editor .edit-history .entry.pending{border-color:#ddd;background:#fafafa}
   .editor .edit-history .entry.pending .num{background:#ddd;color:#888}
-
-  .editor .edit-input{
-    padding:8px 20px 8px;flex-shrink:0;
-    border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px
-  }
-  .editor .edit-input input{
-    flex:1;background:#f5f5f5;border:1px solid #e8e8ed;
-    border-radius:20px;padding:10px 14px;
-    font-size:14px;color:#111;font-family:'Figtree',sans-serif;font-weight:500
-  }
+  .editor .edit-input{padding:8px 20px 8px;flex-shrink:0;border-top:1px solid #f0f0f0;display:flex;align-items:center;gap:10px}
+  .editor .edit-input input{flex:1;background:#f5f5f5;border:1px solid #e8e8ed;border-radius:20px;padding:10px 14px;font-size:14px;color:#111;font-family:'Figtree',sans-serif;font-weight:500}
   .editor .edit-input input::placeholder{color:#aaa}
-  .editor .edit-input .send{
-    width:38px;height:38px;border-radius:50%;
-    background:#6c5ce7;border:none;color:#fff;
-    font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-    flex-shrink:0;transition:transform .15s
-  }
+  .editor .edit-input .send{width:38px;height:38px;border-radius:50%;background:#6c5ce7;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
   .editor .edit-input .send:active{transform:scale(.9)}
   .editor .edit-input .send:disabled{opacity:.3}
-
-  .editor .bottom-actions{
-    display:flex;gap:8px;padding:8px 20px 24px;flex-shrink:0
-  }
-  .editor .bottom-actions .btn-ghost{
-    flex:1;padding:12px;border-radius:14px;
-    background:transparent;border:1.5px solid #e8e8ed;color:#111;
-    font-size:14px;font-weight:600;font-family:inherit;cursor:pointer
-  }
-  .editor .bottom-actions .btn-primary{
-    flex:2;padding:12px;border-radius:14px;
-    background:#111;color:#fff;border:none;
-    font-size:14px;font-weight:600;font-family:inherit;cursor:pointer
-  }
+  .editor .bottom-actions{display:flex;gap:8px;padding:8px 20px 24px;flex-shrink:0}
+  .editor .bottom-actions .btn-ghost{flex:1;padding:12px;border-radius:14px;background:transparent;border:1.5px solid #e8e8ed;color:#111;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer}
+  .editor .bottom-actions .btn-primary{flex:2;padding:12px;border-radius:14px;background:#111;color:#fff;border:none;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer}
 
   /* ═══ SETTINGS ═══ */
   .settings{height:100%;display:flex;flex-direction:column;background:#fff}
@@ -438,38 +372,41 @@
 
   <div class="screens" id="appScreens">
 
-    <!-- 0: ONBOARDING -->
+    <!-- SCREEN 0: ONBOARDING -->
     <div class="screen active" data-screen="0">
       <div class="onboarding">
         <div class="carousel" id="ocarousel">
           <div class="slide active">
-            <div class="e">🎬</div>
-            <h1>Two ways to<br>create magic</h1>
-            <p>Generate from scratch or edit existing video — prompt by prompt.</p>
+            <div class="e">✂️</div>
+            <h1>Edit your videos<br>with AI. Naturally.</h1>
+            <p>Not another video generator. Mint lets you take any clip and transform it — prompt by prompt, like talking to your video.</p>
+            <div class="badge">✦ The AI editor, not generator</div>
             <div class="fl">
-              <div class="fi"><span class="ic">✨</span> Generate — text to video, one prompt</div>
-              <div class="fi"><span class="ic">✂️</span> Edit — iterate on your clips, statefully</div>
-              <div class="fi"><span class="ic">✓</span> Export in seconds</div>
+              <div class="fi"><span class="ck">✂️</span> Pick a video, describe the change</div>
+              <div class="fi"><span class="ck">✦</span> Each edit builds on the last — stateful</div>
+              <div class="fi"><span class="ck">↩</span> Undo anything, keep what works</div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="e">🎬</div>
+            <h1>Real example</h1>
+            <p>Start with a selfie. Prompt: "When I touch the mirror, make it ripple like liquid." Done. Then prompt again: "Now make my arm turn reflective." It builds.</p>
+            <div class="badge">✦ Iterative. Not one-shot.</div>
+            <div class="fl">
+              <div class="fi"><span class="ck">1</span> Upload any clip from your camera roll</div>
+              <div class="fi"><span class="ck">2</span> Describe the edit in natural language</div>
+              <div class="fi"><span class="ck">3</span> See it transform. Then refine again.</div>
             </div>
           </div>
           <div class="slide">
             <div class="e">✨</div>
-            <h1>Generate</h1>
-            <p>Type what you want to see. AI generates it from scratch. No video needed.</p>
+            <h1>Also: Generate</h1>
+            <p>Sometimes you want something from nothing. Type a scene — AI generates it. But that's not the main act.</p>
+            <div class="badge">✦ Editing is the hero feature</div>
             <div class="fl">
-              <div class="fi"><span class="ic">✓</span> Cinematic, cyberpunk, anime &amp; more</div>
-              <div class="fi"><span class="ic">✓</span> Any scene, any style</div>
-              <div class="fi"><span class="ic">✓</span> 4K export ready</div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="e">✂️</div>
-            <h1>Stateful Edit</h1>
-            <p>Pick a video. Make an edit. See the result. Make another edit — it builds on the last.</p>
-            <div class="fl">
-              <div class="fi"><span class="ic">✓</span> Sequential prompts that remember context</div>
-              <div class="fi"><span class="ic">✓</span> Undo any edit, keep what you love</div>
-              <div class="fi"><span class="ic">✓</span> Full edit history</div>
+              <div class="fi"><span class="ck">✓</span> Text-to-video included, always</div>
+              <div class="fi"><span class="ck">✓</span> 4K export · No watermark</div>
+              <div class="fi"><span class="ck">✓</span> Save to Photos, share anywhere</div>
             </div>
           </div>
         </div>
@@ -481,7 +418,7 @@
       </div>
     </div>
 
-    <!-- 1: PAYWALL -->
+    <!-- SCREEN 1: PAYWALL -->
     <div class="screen" data-screen="1">
       <div class="paywall">
         <div class="top">
@@ -507,10 +444,9 @@
         </div>
         <div class="tr"><div><div class="l">Free trial</div><div class="s">Cancel anytime before it renews</div></div><div class="tog on" id="trialToggle"><div class="kn"></div></div></div>
         <div class="feats">
-          <div class="f"><span class="ck">✓</span> Unlimited generates &amp; stateful edits</div>
-          <div class="f"><span class="ck">✓</span> All styles, effects &amp; transfers</div>
+          <div class="f"><span class="ck">✓</span> Unlimited stateful edits</div>
+          <div class="f"><span class="ck">✓</span> All AI effects &amp; style transfers</div>
           <div class="f"><span class="ck">✓</span> 4K export · No watermark</div>
-          <div class="f"><span class="ck">✓</span> Priority processing</div>
         </div>
         <div class="ba">
           <button class="btn-primary" id="payBtn">Start 7-day free trial</button>
@@ -520,20 +456,20 @@
       </div>
     </div>
 
-    <!-- 2: HOME -->
+    <!-- SCREEN 2: HOME -->
     <div class="screen" data-screen="2">
       <div class="home">
-        <div class="top-bar">
-          <h2>Mint</h2>
-          <span class="right" onclick="goScreen(7)">⚙︎</span>
+        <div class="hero-bar">
+          <div class="logo">Mint<span>.</span></div>
+          <span class="settings" onclick="goScreen(8)">⚙︎</span>
         </div>
         <div class="mode-switch">
-          <div class="m sel" data-mode="generate"><span>✨ Generate</span><div class="sub">Text → video</div></div>
-          <div class="m" data-mode="edit"><span>✂️ Edit</span><div class="sub">Iterative clip editing</div></div>
+          <div class="m sel" data-mode="edit"><span>✂️ Edit</span><div class="sub">Transform your clips</div></div>
+          <div class="m" data-mode="generate"><span>✨ Generate</span><div class="sub">Text to video</div></div>
         </div>
         <div class="hero">
-          <div class="greeting" id="homeGreeting">Your videos</div>
-          <div class="sub">You've created 23 videos so far</div>
+          <div class="greeting" id="homeGreeting">Your edits</div>
+          <div class="sub" id="homeSub">Stateful AI edits live here. Start with a clip, then refine.</div>
           <div class="stats">
             <div class="s"><div class="num">23</div><div class="lbl">Videos</div></div>
             <div class="s"><div class="num">12</div><div class="lbl">This month</div></div>
@@ -542,17 +478,17 @@
         </div>
         <div class="albums" style="border:none;padding:0 20px 10px">
           <span class="a sel">All</span>
-          <span class="a">Generated</span>
           <span class="a">Edited</span>
+          <span class="a">Generated</span>
           <span class="a">Favorites</span>
         </div>
         <div class="gallery-grid" id="editGrid"></div>
-        <div class="fab-label" id="fabLabel">New generation</div>
+        <div class="fab-label" id="fabLabel">New edit</div>
         <button class="fab" id="fabBtn" onclick="startNew()">+</button>
       </div>
     </div>
 
-    <!-- 3: GENERATE (text → video, no camera roll) -->
+    <!-- SCREEN 3: GENERATE -->
     <div class="screen" data-screen="3">
       <div class="generate">
         <div class="top-bar">
@@ -562,8 +498,8 @@
         </div>
         <div class="gen-area">
           <div class="hero-icon">✨</div>
-          <h1>What do you want to create?</h1>
-          <p class="sub">Describe any scene, style, or story — AI generates it from scratch.</p>
+          <h1>What do you want to see?</h1>
+          <p class="sub">Describe any scene. AI generates it from scratch.</p>
           <div class="prompt-box">
             <textarea id="genPrompt" placeholder='e.g. "Cinematic slow-motion of a neon-lit cyberpunk city at night with rain and flying cars"' maxlength="500"></textarea>
             <div class="cc">0 <span>/ 500</span></div>
@@ -572,7 +508,6 @@
             <span class="s" onclick="fillGen('Cinematic sunset over a futuristic city skyline, drone shot')">🌆 Cityscape</span>
             <span class="s" onclick="fillGen('Anime-style girl walking through a cherry blossom forest, golden hour')">🌸 Anime</span>
             <span class="s" onclick="fillGen('Cyberpunk hacker in a neon-lit room, typing on holographic keyboards')">💻 Cyberpunk</span>
-            <span class="s" onclick="fillGen('Smooth slow-motion of waves crashing on a rocky shore, cinematic color grade')">🌊 Nature</span>
           </div>
         </div>
         <div class="bottom-bar">
@@ -582,39 +517,37 @@
       </div>
     </div>
 
-    <!-- 4: PROCESSING -->
+    <!-- SCREEN 4: PROCESSING -->
     <div class="screen" data-screen="4">
       <div class="processing">
         <div class="spinner"></div>
-        <h1>Generating your video</h1>
-        <p>AI is creating your scene frame by frame...</p>
+        <h1>Creating your video</h1>
+        <p>AI is working on it...</p>
         <div class="track"><div class="bar" id="progBar"></div></div>
-        <div class="stage" id="progStage">Generating frames...</div>
+        <div class="stage" id="progStage">Starting...</div>
       </div>
     </div>
 
-    <!-- 5: SUCCESS -->
+    <!-- SCREEN 5: SUCCESS -->
     <div class="screen" data-screen="5">
       <div class="success">
         <div class="icon">✅</div>
         <h1>Saved to Photos</h1>
-        <p class="sub">Your generated video is ready in your camera roll.</p>
+        <p class="sub">Your video is ready in your camera roll.</p>
         <div class="saved-badge"><span class="ck">✓</span> Saved to Recents · 1080p · 0:12</div>
         <div class="share-row">
           <div class="share-btn" onclick="toast('Copied link!')">🔗</div>
           <div class="share-btn" onclick="toast('Shared to Instagram!')">📷</div>
           <div class="share-btn" onclick="toast('Shared to TikTok!')">🎵</div>
           <div class="share-btn" onclick="toast('Downloading...')">⬇️</div>
-          <div class="share-btn" onclick="toast('Shared!')">💬</div>
         </div>
         <div class="actions">
           <button class="btn-primary" onclick="goScreen(2)">Go to home</button>
-          <button class="btn-ghost" onclick="goScreen(3)">Generate another</button>
         </div>
       </div>
     </div>
 
-    <!-- 6: CAMERA ROLL (for Edit mode) -->
+    <!-- SCREEN 6: CAMERA ROLL -->
     <div class="screen" data-screen="6">
       <div class="camera-roll">
         <div class="top-bar">
@@ -632,7 +565,7 @@
       </div>
     </div>
 
-    <!-- 7: STATEFUL EDITOR -->
+    <!-- SCREEN 7: EDITOR -->
     <div class="screen" data-screen="7">
       <div class="editor">
         <div class="top-bar">
@@ -640,6 +573,7 @@
           <h2>Edit</h2>
           <span class="done-btn" style="font-size:16px;font-weight:600;color:#111;cursor:pointer" onclick="finishEditing()">Export</span>
         </div>
+        <div class="hero-tag">✦ Stateful AI editing — each prompt builds on the last</div>
         <div class="video-preview" id="editorPreview">
           <canvas id="editorCanvas"></canvas>
           <div class="overlay"><div class="play-center" id="editorPlayBtn">▶</div></div>
@@ -650,8 +584,8 @@
         </div>
         <div class="edit-history" id="editHistory"></div>
         <div class="edit-input">
-          <input id="editInput" placeholder='Describe your edit — e.g. "When the person touches the mirror, make it ripple like liquid..."' maxlength="500">
-          <button class="send" id="editSendBtn" onclick="submitEdit()">📝</button>
+          <input id="editInput" placeholder='Describe an edit — e.g. "When I touch the mirror, make it ripple like liquid"' maxlength="500">
+          <button class="send" id="editSendBtn" onclick="submitEdit()">✂️</button>
         </div>
         <div class="bottom-actions" id="editActions" style="display:none">
           <button class="btn-ghost" onclick="undoLastEdit()">↩ Undo</button>
@@ -660,7 +594,7 @@
       </div>
     </div>
 
-    <!-- 8: SETTINGS -->
+    <!-- SCREEN 8: SETTINGS -->
     <div class="screen" data-screen="8">
       <div class="settings">
         <div class="top-bar">
@@ -686,7 +620,6 @@
             <div class="title">Preferences</div>
             <div class="row"><div class="l"><span class="ic">🌙</span><div class="t">Dark mode</div></div><div class="v"><span style="color:#ccc">Follow system</span> <span class="chev">›</span></div></div>
             <div class="row"><div class="l"><span class="ic">🎬</span><div class="t">Default export quality</div></div><div class="v">1080p <span class="chev">›</span></div></div>
-            <div class="row"><div class="l"><span class="ic">🔇</span><div class="t">Sound effects</div></div><div class="v"><span style="color:#bbb">On</span> <span class="chev">›</span></div></div>
           </div>
           <div class="sec">
             <div class="title">Support</div>
@@ -705,6 +638,10 @@
 </div>
 
 <script>
+  // ── Screen indices ──
+  // 0:Onboarding  1:Paywall  2:Home  3:Generate  4:Processing
+  // 5:Success  6:CameraRoll  7:Editor  8:Settings
+
   let cur=0;
   const scr=document.querySelectorAll('.screen');
   goScreen=(i)=>{
@@ -735,72 +672,80 @@
   document.getElementById('payBtn').addEventListener('click',()=>goScreen(2));
 
   // ── Mode toggle ──
-  let currentMode='generate';
+  let currentMode='edit'; // default to Edit, not Generate
   document.querySelectorAll('.mode-switch .m').forEach(el=>{
     el.addEventListener('click',function(){
       document.querySelectorAll('.mode-switch .m').forEach(s=>s.classList.remove('sel'));
       this.classList.add('sel');
       currentMode=this.dataset.mode;
-      document.getElementById('fabLabel').textContent=currentMode==='generate'?'New generation':'New edit';
-      document.getElementById('homeGreeting').textContent=currentMode==='generate'?'Generated videos':'Edited videos';
+      document.getElementById('fabLabel').textContent=currentMode==='edit'?'New edit':'Generate';
+      document.getElementById('homeGreeting').textContent=currentMode==='edit'?'Your edits':'Generated';
+      document.getElementById('homeSub').textContent=currentMode==='edit'
+        ?'Stateful AI edits live here. Start with a clip, then refine.'
+        :'Text-to-video. Describe a scene, AI creates it.';
       document.querySelectorAll('.gallery-card').forEach(c=>{
-        const mode=c.dataset.mode;
-        if(currentMode==='all'||mode===currentMode||mode==='all') c.style.display='';else c.style.display='none';
+        if(selectedFilter==='All'||c.dataset.mode===selectedFilter.toLowerCase()||c.dataset.mode===currentMode||currentMode==='all') c.style.display='';
+        else c.style.display='none';
       });
     });
   });
 
+  let selectedFilter='All';
+  document.querySelectorAll('.albums .a').forEach(el=>{el.addEventListener('click',function(){document.querySelectorAll('.albums .a').forEach(s=>s.classList.remove('sel'));this.classList.add('sel');selectedFilter=this.textContent;filterGallery()})});
+  function filterGallery(){
+    document.querySelectorAll('.gallery-card').forEach(c=>{c.style.display=(selectedFilter==='All'||c.dataset.mode===selectedFilter.toLowerCase())?'':'none'});
+  }
+
   // ── FAB ──
   window.startNew=function(){
     if(currentMode==='edit') goScreen(6); // camera roll → editor
-    else goScreen(3); // generate (text → video, no camera roll)
+    else goScreen(3); // generate (text → video)
   };
 
   // ── Gallery ──
   const edits=[
-    {emoji:'🌆',color:'#f0edff',title:'Neon Tokyo Cityscape',date:'Today',dur:'0:12',mode:'generate',edits:null},
-    {emoji:'🎬',color:'#fff0f0',title:'Mirror Ripple Edit',date:'Yesterday',dur:'0:08',mode:'edit',edits:4},
-    {emoji:'🏖️',color:'#fff8e8',title:'Beach Memories',date:'2 days ago',dur:'0:15',mode:'edit',edits:2},
-    {emoji:'🌸',color:'#f0fff8',title:'Cherry Blossom Anime',date:'3 days ago',dur:'0:10',mode:'generate',edits:null},
-    {emoji:'🌟',color:'#f0f0ff',title:'Stargazing',date:'5 days ago',dur:'0:18',mode:'edit',edits:6},
-    {emoji:'🌃',color:'#e8f0ff',title:'City Lights',date:'1 week ago',dur:'0:14',mode:'generate',edits:null},
+    {emoji:'🎬',title:'Mirror Ripple Edit',date:'Today',dur:'0:08',mode:'edit',edits:4,views:234},
+    {emoji:'🌆',title:'Neon Tokyo Cityscape',date:'Today',dur:'0:12',mode:'generate',edits:null,views:89},
+    {emoji:'🏖️',title:'Beach Memories',date:'Yesterday',dur:'0:15',mode:'edit',edits:2,views:156},
+    {emoji:'🌟',title:'Stargazing Reframe',date:'2 days ago',dur:'0:18',mode:'edit',edits:6,views:412},
+    {emoji:'🌸',title:'Cherry Blossom Anime',date:'3 days ago',dur:'0:10',mode:'generate',edits:null,views:67},
+    {emoji:'🌃',title:'City Lights Grade',date:'4 days ago',dur:'0:14',mode:'edit',edits:3,views:198},
   ];
   const grid2=document.getElementById('editGrid');
   edits.forEach((e,i)=>{
     const c=document.createElement('div');c.className='gallery-card';c.dataset.mode=e.mode;
     const hue=Math.floor(Math.random()*360);
-    const badge=e.mode==='generate'?'<span class="mode-badge gen">✨ AI</span>':'<span class="mode-badge edit-mode">✂️ Edit</span>';
-    const editCount=e.edits?`<span class="edit-count">${e.edits} edits</span>`:'';
+    const badge=e.mode==='edit'
+      ?'<span class="mode-badge edit-mode">✂️ Edit</span>'
+      :'<span class="mode-badge gen">✨ Gen</span>';
+    const editCount=e.edits?`<span class="edit-count">${e.edits}</span>`:'';
     c.innerHTML=`
       <div class="thumb" style="background:hsl(${hue},18%,92%)">
         <span style="font-size:40px">${e.emoji}</span>
         ${badge}${editCount}
         <div class="play-overlay"><span class="dur">${e.dur}</span></div>
       </div>
-      <div class="info"><div class="tt">${e.title}</div><div class="dt">${e.date}</div>${e.edits?`<div class="edits">✂️ ${e.edits} stateful edits</div>`:''}</div>
+      <div class="info"><div class="tt">${e.title}</div><div class="dt">${e.date} · ${e.views} views</div>${e.edits?`<div class="edits">✂️ ${e.edits} stateful edits</div>`:''}</div>
     `;
     c.addEventListener('click',()=>toast(`Opening "${e.title}"`));
     grid2.appendChild(c);
   });
 
-  // ── Photo grid (camera roll for Edit mode) ──
-  const emojis=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴'];
-  const durs=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20'];
-  const types=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸'];
-  const grid=document.getElementById('photoGrid');
+  // ── Photo grid ──
+  const pEmojis=['🎬','📹','🎥','📸','🎞️','🏖️','🌅','🎉','🚗','🌆','🌊','🎂','🐕','🌲','🏙️','🍕','✈️','🎵','🏔️','🎪','🛹','🏄','🚀','🎡','🏰','🌺','🎭','🌸','🌴'];
+  const pDurs=['0:08','0:12','0:05','0:23','0:15','—','0:07','0:31','0:04','0:18','0:09','0:11','—','0:06','0:14','—','0:03','0:27','0:10','0:16','0:13','0:22','0:19','0:08','0:06','0:25','0:04','0:17','0:09','0:20'];
+  const pTypes=['📹','📹','📹','📹','📹','📸','📸','📹','📹','📸','📸','📹','📸','📹','📹','📸','📹','📹','📸','📹','📹','📹','📸','📹','📸','📹','📸','📹','📹','📸'];
+  const pg=document.getElementById('photoGrid');
   for(let i=0;i<30;i++){
     const c=document.createElement('div');c.className='photo-cell';c.dataset.idx=i;
     const hue=Math.floor(Math.random()*360);c.style.background=`hsl(${hue},18%,92%)`;
-    const dur=durs[i%durs.length];
-    c.innerHTML=`${dur!=='—'?`<div class="dur">${dur}</div>`:''}<div class="type">${types[i%types.length]}</div>${emojis[i%emojis.length]}`;
-    c.addEventListener('click',function(){
-      resetEditor();
-      goScreen(7); // editor
-    });
-    grid.appendChild(c);
+    const dur=pDurs[i%pDurs.length];
+    c.innerHTML=`${dur!=='—'?`<div class="dur">${dur}</div>`:''}<div class="type">${pTypes[i%pTypes.length]}</div>${pEmojis[i%pEmojis.length]}`;
+    c.addEventListener('click',function(){resetEditor();goScreen(7)});
+    pg.appendChild(c);
   }
 
-  // ── Generate (text → video) ──
+  // ── Generate ──
   const genTa=document.getElementById('genPrompt'), genBi=document.getElementById('genBottomInput');
   genTa.addEventListener('input',function(){this.nextElementSibling.innerHTML=this.value.length+' <span>/ 500</span>';genBi.value=this.value});
   genBi.addEventListener('input',function(){genTa.value=this.value;genTa.dispatchEvent(new Event('input'))});
@@ -846,9 +791,10 @@
 
   let editCount=0, editHistory=[];
   const suggestions=[
-    '"Make the background a neon-lit cyberpunk city at night"',
-    '"When the person smiles, add sparkle particles around their face"',
-    '"Turn this into a cinematic slow-motion scene with warm golden light"'
+    '"When I touch the mirror, make it ripple like liquid"',
+    '"Now make my arm turn into reflective mirror material"',
+    '"Add a subtle blue glow around the reflection"',
+    '"Slow the motion down when I reach for the mirror"'
   ];
   function resetEditor(){
     editCount=0;editHistory=[];
@@ -863,7 +809,7 @@
     document.getElementById('editCounter').textContent='✂️ 0 edits';
     document.getElementById('editActions').style.display='none';
     document.getElementById('editInput').value='';
-    document.getElementById('editInput').placeholder='Describe your edit...';
+    document.getElementById('editInput').placeholder='Describe an edit...';
     document.getElementById('editSendBtn').disabled=false;
   }
 
@@ -880,7 +826,7 @@
     if(empty) history.innerHTML='';
     const entry=document.createElement('div');
     entry.className='entry pending';
-    entry.innerHTML=`<div class="num">${entryNum}</div><div class="content"><div class="prompt-text">${escapeHtml(text)}</div><div class="result" style="color:#888"><span class="dot" style="background:#6c5ce7;animation:pulseDot .6s infinite alternate"></span> Processing edit ${entryNum}...</div></div><span class="status-badge proc">⟳</span>`;
+    entry.innerHTML=`<div class="num">${entryNum}</div><div class="content"><div class="prompt-text">${escHtml(text)}</div><div class="result" style="color:#888"><span class="dot" style="background:#6c5ce7;animation:pulseDot .6s infinite alternate"></span> Processing edit ${entryNum}...</div></div><span class="status-badge proc">⟳</span>`;
     history.appendChild(entry);history.scrollTop=history.scrollHeight;
     input.value='';
     document.getElementById('editCounter').textContent=`✂️ ${editCount} edits`;
@@ -902,10 +848,10 @@
     history.removeChild(history.lastElementChild);
     document.getElementById('editCounter').textContent=`✂️ ${editCount} edits`;
     if(editCount===0){document.getElementById('editActions').style.display='none';resetEditor()}
-    toast(`↩ Undid edit`);
+    toast('↩ Undid last edit');
   };
 
-  function escapeHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+  function escHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
   window.closeEditor=function(){stopEditorPreview();goScreen(2)};
   window.finishEditing=function(){if(editCount===0){toast('Make at least one edit first.');return}stopEditorPreview();goScreen(5)};
   document.getElementById('editorPlayBtn')?.addEventListener('click',function(){this.textContent=this.textContent==='▶'?'⏸':'▶'});
@@ -913,8 +859,6 @@
 
   let toastTimer=null;
   window.toast=function(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000)};
-
-  document.querySelectorAll('.albums .a').forEach(el=>{el.addEventListener('click',function(){this.parentElement.querySelectorAll('.a').forEach(s=>s.classList.remove('sel'));this.classList.add('sel')})});
 </script>
 </body>
 </html>

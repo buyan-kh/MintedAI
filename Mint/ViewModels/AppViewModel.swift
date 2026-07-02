@@ -13,6 +13,12 @@ final class AppViewModel {
             route = .paywall
         case "home":
             route = .home
+        case "generate":
+            route = .generate
+        case "processing":
+            route = .processing
+        case "success":
+            route = .success
         default:
             route = .onboarding
         }
@@ -34,7 +40,11 @@ final class AppViewModel {
         route = .home
     }
 
-    func startCreate() {
+    func startGenerate() {
+        route = .generate
+    }
+
+    func startEdit() {
         route = .picker
     }
 }
