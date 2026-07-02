@@ -1,4 +1,5 @@
 import XCTest
+@testable import Mint
 
 final class EditorPreviewTests: XCTestCase {
     func testEditorPreviewDoesNotUseSystemVideoPlayerChrome() throws {
@@ -45,9 +46,81 @@ final class EditorPreviewTests: XCTestCase {
         let generateURL = projectDirectory.appendingPathComponent("Mint/Views/GenerateView.swift")
         let source = try String(contentsOf: generateURL, encoding: .utf8)
 
-        XCTAssertTrue(source.contains("Text(\"\\(remainingEdits)\""))
-        XCTAssertTrue(source.contains("Text(\"/\\(dailyEditLimit)\""))
+        XCTAssertTrue(source.contains("Text(\"\\(tokenLedger.dailyRemaining)\""))
+        XCTAssertTrue(source.contains("Text(\"/\\(tokenLedger.dailyLimit)\""))
         XCTAssertTrue(source.contains(".foregroundColor(MintColor.tertiaryText)"))
         XCTAssertFalse(source.contains("Text(tokenText)\n                .font(.figtree(size: 10, weight: .bold))"))
+    }
+
+    @MainActor
+    func testTokenLedgerSpendsDailyTokensRestoresAndBuysPacks() {
+        let ledger = TokenLedger(dailyLimit: 8, dailyRemaining: 8, bankedTokens: 2)
+
+        XCTAssertEqual(ledger.displayText, "8/8")
+        XCTAssertEqual(ledger.usedToday, 0)
+        XCTAssertTrue(ledger.spend())
+        XCTAssertEqual(ledger.displayText, "7/8")
+        XCTAssertEqual(ledger.usedToday, 1)
+
+        ledger.restoreDailyToken()
+        XCTAssertEqual(ledger.displayText, "8/8")
+        XCTAssertEqual(ledger.usedToday, 0)
+
+        ledger.dailyRemaining = 0
+        XCTAssertTrue(ledger.spend())
+        XCTAssertEqual(ledger.bankedTokens, 1)
+        XCTAssertFalse(ledger.spendDaily())
+
+        ledger.buyPack(quantity: 50)
+        XCTAssertEqual(ledger.bankedTokens, 51)
+    }
+
+    @MainActor
+    func testTokenLedgerPersistsSameDayUsageAndResetsDailyAllowance() throws {
+        let suiteName = "TokenLedgerTests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suiteName))
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        let firstDay = Date(timeIntervalSince1970: 1_767_225_600)
+        let sameDay = firstDay.addingTimeInterval(3_600)
+        let nextDay = firstDay.addingTimeInterval(86_400)
+
+        let ledger = TokenLedger(
+            dailyLimit: 8,
+            dailyRemaining: 8,
+            bankedTokens: 2,
+            persistBankedTokens: true,
+            defaults: defaults,
+            now: firstDay,
+            calendar: calendar
+        )
+        XCTAssertTrue(ledger.spend())
+        ledger.buyPack(quantity: 10)
+
+        let relaunchedSameDay = TokenLedger(
+            dailyLimit: 8,
+            dailyRemaining: 8,
+            bankedTokens: 2,
+            persistBankedTokens: true,
+            defaults: defaults,
+            now: sameDay,
+            calendar: calendar
+        )
+        XCTAssertEqual(relaunchedSameDay.dailyRemaining, 7)
+        XCTAssertEqual(relaunchedSameDay.bankedTokens, 12)
+
+        let relaunchedNextDay = TokenLedger(
+            dailyLimit: 8,
+            dailyRemaining: 8,
+            bankedTokens: 2,
+            persistBankedTokens: true,
+            defaults: defaults,
+            now: nextDay,
+            calendar: calendar
+        )
+        XCTAssertEqual(relaunchedNextDay.dailyRemaining, 8)
+        XCTAssertEqual(relaunchedNextDay.bankedTokens, 12)
     }
 }

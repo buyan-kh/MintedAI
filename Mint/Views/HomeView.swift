@@ -45,12 +45,23 @@ struct HomeView: View {
                 albumFilters
 
                 ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
-                        ForEach(visibleItems) { item in
-                            GalleryCard(item: item)
+                    VStack(spacing: 0) {
+                        if visibleItems.isEmpty {
+                            EmptyGalleryState(
+                                title: "No videos yet",
+                                message: "Create your first AI video to fill this gallery."
+                            )
+                            .padding(.horizontal, 20)
+                            .padding(.top, 32)
+                        } else {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
+                                ForEach(visibleItems) { item in
+                                    GalleryCard(item: item)
+                                }
+                            }
+                            .padding(.horizontal, 20)
                         }
                     }
-                    .padding(.horizontal, 20)
                     .padding(.bottom, 88)
                 }
             }
@@ -202,6 +213,31 @@ struct HomeView: View {
             onCreateEdit()
         } else {
             onCreateGenerate()
+        }
+    }
+}
+
+private struct EmptyGalleryState: View {
+    let title: String
+    let message: String
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(title)
+                .font(.figtree(size: 18, weight: .semibold))
+                .foregroundStyle(MintColor.primaryText)
+            Text(message)
+                .font(.figtree(size: 13, weight: .regular))
+                .foregroundStyle(MintColor.tertiaryText)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 36)
+        .background(MintColor.surfaceAlt)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(MintColor.border, lineWidth: 1)
         }
     }
 }

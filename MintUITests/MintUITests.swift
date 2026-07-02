@@ -51,10 +51,10 @@ final class MintUITests: XCTestCase {
         XCTAssertFalse(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", "mint-sample")).firstMatch.exists)
         XCTAssertTrue(app.staticTexts["Ready"].exists)
         XCTAssertTrue(app.staticTexts["0 edits"].exists)
-        XCTAssertTrue(app.staticTexts["5"].exists)
-        XCTAssertTrue(app.staticTexts["/ 5"].exists)
-        XCTAssertFalse(app.staticTexts["10"].exists)
-        XCTAssertFalse(app.staticTexts["/ 10"].exists)
+        XCTAssertTrue(app.staticTexts["8"].exists)
+        XCTAssertTrue(app.staticTexts["/ 8"].exists)
+        XCTAssertFalse(app.staticTexts["5"].exists)
+        XCTAssertFalse(app.staticTexts["/ 5"].exists)
         XCTAssertTrue(app.buttons["🎬 Cinematic"].exists)
         XCTAssertTrue(app.buttons["🪞 Mirror ripple"].exists)
         XCTAssertTrue(app.buttons["✨ Reflective arm"].exists)
@@ -69,12 +69,26 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["v1"].exists)
         XCTAssertTrue(app.staticTexts["1 edits"].exists)
+        XCTAssertTrue(app.buttons["v1"].exists)
         XCTAssertTrue(app.buttons["Undo"].exists)
         XCTAssertTrue(app.buttons["Export video"].exists)
         XCTAssertFalse(app.staticTexts["Saved to Mint"].exists)
         XCTAssertFalse(app.textFields["Follow-up prompt"].exists)
         XCTAssertFalse(app.buttons["Refine"].exists)
 
+        app.buttons["v1"].tap()
+        XCTAssertTrue(app.staticTexts["Revert to v1"].waitForExistence(timeout: 2))
+
+        app.buttons["Undo"].tap()
+        XCTAssertTrue(app.staticTexts["↩ Undid v1 — token restored"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["0 edits"].exists)
+        XCTAssertTrue(app.staticTexts["8"].exists)
+        XCTAssertTrue(app.staticTexts["/ 8"].exists)
+
+        app.textViews.firstMatch.tap()
+        app.textViews.firstMatch.typeText("Make it glow softly.")
+        app.buttons["Edit video"].tap()
+        XCTAssertTrue(app.staticTexts["v1"].waitForExistence(timeout: 10))
         app.buttons["Export video"].tap()
 
         XCTAssertTrue(app.staticTexts["Saved to Photos"].waitForExistence(timeout: 5))
@@ -92,11 +106,13 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mint Pro Annual"].exists)
         XCTAssertTrue(app.staticTexts["Renews April 15, 2027 · $99.99/yr"].exists)
         XCTAssertTrue(app.staticTexts["Edits used today"].exists)
-        XCTAssertTrue(app.staticTexts["3 / 5"].exists)
+        XCTAssertTrue(app.staticTexts["3 / 8"].exists)
         XCTAssertTrue(app.staticTexts["Token balance"].exists)
         XCTAssertTrue(app.staticTexts["2"].exists)
         XCTAssertTrue(app.staticTexts["Sign out"].exists)
+        XCTAssertFalse(app.staticTexts["Videos created"].exists)
         XCTAssertFalse(app.staticTexts["Videos this month"].exists)
+        XCTAssertFalse(app.staticTexts["Dark mode"].exists)
         XCTAssertFalse(app.staticTexts["Default export quality"].exists)
         XCTAssertTrue(app.staticTexts["Mint v1.0.2 · Build 42"].exists)
     }
@@ -151,10 +167,13 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["$99.99"].exists)
         XCTAssertTrue(app.staticTexts["$14.99 / month"].exists)
         XCTAssertTrue(app.buttons["Start 3-day free trial"].exists)
-        XCTAssertTrue(app.staticTexts["5 edits/day included"].exists)
+        XCTAssertTrue(app.staticTexts["8 edits/day included"].exists)
         XCTAssertTrue(app.staticTexts["Priority processing"].exists)
         XCTAssertTrue(app.staticTexts["Buy token packs for extra"].exists)
+        XCTAssertTrue(app.buttons["Restore purchases"].exists)
+        XCTAssertTrue(app.staticTexts["After trial: $14.99/month or $99.99/year. 8 edits/day included, extra token packs available. Cancel anytime."].exists)
         XCTAssertFalse(app.staticTexts["Lifetime"].exists)
+        XCTAssertFalse(app.staticTexts["5 edits/day included"].exists)
         XCTAssertFalse(app.buttons["Start 7-day free trial"].exists)
     }
 
@@ -170,8 +189,71 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.buttons["🌆 Cityscape"].exists)
         XCTAssertTrue(app.buttons["🌸 Anime"].exists)
         XCTAssertTrue(app.buttons["💻 Cyberpunk"].exists)
-        XCTAssertEqual(app.staticTexts["Generate hero token count"].label, "5/5")
-        XCTAssertEqual(app.staticTexts["Generate bottom token count"].label, "5/5")
+        XCTAssertEqual(app.staticTexts["Generate hero token count"].label, "8/8")
+        XCTAssertEqual(app.staticTexts["Generate bottom token count"].label, "8/8")
+    }
+
+    func testGenerateOutOfTokensShowsBuyOverlay() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "generate"
+        app.launchEnvironment["MINT_DAILY_TOKENS"] = "0"
+        app.launchEnvironment["MINT_BANKED_TOKENS"] = "0"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["What do you want to see?"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["Generate hero token count"].label, "0/8")
+
+        app.textViews.firstMatch.tap()
+        app.textViews.firstMatch.typeText("A polished launch video.")
+        app.buttons["Generate"].tap()
+
+        XCTAssertTrue(app.staticTexts["Need more edits?"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["10 edits"].exists)
+        XCTAssertTrue(app.buttons["50 edits"].exists)
+        XCTAssertTrue(app.buttons["200 edits"].exists)
+    }
+
+    func testEditorBackConfirmsWhenEditsExist() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launch()
+
+        completeOnboarding(app)
+        app.buttons["Primary create"].tap()
+        XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 5))
+
+        app.textViews.firstMatch.tap()
+        app.textViews.firstMatch.typeText("Make the mirror ripple.")
+        app.buttons["Edit video"].tap()
+        XCTAssertTrue(app.staticTexts["v1"].waitForExistence(timeout: 10))
+
+        app.buttons["← Back"].tap()
+        XCTAssertTrue(app.alerts["You have unsaved edits. Leave anyway?"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["Stay"].exists)
+        XCTAssertTrue(app.buttons["Leave"].exists)
+    }
+
+    func testGeneratedVideoConsumesSharedTokenBeforeEditing() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST_MOCK_GEMINI"]
+        app.launchEnvironment["MINT_START_ROUTE"] = "generate"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["What do you want to see?"].waitForExistence(timeout: 5))
+        app.textViews.firstMatch.tap()
+        app.textViews.firstMatch.typeText("A cinematic product reveal.")
+        app.buttons["Generate"].tap()
+        XCTAssertTrue(app.staticTexts["Saved to Photos"].waitForExistence(timeout: 10))
+
+        app.buttons["Go to home"].tap()
+        XCTAssertTrue(app.staticTexts["Mint"].waitForExistence(timeout: 5))
+        app.buttons["Edit mode"].tap()
+        app.buttons["Primary create"].tap()
+
+        XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["7"].exists)
+        XCTAssertTrue(app.staticTexts["/ 8"].exists)
     }
 
     func testProcessingRouteMatchesHTMLLoadingScreen() {

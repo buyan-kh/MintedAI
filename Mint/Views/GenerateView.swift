@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GenerateView: View {
+    var tokenLedger: TokenLedger
     var errorMessage: String?
     let onBack: () -> Void
     let onGenerate: (String) -> Void
@@ -8,15 +9,16 @@ struct GenerateView: View {
     @State private var prompt = ""
     @FocusState private var isPromptFocused: Bool
 
-    private let remainingEdits = 5
-    private let dailyEditLimit = 5
     private let placeholder = "e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night\""
-    private var tokenText: String { "\(remainingEdits)/\(dailyEditLimit)" }
     private let suggestions = [
         ("🌆 Cityscape", "Cinematic sunset over a futuristic city skyline, drone shot"),
         ("🌸 Anime", "Anime-style girl walking through a cherry blossom forest, golden hour"),
         ("💻 Cyberpunk", "Cyberpunk hacker in a neon-lit room, typing on holographic keyboards")
     ]
+
+    private var tokenText: String {
+        tokenLedger.displayText
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -205,10 +207,10 @@ struct GenerateView: View {
                 }
 
             (
-                Text("\(remainingEdits)")
+                Text("\(tokenLedger.dailyRemaining)")
                     .font(.figtree(size: 10, weight: .bold))
                     .foregroundColor(Color(red: 0.424, green: 0.361, blue: 0.906))
-                + Text("/\(dailyEditLimit)")
+                + Text("/\(tokenLedger.dailyLimit)")
                     .font(.figtree(size: 10, weight: .medium))
                     .foregroundColor(MintColor.tertiaryText)
             )
@@ -302,5 +304,5 @@ private struct FlowLayout: Layout {
 }
 
 #Preview {
-    GenerateView(errorMessage: nil, onBack: {}, onGenerate: { _ in })
+    GenerateView(tokenLedger: TokenLedger(), errorMessage: nil, onBack: {}, onGenerate: { _ in })
 }

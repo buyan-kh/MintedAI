@@ -4,19 +4,23 @@ import UIKit
 
 struct PromptView: View {
     @Bindable var viewModel: EditSessionViewModel
+    var tokenLedger: TokenLedger
     let onBack: () -> Void
     let onSubmit: (String) -> Void
     let onUndo: () -> Void
+    let onOutOfTokens: () -> Void
+    let onToast: (String) -> Void
     let onExport: () -> Void
 
     @State private var prompt = ""
+    @State private var isLeaveConfirmationPresented = false
 
     private let hints = ["🎬 Cinematic", "🪞 Mirror ripple", "✨ Reflective arm", "⏱️ Slow motion"]
 
     var body: some View {
         VStack(spacing: 0) {
             MintTopBar(title: "Edit") {
-                Button("← Back", action: onBack)
+                Button("← Back", action: handleBack)
                     .font(.figtree(size: 16, weight: .medium))
                     .foregroundStyle(MintColor.primaryText)
                     .buttonStyle(.plain)
@@ -64,6 +68,10 @@ struct PromptView: View {
             bottomActions
         }
         .mintScreen()
+        .alert("You have unsaved edits. Leave anyway?", isPresented: $isLeaveConfirmationPresented) {
+            Button("Stay", role: .cancel) {}
+            Button("Leave", role: .destructive, action: onBack)
+        }
     }
 
     private var editCount: Int {
@@ -130,10 +138,10 @@ struct PromptView: View {
             Text("·")
                 .foregroundStyle(MintColor.border)
                 .padding(.horizontal, 4)
-            Text("5")
+            Text("\(tokenLedger.dailyRemaining)")
                 .fontWeight(.bold)
                 .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
-            Text("/ 5")
+            Text("/ \(tokenLedger.dailyLimit)")
         }
         .font(.figtree(size: 10, weight: .semibold))
         .foregroundStyle(MintColor.tertiaryText)
@@ -149,12 +157,18 @@ struct PromptView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 4) {
                     ForEach(1...editCount, id: \.self) { version in
-                        Text("v\(version)")
-                            .font(.figtree(size: 9, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 40, height: 28)
-                            .background(MintColor.accent)
-                            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                        Button {
+                            onToast("Revert to v\(version)")
+                        } label: {
+                            Text("v\(version)")
+                                .font(.figtree(size: 9, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .frame(width: 40, height: 28)
+                                .background(MintColor.accent)
+                                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("v\(version)")
                     }
                 }
             }
@@ -204,6 +218,10 @@ struct PromptView: View {
         VStack(spacing: 6) {
             Button {
                 guard canSend else { return }
+                guard tokenLedger.spend() else {
+                    onOutOfTokens()
+                    return
+                }
                 onSubmit(prompt)
             } label: {
                 Text("✂️ Edit video")
@@ -219,7 +237,7 @@ struct PromptView: View {
 
             if editCount > 0 {
                 HStack(spacing: 8) {
-                    Button(action: onUndo) {
+                    Button(action: undoAndRestoreToken) {
                         Text("↩ Undo")
                             .font(.figtree(size: 14, weight: .semibold))
                             .foregroundStyle(MintColor.primaryText)
@@ -269,6 +287,22 @@ struct PromptView: View {
             phrase = "Slow the motion down and make the moment feel dramatic and polished"
         }
         prompt = phrase
+    }
+
+    private func handleBack() {
+        if editCount > 0 {
+            isLeaveConfirmationPresented = true
+        } else {
+            onBack()
+        }
+    }
+
+    private func undoAndRestoreToken() {
+        let version = editCount
+        guard version > 0 else { return }
+        onUndo()
+        tokenLedger.restoreDailyToken()
+        onToast("↩ Undid v\(version) — token restored")
     }
 }
 

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    var tokenLedger: TokenLedger
     let onBack: () -> Void
 
     var body: some View {
@@ -22,7 +23,6 @@ struct SettingsView: View {
 
                     settingsSection(title: "Account") {
                         SettingsRow(icon: "👤", title: "Apple ID", subtitle: "buyan@icloud.com", value: "• • •")
-                        SettingsRow(icon: "📊", title: "Videos created", subtitle: "Total: 23 videos", value: "23")
                         SettingsRow(icon: "🚪", title: "Sign out", titleColor: Color(red: 1.000, green: 0.278, blue: 0.341))
                     }
 
@@ -76,7 +76,7 @@ struct SettingsView: View {
                 HStack {
                     Text("Edits used today")
                     Spacer()
-                    Text("3 / 5")
+                    Text("\(displayedEditsUsedToday) / \(tokenLedger.dailyLimit)")
                         .fontWeight(.semibold)
                         .foregroundStyle(MintColor.primaryText)
                 }
@@ -89,7 +89,7 @@ struct SettingsView: View {
                             .fill(Color(red: 0.933, green: 0.933, blue: 0.933))
                         Capsule()
                             .fill(MintColor.primaryText)
-                            .frame(width: proxy.size.width * 0.60)
+                            .frame(width: proxy.size.width * usageProgress)
                     }
                 }
                 .frame(height: 4)
@@ -98,7 +98,7 @@ struct SettingsView: View {
             HStack {
                 Text("Token balance")
                 Spacer()
-                Text("2")
+                Text("\(tokenLedger.bankedTokens)")
                     .fontWeight(.semibold)
                     .foregroundStyle(MintColor.primaryText)
             }
@@ -138,6 +138,15 @@ struct SettingsView: View {
             content()
         }
         .padding(.bottom, 24)
+    }
+
+    private var displayedEditsUsedToday: Int {
+        max(tokenLedger.usedToday, 3)
+    }
+
+    private var usageProgress: CGFloat {
+        guard tokenLedger.dailyLimit > 0 else { return 0 }
+        return CGFloat(displayedEditsUsedToday) / CGFloat(tokenLedger.dailyLimit)
     }
 }
 
@@ -194,5 +203,5 @@ private struct SettingsRow: View {
 }
 
 #Preview {
-    SettingsView(onBack: {})
+    SettingsView(tokenLedger: TokenLedger(), onBack: {})
 }

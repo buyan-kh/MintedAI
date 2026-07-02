@@ -18,7 +18,7 @@ struct PaywallInviteView: View {
                     .foregroundStyle(MintColor.primaryText)
                     .padding(.bottom, 6)
 
-                Text("Try free for 3 days. After that, 5 edits/day included with Pro — buy extra packs if you need more.")
+                Text("Try free for 3 days. After that, 8 edits/day included with Pro — buy extra packs if you need more.")
                     .font(.figtree(size: 15, weight: .regular))
                     .lineSpacing(2)
                     .foregroundStyle(MintColor.secondaryText)
@@ -70,7 +70,7 @@ struct PaywallInviteView: View {
             }
 
             VStack(alignment: .leading, spacing: 6) {
-                feature("5 edits/day included")
+                feature("8 edits/day included")
                 feature("4K export · No watermark")
                 feature("All effects & style transfers")
                 feature("Priority processing")
@@ -82,7 +82,7 @@ struct PaywallInviteView: View {
             VStack(spacing: 0) {
                 MintPrimaryButton(title: "Start 3-day free trial", action: onContinue)
 
-                Text("After trial: $14.99/month or $99.99/year. 5 edits/day included, extra token packs available. Cancel anytime.")
+                Text("After trial: $14.99/month or $99.99/year. 8 edits/day included, extra token packs available. Cancel anytime.")
                     .font(.figtree(size: 11, weight: .regular))
                     .lineSpacing(2)
                     .foregroundStyle(MintColor.mutedText)
