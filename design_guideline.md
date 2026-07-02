@@ -178,7 +178,7 @@ Onboarding (3 slides) → Paywall → Photo Picker → Prompt → Done
 | # | Screen | Purpose |
 |---|--------|---------|
 | 0 | **Onboarding** | 3 slides showing value props: "Turn selfies into music videos", "AI-powered video magic", "Ready to create?" — each with feature checklists. Skip link available. |
-| 1 | **Paywall** | 3 plans (Annual/Monthly/Lifetime) with free trial toggle. Designed as an "invite" not a barrier — clear value props, "Maybe later" restore link. Yazio-inspired toggle. |
+| 1 | **Paywall** | Annual and Monthly Pro plans with a 3-day trial, 8 edits/day, restore purchases, and clear post-trial pricing. Designed as an "invite" not a barrier. |
 | 2 | **Photo Picker** | iOS-style 3-column grid of user's photos/videos. Album filter chips. Tap to select a video. "Next" button activates on selection. |
 | 3 | **Prompt** | Selected clip summary card. Full textarea for describing the desired output. 4 prompt hint chips. Bottom input bar synced with textarea. Send button triggers creation. |
 

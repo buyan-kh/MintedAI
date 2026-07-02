@@ -98,11 +98,9 @@ struct HomeView: View {
         HStack {
             Text("Mint")
                 .font(.figtree(size: 22, weight: .bold))
-                .tracking(-0.5)
                 .foregroundStyle(MintColor.primaryText)
             Text(".")
                 .font(.figtree(size: 22, weight: .bold))
-                .tracking(-0.5)
                 .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
                 .offset(x: -4)
             Spacer()
@@ -288,7 +286,7 @@ private struct GalleryCard: View {
                 }
                 .padding(6)
             }
-            .frame(height: 150)
+            .aspectRatio(9.0 / 16.0, contentMode: .fit)
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(item.title)

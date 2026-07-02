@@ -58,6 +58,19 @@ final class EditorPreviewTests: XCTestCase {
         XCTAssertFalse(FileManager.default.fileExists(atPath: resultViewURL.path))
     }
 
+    func testHomeGalleryCardsUseHTMLPortraitThumbnailRatio() throws {
+        let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let source = try String(
+            contentsOf: projectDirectory.appendingPathComponent("Mint/Views/HomeView.swift"),
+            encoding: .utf8
+        )
+
+        XCTAssertTrue(source.contains(".aspectRatio(9.0 / 16.0, contentMode: .fit)"))
+        XCTAssertFalse(source.contains(".frame(height: 150)"))
+        XCTAssertFalse(source.contains(".tracking(-"))
+    }
+
     func testGenerateBottomTokenCounterMatchesHTMLSplitStyling() throws {
         let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
         let projectDirectory = testsDirectory.deletingLastPathComponent()
