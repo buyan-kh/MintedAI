@@ -48,6 +48,7 @@ final class MintUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["Browse files"].exists)
         XCTAssertFalse(app.staticTexts["Choose from Photos"].exists)
         XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", ".mp4")).firstMatch.exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", "mint-sample")).firstMatch.exists)
         XCTAssertTrue(app.staticTexts["Ready"].exists)
         XCTAssertTrue(app.staticTexts["0 edits"].exists)
         XCTAssertTrue(app.staticTexts["5"].exists)
@@ -153,6 +154,11 @@ final class MintUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["What do you want to see?"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night\""].exists)
+        XCTAssertFalse(app.staticTexts["e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night with rain and flying cars\""].exists)
+        XCTAssertTrue(app.buttons["🌆 Cityscape"].exists)
+        XCTAssertTrue(app.buttons["🌸 Anime"].exists)
+        XCTAssertTrue(app.buttons["💻 Cyberpunk"].exists)
         XCTAssertEqual(app.staticTexts["Generate hero token count"].label, "5/5")
         XCTAssertEqual(app.staticTexts["Generate bottom token count"].label, "5/5")
     }

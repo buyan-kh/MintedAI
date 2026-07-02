@@ -10,7 +10,7 @@ struct GenerateView: View {
 
     private let remainingEdits = 5
     private let dailyEditLimit = 5
-    private let placeholder = "e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night with rain and flying cars\""
+    private let placeholder = "e.g. \"Cinematic slow-motion of a neon-lit cyberpunk city at night\""
     private var tokenText: String { "\(remainingEdits)/\(dailyEditLimit)" }
     private let suggestions = [
         ("🌆 Cityscape", "Cinematic sunset over a futuristic city skyline, drone shot"),

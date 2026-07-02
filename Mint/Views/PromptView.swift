@@ -1,5 +1,6 @@
-import AVKit
+import AVFoundation
 import SwiftUI
+import UIKit
 
 struct PromptView: View {
     @Bindable var viewModel: EditSessionViewModel
@@ -77,7 +78,8 @@ struct PromptView: View {
                 MintColor.surfaceAlt
 
                 if let url = viewModel.session?.sourceVideoURL {
-                    VideoPlayer(player: AVPlayer(url: url))
+                    EditorVideoPreview(url: url)
+                        .accessibilityHidden(true)
                 } else {
                     Image(systemName: "play.fill")
                         .font(.system(size: 18, weight: .semibold))
@@ -236,5 +238,79 @@ struct PromptView: View {
             phrase = "Slow the motion down and make the moment feel dramatic and polished"
         }
         prompt = phrase
+    }
+}
+
+private struct EditorVideoPreview: UIViewRepresentable {
+    let url: URL
+
+    func makeUIView(context: Context) -> PlayerLayerContainerView {
+        let view = PlayerLayerContainerView()
+        context.coordinator.configure(url: url, in: view)
+        return view
+    }
+
+    func updateUIView(_ uiView: PlayerLayerContainerView, context: Context) {
+        context.coordinator.configure(url: url, in: uiView)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    static func dismantleUIView(_ uiView: PlayerLayerContainerView, coordinator: Coordinator) {
+        coordinator.stop()
+    }
+
+    @MainActor
+    final class Coordinator {
+        private var currentURL: URL?
+        private var player: AVQueuePlayer?
+        private var looper: AVPlayerLooper?
+
+        func configure(url: URL, in view: PlayerLayerContainerView) {
+            guard currentURL != url else { return }
+            currentURL = url
+
+            let item = AVPlayerItem(url: url)
+            let queuePlayer = AVQueuePlayer()
+            queuePlayer.isMuted = true
+            queuePlayer.actionAtItemEnd = .none
+
+            player = queuePlayer
+            looper = AVPlayerLooper(player: queuePlayer, templateItem: item)
+            view.playerLayer.player = queuePlayer
+            queuePlayer.play()
+        }
+
+        func stop() {
+            player?.pause()
+            player = nil
+            looper = nil
+            currentURL = nil
+        }
+    }
+}
+
+private final class PlayerLayerContainerView: UIView {
+    override class var layerClass: AnyClass {
+        AVPlayerLayer.self
+    }
+
+    var playerLayer: AVPlayerLayer {
+        layer as! AVPlayerLayer
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isAccessibilityElement = false
+        accessibilityElementsHidden = true
+        playerLayer.videoGravity = .resizeAspectFill
+        backgroundColor = .clear
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -11,6 +11,7 @@
 		12839B864E25FC093AB652B7 /* GeminiFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169EF55EE974C444870E14B2 /* GeminiFileService.swift */; };
 		135BADC0D6EB6DF9BBD4A75A /* GeminiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1D6C0B20E01730CC92CDD /* GeminiClient.swift */; };
 		2330C52FFEE6ECA2098C4E7D /* VideoImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B5C61BB63EB43A9047E33 /* VideoImportServiceTests.swift */; };
+		2949C54F681F56DF8B6FA441 /* EditorPreviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D67B62B09646592DF7E17 /* EditorPreviewTests.swift */; };
 		234DED569679B6250044F09B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7933DDB23CC84096F09A13 /* LaunchScreen.storyboard */; };
 		2D67CD8DC3B94904BC945E90 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832AA98E79239BC39E38BE8 /* HomeView.swift */; };
 		31D29391BB36BFDD9B193570 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4F22779214FA443D6D3E5 /* RootView.swift */; };
@@ -86,6 +87,7 @@
 		6F6696FB675F1583818DAFC2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		70231855059C7E3024ADC9C1 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		7820484B7C717BD42AC6658F /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		7B5D67B62B09646592DF7E17 /* EditorPreviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPreviewTests.swift; sourceTree = "<group>"; };
 		89A304C0DFB6CEDCFD28E7D8 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		8E76EBB4AE7B97621AA4933E /* ProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingView.swift; sourceTree = "<group>"; };
 		988851DBE27F72C2380FDFED /* VideoEditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditModels.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				FDEC8CBAFCBE0C60CAF8BFCF /* APIKeyProviderTests.swift */,
 				AAEC0244C53F6FC55E7F42D5 /* EditSessionViewModelTests.swift */,
+				7B5D67B62B09646592DF7E17 /* EditorPreviewTests.swift */,
 				A7602D6468231392DD03D3CF /* GeminiDecodingTests.swift */,
 				63F360A9782508D7BCB92793 /* GeminiFileServiceTests.swift */,
 				07671B88F95F8CAC5F4956EA /* GeminiRequestBuilderTests.swift */,
@@ -387,6 +390,7 @@
 			files = (
 				A2A6B975EDC2A864640B1245 /* APIKeyProviderTests.swift in Sources */,
 				A0B755DB99BF3F62BE0476B8 /* EditSessionViewModelTests.swift in Sources */,
+				2949C54F681F56DF8B6FA441 /* EditorPreviewTests.swift in Sources */,
 				34DEC182CCE00BF4556B718F /* GeminiDecodingTests.swift in Sources */,
 				0AE8348BAB71841577593BBC /* GeminiFileServiceTests.swift in Sources */,
 				CB4B75FC1E64BF1DDEA56473 /* GeminiRequestBuilderTests.swift in Sources */,
