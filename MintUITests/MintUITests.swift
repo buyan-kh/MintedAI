@@ -28,7 +28,12 @@ final class MintUITests: XCTestCase {
 
         completeOnboarding(app)
         app.buttons["Primary create"].tap()
-        app.buttons["Use sample video"].tap()
+
+        XCTAssertTrue(app.staticTexts["Edit"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["Use sample video"].exists)
+        XCTAssertFalse(app.staticTexts["Browse files"].exists)
+        XCTAssertFalse(app.staticTexts["Choose from Photos"].exists)
+
         app.textViews.firstMatch.tap()
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")
         app.buttons["Send"].tap()
