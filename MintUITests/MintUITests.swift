@@ -60,6 +60,7 @@ final class MintUITests: XCTestCase {
         XCTAssertTrue(app.buttons["✨ Reflective arm"].exists)
         XCTAssertTrue(app.buttons["⏱️ Slow motion"].exists)
         XCTAssertTrue(app.buttons["Edit video"].exists)
+        XCTAssertTrue(app.buttons["Edit video"].isEnabled)
 
         app.textViews.firstMatch.tap()
         app.textViews.firstMatch.typeText("Make the mirror ripple like liquid.")

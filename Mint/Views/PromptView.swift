@@ -203,6 +203,7 @@ struct PromptView: View {
     private var bottomActions: some View {
         VStack(spacing: 6) {
             Button {
+                guard canSend else { return }
                 onSubmit(prompt)
             } label: {
                 Text("✂️ Edit video")
@@ -210,10 +211,9 @@ struct PromptView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(canSend ? MintColor.accent : MintColor.mutedText)
+                    .background(MintColor.accent)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
-            .disabled(canSend == false)
             .buttonStyle(.plain)
             .accessibilityLabel("Edit video")
 
