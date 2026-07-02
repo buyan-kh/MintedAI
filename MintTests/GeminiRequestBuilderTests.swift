@@ -13,6 +13,7 @@ final class GeminiRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(object["model"] as? String, "gemini-omni-flash-preview")
         XCTAssertNil(object["previous_interaction_id"])
+        XCTAssertNil(object["generation_config"])
         let format = try XCTUnwrap(object["response_format"] as? [String: Any])
         XCTAssertEqual(format["type"] as? String, "video")
         XCTAssertEqual(format["delivery"] as? String, "uri")
@@ -29,6 +30,7 @@ final class GeminiRequestBuilderTests: XCTestCase {
 
         XCTAssertEqual(object["previous_interaction_id"] as? String, "interactions/first")
         XCTAssertEqual(object["model"] as? String, "gemini-omni-flash-preview")
+        XCTAssertNil(object["generation_config"])
     }
 
     func testTextToVideoPayloadUsesPromptTaskAndURIOutput() throws {

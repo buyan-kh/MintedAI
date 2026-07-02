@@ -80,7 +80,7 @@ struct OmniInteractionRequest: Codable, Equatable {
         OmniInteractionRequest(
             model: "gemini-omni-flash-preview",
             input: .parts([.document(uri: fileURI), .text(prompt)]),
-            generationConfig: OmniGenerationConfig(videoConfig: OmniVideoConfig(task: "edit")),
+            generationConfig: nil,
             responseFormat: OmniResponseFormat(type: "video", delivery: "uri"),
             previousInteractionID: nil,
             store: true
@@ -91,7 +91,7 @@ struct OmniInteractionRequest: Codable, Equatable {
         OmniInteractionRequest(
             model: "gemini-omni-flash-preview",
             input: .parts([.text(prompt)]),
-            generationConfig: OmniGenerationConfig(videoConfig: OmniVideoConfig(task: "edit")),
+            generationConfig: nil,
             responseFormat: OmniResponseFormat(type: "video", delivery: "uri"),
             previousInteractionID: previousInteractionID,
             store: true

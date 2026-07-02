@@ -87,4 +87,14 @@ final class GeminiDecodingTests: XCTestCase {
         XCTAssertEqual(error.error.message, "Uploaded video editing is not supported in this region.")
         XCTAssertEqual(error.error.status, "FAILED_PRECONDITION")
     }
+
+    func testDecodesOmniStringCodeErrorMessage() throws {
+        let json = """
+        { "error": { "message": "Exactly one input video is required for edit task.", "code": "invalid_request" } }
+        """.data(using: .utf8)!
+
+        let error = try JSONDecoder.gemini.decode(GeminiErrorEnvelope.self, from: json)
+
+        XCTAssertEqual(error.error.message, "Exactly one input video is required for edit task.")
+    }
 }

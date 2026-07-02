@@ -2,9 +2,28 @@ import Foundation
 
 struct GeminiErrorEnvelope: Decodable, Equatable {
     struct GeminiError: Decodable, Equatable {
-        let code: Int
+        let code: String?
         let message: String
-        let status: String
+        let status: String?
+
+        enum CodingKeys: String, CodingKey {
+            case code
+            case message
+            case status
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            if let stringCode = try? container.decode(String.self, forKey: .code) {
+                code = stringCode
+            } else if let intCode = try? container.decode(Int.self, forKey: .code) {
+                code = String(intCode)
+            } else {
+                code = nil
+            }
+            message = try container.decode(String.self, forKey: .message)
+            status = try container.decodeIfPresent(String.self, forKey: .status)
+        }
     }
 
     let error: GeminiError
