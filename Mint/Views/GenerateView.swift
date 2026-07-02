@@ -204,9 +204,14 @@ struct GenerateView: View {
                     }
                 }
 
-            Text(tokenText)
-                .font(.figtree(size: 10, weight: .bold))
-                .foregroundStyle(Color(red: 0.424, green: 0.361, blue: 0.906))
+            (
+                Text("\(remainingEdits)")
+                    .font(.figtree(size: 10, weight: .bold))
+                    .foregroundColor(Color(red: 0.424, green: 0.361, blue: 0.906))
+                + Text("/\(dailyEditLimit)")
+                    .font(.figtree(size: 10, weight: .medium))
+                    .foregroundColor(MintColor.tertiaryText)
+            )
                 .lineLimit(1)
                 .fixedSize()
                 .accessibilityIdentifier("Generate bottom token count")

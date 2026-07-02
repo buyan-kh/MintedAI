@@ -38,4 +38,16 @@ final class EditorPreviewTests: XCTestCase {
         XCTAssertFalse(source.contains("Button(\"Back\""))
         XCTAssertFalse(source.contains(".font(.system(size: 16, weight: .medium))"))
     }
+
+    func testGenerateBottomTokenCounterMatchesHTMLSplitStyling() throws {
+        let testsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let generateURL = projectDirectory.appendingPathComponent("Mint/Views/GenerateView.swift")
+        let source = try String(contentsOf: generateURL, encoding: .utf8)
+
+        XCTAssertTrue(source.contains("Text(\"\\(remainingEdits)\""))
+        XCTAssertTrue(source.contains("Text(\"/\\(dailyEditLimit)\""))
+        XCTAssertTrue(source.contains(".foregroundColor(MintColor.tertiaryText)"))
+        XCTAssertFalse(source.contains("Text(tokenText)\n                .font(.figtree(size: 10, weight: .bold))"))
+    }
 }
